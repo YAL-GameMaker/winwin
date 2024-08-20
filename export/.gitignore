@@ -1,0 +1,8 @@
+winwin-for-GMS1/*
+
+winwin-for-GMS2/*
+!winwin-for-GMS2/assetpackage.yy
+
+winwin-for-GMS2.3+/*
+!winwin-for-GMS2.3+/winwin_23.yyp
+!winwin-for-GMS2.3+/metadata.json
