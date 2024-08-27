@@ -9,6 +9,11 @@ wm_base_t ww_base{};
 StringConv ww_c1, ww_c2;
 HCURSOR ww_base_cursor;
 
+///
+dllx double winwin_is_available() {
+    return 1;
+}
+
 LRESULT winwin_wndproc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
 
 constexpr wchar_t winwin_class[] = L"winwin_class";
@@ -24,39 +29,56 @@ dllx double winwin_init_raw(void* hwnd, void* device, void* context, void* swapc
     wndc.hInstance = ww_base.hInstance;
     wndc.lpszClassName = winwin_class;
     wndc.lpfnWndProc = winwin_wndproc;
+    wndc.hIcon = (HICON)GetClassLongPtr(ww_base.main_hwnd, GCLP_HICON);
     RegisterClass(&wndc);
+    //
+    auto ww_main = new winwin();
+    ww_main->hwnd = ww_base.main_hwnd;
+    ww_main->swapchain = ww_base.main_swapchain;
+    ww_base.ref = ww_main;
     //
     ww_base_cursor = LoadCursor(NULL, IDC_ARROW);
     //
     return 1;
 }
+///~
+dllg ww_ptr_create winwin_init_2() {
+    return ww_base.ref;
+}
 
-dllg ww_ptr winwin_create(int x, int y, int width, int height, const char* caption, int border) {
+dllg ww_ptr_create winwin_create(int x, int y, int width, int height, winwin_config config) {
     auto ww = new winwin();
-    DWORD exStyle = 0;
+    //
+    DWORD dwExStyle = 0;
     DWORD dwStyle;
-    if (border <= 0) {
+    if (config.kind == winwin_kind::borderless) {
         dwStyle = WS_POPUP;
+        if (!config.taskbar_button) {
+            dwExStyle |= WS_EX_TOOLWINDOW;
+        }
     } else {
         dwStyle = WS_OVERLAPPEDWINDOW;
-        if (border < 2) {
-            dwStyle &= ~(WS_THICKFRAME | WS_MAXIMIZEBOX);
+        if (!config.resize) dwStyle &= ~(WS_THICKFRAME | WS_MAXIMIZEBOX);
+        if (config.kind == winwin_kind::tool) {
+            dwExStyle |= WS_EX_TOOLWINDOW;
         }
     }
+    if (config.noactivate) dwExStyle |= WS_EX_NOACTIVATE;
+    if (config.clickthrough) dwExStyle |= WW_WS_EX_CLICKTHROUGH;
     //
     ww->buf.width = width;
     ww->buf.height = height;
     ww->buf.new_width = width;
     ww->buf.new_height = height;
     RECT rcClient = { x, y, x + width, y + height };
-    AdjustWindowRectEx(&rcClient, dwStyle, false, exStyle);
+    AdjustWindowRectEx(&rcClient, dwStyle, false, dwExStyle);
     width = rcClient.right - rcClient.left;
     height = rcClient.bottom - rcClient.top;
     //
     ww->hwnd = CreateWindowExW(
-        exStyle,
+        dwExStyle,
         winwin_class,
-        ww_cc(caption),
+        ww_cc(config.caption),
         dwStyle,
         x, y, width, height,
         nullptr, nullptr, ww_base.hInstance, nullptr
@@ -101,7 +123,8 @@ dllg ww_ptr winwin_create(int x, int y, int width, int height, const char* capti
     ww_list.push_back(ww);
     ww_map[ww->hwnd] = ww;
 
-    ShowWindow(ww->hwnd, SW_SHOW);
+    if (config.show) ShowWindow(ww->hwnd, SW_SHOW);
+    if (config.topmost) SetWindowPos(ww->hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
     return ww;
 }
 
@@ -120,11 +143,3 @@ dllg void winwin_destroy(gml_ptr_destroy<winwin> ww) {
     // todo: destroy swapchain
 }
 
-bool winwin_resize_buffer(ww_ptr ww, int width, int height);
-dllg void winwin_update() {
-    for (auto ww : ww_list) {
-        if (ww->buf.resize_in > 0 && --ww->buf.resize_in <= 0) {
-            winwin_resize_buffer(ww, ww->buf.new_width, ww->buf.new_height);
-        }
-    }
-}

@@ -4,6 +4,22 @@ for (var i = 0; i < n; i++) {
 	var ww = eyes[i];
 	if (!winwin_exists(ww)) continue;
 	
+	if (winwin_mouse_check_button_pressed(ww, mb_left)) {
+		ww.dragging = true;
+		ww.drag_x = display_mouse_get_x() - winwin_get_x(ww);
+		ww.drag_y = display_mouse_get_y() - winwin_get_y(ww);
+	}
+	if (ww.dragging) {
+		if (winwin_mouse_check_button(ww, mb_left)) {
+			winwin_set_position(ww,
+				display_mouse_get_x() - ww.drag_x,
+				display_mouse_get_y() - ww.drag_y,
+			)
+		} else {
+			ww.dragging = false;
+		}
+	}
+	
 	winwin_draw_start(ww);
 	draw_set_color(c_white);
 	gpu_set_blendmode(bm_subtract);
@@ -19,11 +35,9 @@ for (var i = 0; i < n; i++) {
 		var dx = display_mouse_get_x() - ex;
 		var dy = display_mouse_get_y() - ey;
 		var dd = point_distance(0, 0, dx, dy);
-		//dd = (dd > 200 ? 200 / dd : 1) / 15;
 		dd = (200 / dd) / 15;
 		dx *= dd;
 		dy *= dd;
-		//draw_text(64, 64, string(dx) + "\n" + string(dy));
 		draw_sprite_ext(spr_eyes, 1, 64 + max(0, k) * 64 + dx, 64 + dy, 1, 1, 0, c_white, 1);
 	}
 	
@@ -33,17 +47,51 @@ for (var i = 0; i < n; i++) {
 if (winwin_exists(extra)) {
 	winwin_draw_start(extra);
 	
-	draw_set_color(/*#*/0x705040);
+	draw_set_color(#405070);
 	var _width = winwin_get_draw_width();
 	var _height = winwin_get_draw_height();
 	draw_rectangle(0, 0, _width, _height, false);
 	
 	draw_set_color(c_white);
 	draw_rectangle(2, 2, _width - 3, _height - 3, 1);
-	draw_text(7, 7, sfmt("Hi! Size: %x%", _width, _height));
+	
+	var s = sfmt("Size: %x%", _width, _height);
+	for (var k = 0; k < 256; k++) {
+		if (winwin_keyboard_check(extra, k)) s += "\nHolding key " + string(k);
+		if (winwin_keyboard_check_pressed(extra, k)) {
+			ds_list_insert(extra.key_list, 0, k);
+			if (ds_list_size(extra.key_list) >= 8) {
+				ds_list_delete(extra.key_list, 7);
+			}
+		}
+	}
+	draw_text(7, 7, s);
+	
+	draw_set_halign(fa_right);
+	s = "Keys:"
+	for (var i = 0; i < ds_list_size(extra.key_list); i++) {
+		s += "\n" + string(extra.key_list[|i]);
+	}
+	draw_text(_width - 7, 7, s);
+	draw_set_halign(fa_left);
+	
 	draw_circle(_width / 2, _height / 2, 20, false);
 	
+	if (winwin_mouse_check_button(extra, mb_left)) {
+		draw_circle(winwin_mouse_get_x(extra), winwin_mouse_get_y(extra), 10, true);
+	}
+	
 	winwin_draw_end();
+	
+	if (keyboard_check_pressed(vk_space)) {
+		for (var i = 0; i < 10; i++) {
+			winwin_draw_start(winwin_main);
+			draw_text(57, 57 + 20 * i, string(i));
+			winwin_draw_end();
+			var _till = current_time + 500;
+			while (current_time < _till) {}
+		}
+	}
 	
 	draw_text(5, 5, "Hello! " + string(current_time div 1000));
 } else {

@@ -205,8 +205,11 @@
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="winwin_commands.cpp" />
     <ClCompile Include="winwin_draw.cpp" />
+    <ClCompile Include="winwin_focus.cpp" />
+    <ClCompile Include="winwin_input.cpp" />
     <ClCompile Include="winwin_props.cpp" />
     <ClCompile Include="winwin_shape.cpp" />
+    <ClCompile Include="winwin_update.cpp" />
     <ClCompile Include="winwin_wndproc.cpp" />
   </ItemGroup>
   <ItemGroup>

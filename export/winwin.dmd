@@ -5,3 +5,6 @@
 This is a "cheat sheet" for "winwin" extension by YellowAfterlife.
 The extension can be found on [itch.io](https://yellowafterlife.itch.io/gamemaker-winwin).
 ```
+#[winwin_main]() {
+	
+}

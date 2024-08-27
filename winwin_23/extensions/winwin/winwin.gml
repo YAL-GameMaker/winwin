@@ -1,14 +1,16 @@
 #define winwin_init
 /// ()
+//#global winwin_main
 var _inf = os_get_info();
-var _result = winwin_init_raw(
+var _ok = winwin_init_raw(
 	window_handle(),
 	_inf[?"video_d3d11_device"],
 	_inf[?"video_d3d11_context"],
 	_inf[?"video_d3d11_swapchain"],
 );
 ds_map_destroy(_inf);
-return _result;
+winwin_main = winwin_init_2();
+return _ok;
 
 #define winwin_prepare_buffer
 /// (size:int)->buffer~
@@ -23,6 +25,15 @@ if (_buf == undefined) {
 }
 buffer_seek(_buf, buffer_seek_start, 0);
 return _buf;
+
+#define winwin_exists
+/// (ww)->
+var _ww = argument0;
+if (_ww == undefined) return false;
+if (instanceof(_ww) != "winwin") return false;
+var _ptr = _ww.__ptr__;
+if (_ptr == pointer_null) return false;
+return winwin_exists_raw(_ptr);
 
 #define winwin_draw_start
 /// (window)->
