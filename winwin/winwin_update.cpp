@@ -19,6 +19,10 @@ dllg void winwin_update() {
         ww->mouse_next.pressed.clear();
         ww->mouse.released.assign(ww->mouse_next.released);
         ww->mouse_next.released.clear();
+        ww->mouse.wheel = ww->mouse_next.wheel;
+        ww->mouse_next.wheel = 0;
+        ww->mouse.hwheel = ww->mouse_next.hwheel;
+        ww->mouse_next.hwheel = 0;
         //
     }
 }

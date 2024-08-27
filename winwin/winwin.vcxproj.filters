@@ -74,6 +74,12 @@
     <ClCompile Include="winwin_focus.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="winwin_cursor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="winwin_rectangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="winwin.rc">

@@ -23,6 +23,16 @@
 
 #define trace(...) { printf("[" __RELFILE__ ":%d] ", __LINE__); printf(__VA_ARGS__); printf("\n"); fflush(stdout); }
 
+template<typename T> T* malloc_arr(size_t count) {
+	return (T*)malloc(sizeof(T) * count);
+}
+template<typename T> T* realloc_arr(T* arr, size_t count) {
+	return (T*)realloc(arr, sizeof(T) * count);
+}
+template<typename T> T* memcpy_arr(T* dst, const T* src, size_t count) {
+	return (T*)memcpy(dst, src, sizeof(T) * count);
+}
+
 #include "gml_ext.h"
 
 // TODO: reference additional headers your program requires here

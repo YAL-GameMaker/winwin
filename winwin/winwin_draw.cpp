@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "winwin.h"
-#define __RELFILE__ "winwin_draw.cpp"
+#define __RELFILE__ "winwin_draw"
 
 ww_ptr ww_target = nullptr;
 

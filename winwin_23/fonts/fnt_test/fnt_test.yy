@@ -116,6 +116,7 @@
     "124": {"x":195,"y":75,"w":6,"h":24,"character":124,"shift":6,"offset":0,},
     "125": {"x":152,"y":75,"w":7,"h":24,"character":125,"shift":7,"offset":0,},
     "126": {"x":107,"y":25,"w":10,"h":24,"character":126,"shift":10,"offset":0,},
+	"9647": {"x":157,"y":50,"w":9,"h":24,"character":9647,"shift":9,"offset":0,},
   },
   "kerningPairs": [],
   "ranges": [

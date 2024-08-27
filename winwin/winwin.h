@@ -42,6 +42,18 @@ struct ww_keybits_tri {
     ww_keybits pressed{};
     ww_keybits released{};
 };
+struct ww_keyboard_string {
+    int size = 0;
+    int capacity = 0;
+    uint32_t* data = nullptr;
+    ww_keyboard_string() {
+        capacity = 128;
+        data = malloc_arr<uint32_t>(capacity);
+    }
+    ~ww_keyboard_string() {
+        free(data);
+    }
+};
 
 struct ww_mousebits {
     uint8_t bits = 0;
@@ -67,6 +79,7 @@ struct ww_mousebits {
 };
 struct ww_mousebits_tri {
     ww_mousebits down{}, pressed{}, released{};
+    int wheel = 0, hwheel = 0;
 };
 struct ww_size {
     std::optional<int> width = {}, height = {};
@@ -84,10 +97,13 @@ struct winwin {
     } buf;
     //
     ww_keybits_tri keys{}, keys_next{};
+    ww_keyboard_string keyboard_string{};
     //
     HCURSOR cursor = NULL;
     int mouse_x = 0, mouse_y = 0;
     ww_mousebits_tri mouse{}, mouse_next{};
+    bool mouse_tracking = false;
+    bool mouse_over = false;
     //
     ww_size minSize{}, maxSize{};
 };

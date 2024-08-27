@@ -17,6 +17,7 @@ dllx double winwin_is_available() {
 LRESULT winwin_wndproc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
 
 constexpr wchar_t winwin_class[] = L"winwin_class";
+HCURSOR winwin_cursor_init();
 dllx double winwin_init_raw(void* hwnd, void* device, void* context, void* swapchain) {
     //
     ww_base.main_hwnd = (HWND)hwnd;
@@ -37,7 +38,7 @@ dllx double winwin_init_raw(void* hwnd, void* device, void* context, void* swapc
     ww_main->swapchain = ww_base.main_swapchain;
     ww_base.ref = ww_main;
     //
-    ww_base_cursor = LoadCursor(NULL, IDC_ARROW);
+    ww_base_cursor = winwin_cursor_init();
     //
     return 1;
 }

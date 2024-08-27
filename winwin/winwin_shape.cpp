@@ -71,7 +71,7 @@ dllg int winwin_get_chromakey(ww_ptr ww) {
 	if ((flags & LWA_COLORKEY) == 0) return -1;
 	return crKey;
 }
-dllg bool winwinset_chromakey(ww_ptr ww, double color) {
+dllg bool winwin_set_chromakey(ww_ptr ww, double color) {
 	auto hwnd = ww->hwnd;
 	bool set = color >= 0;
 	if (set) {
@@ -98,7 +98,6 @@ dllg bool winwinset_chromakey(ww_ptr ww, double color) {
 	return true;
 }
 
-///
 dllg bool winwin_enable_per_pixel_alpha(ww_ptr ww) {
 	DWM_BLURBEHIND bb = { 0 };
 	bb.dwFlags = DWM_BB_ENABLE | DWM_BB_BLURREGION;

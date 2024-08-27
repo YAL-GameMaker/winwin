@@ -45,6 +45,16 @@ for (var i = 0; i < n; i++) {
 }
 
 if (winwin_exists(extra)) {
+	var ks = winwin_keyboard_string_get(extra);
+	ks = string_repeat("e", 12 + (current_time div 100));
+	if (ks != extra_caption) {
+		trace(ks);
+		winwin_set_caption(extra, ks);
+		trace("OK?", string_byte_length(ks));
+		extra_caption = ks;
+	}
+	
+	
 	winwin_draw_start(extra);
 	
 	draw_set_color(#405070);
@@ -56,6 +66,8 @@ if (winwin_exists(extra)) {
 	draw_rectangle(2, 2, _width - 3, _height - 3, 1);
 	
 	var s = sfmt("Size: %x%", _width, _height);
+	
+	//s += "\nkeyboard_string: " + winwin_keyboard_string_get(extra);
 	for (var k = 0; k < 256; k++) {
 		if (winwin_keyboard_check(extra, k)) s += "\nHolding key " + string(k);
 		if (winwin_keyboard_check_pressed(extra, k)) {

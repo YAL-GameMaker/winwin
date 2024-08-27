@@ -89,6 +89,22 @@
             1,
             2,
           ],"documentation":"","externalName":"winwin_set_visible_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_cursor_raw","argCount":2,"args":[
+            1,
+            2,
+          ],"documentation":"","externalName":"winwin_get_cursor_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_cursor_raw","argCount":2,"args":[
+            1,
+            2,
+          ],"documentation":"","externalName":"winwin_set_cursor_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_cursor_handle_raw","argCount":2,"args":[
+            1,
+            2,
+          ],"documentation":"","externalName":"winwin_get_cursor_handle_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_cursor_handle_raw","argCount":2,"args":[
+            1,
+            2,
+          ],"documentation":"","externalName":"winwin_set_cursor_handle_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_resize_buffer_raw","argCount":2,"args":[
             1,
             2,
@@ -133,6 +149,14 @@
             1,
             2,
           ],"documentation":"","externalName":"winwin_keyboard_check_released_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_string_get_raw","argCount":2,"args":[
+            1,
+            2,
+          ],"documentation":"","externalName":"winwin_keyboard_string_get_raw","help":"","hidden":true,"kind":11,"returnType":1,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_is_over_raw","argCount":2,"args":[
+            1,
+            2,
+          ],"documentation":"","externalName":"winwin_mouse_is_over_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_get_x_raw","argCount":2,"args":[
             1,
             2,
@@ -153,10 +177,35 @@
             1,
             2,
           ],"documentation":"","externalName":"winwin_mouse_check_button_released_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_wheel_up_raw","argCount":2,"args":[
+            1,
+            2,
+          ],"documentation":"","externalName":"winwin_mouse_wheel_up_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_wheel_down_raw","argCount":2,"args":[
+            1,
+            2,
+          ],"documentation":"","externalName":"winwin_mouse_wheel_down_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_wheel_get_delta_x_raw","argCount":2,"args":[
+            1,
+            2,
+          ],"documentation":"","externalName":"winwin_mouse_wheel_get_delta_x_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_wheel_get_delta_y_raw","argCount":2,"args":[
+            1,
+            2,
+          ],"documentation":"","externalName":"winwin_mouse_wheel_get_delta_y_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_handle_raw","argCount":2,"args":[
             1,
             2,
           ],"documentation":"","externalName":"winwin_get_handle_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_caption_raw","argCount":2,"args":[
+            1,
+            2,
+          ],"documentation":"","externalName":"winwin_get_caption_raw","help":"","hidden":true,"kind":11,"returnType":1,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_caption_raw","argCount":3,"args":[
+            1,
+            2,
+            1,
+          ],"documentation":"","externalName":"winwin_set_caption_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_x_raw","argCount":2,"args":[
             1,
             2,
@@ -229,10 +278,10 @@
             1,
             2,
           ],"documentation":"","externalName":"winwin_get_chromakey_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwinset_chromakey_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_chromakey_raw","argCount":2,"args":[
             1,
             2,
-          ],"documentation":"","externalName":"winwinset_chromakey_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+          ],"documentation":"","externalName":"winwin_set_chromakey_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_enable_per_pixel_alpha_raw","argCount":2,"args":[
             1,
             2,
@@ -377,6 +426,20 @@
             2,
             2,
           ],"documentation":"","externalName":"winwin_set_visible","help":"winwin_set_visible(ww, visible:bool)->bool","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_cursor","argCount":1,"args":[
+            2,
+          ],"documentation":"","externalName":"winwin_get_cursor","help":"winwin_get_cursor(ww)->int","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_cursor","argCount":2,"args":[
+            2,
+            2,
+          ],"documentation":"","externalName":"winwin_set_cursor","help":"winwin_set_cursor(ww, cursor:int)->bool","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_cursor_handle","argCount":1,"args":[
+            2,
+          ],"documentation":"","externalName":"winwin_get_cursor_handle","help":"winwin_get_cursor_handle(ww)->int","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_cursor_handle","argCount":2,"args":[
+            2,
+            2,
+          ],"documentation":"","externalName":"winwin_set_cursor_handle","help":"winwin_set_cursor_handle(ww, hcursor:int)->bool","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_resize_buffer","argCount":3,"args":[
             2,
             2,
@@ -409,6 +472,12 @@
             2,
             2,
           ],"documentation":"","externalName":"winwin_keyboard_check_released","help":"winwin_keyboard_check_released(ww, key:int)->bool","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_string_get","argCount":1,"args":[
+            2,
+          ],"documentation":"","externalName":"winwin_keyboard_string_get","help":"winwin_keyboard_string_get(ww)->string","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_is_over","argCount":1,"args":[
+            2,
+          ],"documentation":"","externalName":"winwin_mouse_is_over","help":"winwin_mouse_is_over(ww)->bool","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_get_x","argCount":1,"args":[
             2,
           ],"documentation":"","externalName":"winwin_mouse_get_x","help":"winwin_mouse_get_x(ww)->int","hidden":false,"kind":2,"returnType":2,},
@@ -427,9 +496,28 @@
             2,
             2,
           ],"documentation":"","externalName":"winwin_mouse_check_button_released","help":"winwin_mouse_check_button_released(ww, button:int)->bool","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_wheel_up","argCount":1,"args":[
+            2,
+          ],"documentation":"","externalName":"winwin_mouse_wheel_up","help":"winwin_mouse_wheel_up(ww)->bool","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_wheel_down","argCount":1,"args":[
+            2,
+          ],"documentation":"","externalName":"winwin_mouse_wheel_down","help":"winwin_mouse_wheel_down(ww)->bool","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_wheel_get_delta_x","argCount":1,"args":[
+            2,
+          ],"documentation":"","externalName":"winwin_mouse_wheel_get_delta_x","help":"winwin_mouse_wheel_get_delta_x(ww)->bool","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_wheel_get_delta_y","argCount":1,"args":[
+            2,
+          ],"documentation":"","externalName":"winwin_mouse_wheel_get_delta_y","help":"winwin_mouse_wheel_get_delta_y(ww)->bool","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_handle","argCount":1,"args":[
             2,
           ],"documentation":"","externalName":"winwin_get_handle","help":"winwin_get_handle(ww)->int","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_caption","argCount":1,"args":[
+            2,
+          ],"documentation":"","externalName":"winwin_get_caption","help":"winwin_get_caption(ww)->string","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_caption","argCount":2,"args":[
+            2,
+            2,
+          ],"documentation":"","externalName":"winwin_set_caption","help":"winwin_set_caption(ww, caption:string)->bool","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_x","argCount":1,"args":[
             2,
           ],"documentation":"","externalName":"winwin_get_x","help":"winwin_get_x(ww)->int?","hidden":false,"kind":2,"returnType":2,},
@@ -485,13 +573,13 @@
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_chromakey","argCount":1,"args":[
             2,
           ],"documentation":"","externalName":"winwin_get_chromakey","help":"winwin_get_chromakey(ww)->int","hidden":false,"kind":2,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwinset_chromakey","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_chromakey","argCount":2,"args":[
             2,
             2,
-          ],"documentation":"","externalName":"winwinset_chromakey","help":"winwinset_chromakey(ww, color:number)->bool","hidden":false,"kind":2,"returnType":2,},
+          ],"documentation":"","externalName":"winwin_set_chromakey","help":"winwin_set_chromakey(ww, color:number)->bool","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_enable_per_pixel_alpha","argCount":1,"args":[
             2,
-          ],"documentation":"","externalName":"winwin_enable_per_pixel_alpha","help":"winwin_enable_per_pixel_alpha(ww)->bool ","hidden":false,"kind":2,"returnType":2,},
+          ],"documentation":"","externalName":"winwin_enable_per_pixel_alpha","help":"winwin_enable_per_pixel_alpha(ww)->bool","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_update","argCount":0,"args":[],"documentation":"","externalName":"winwin_update","help":"winwin_update()","hidden":false,"kind":2,"returnType":2,},
       ],"init":"","kind":2,"order":[
         {"name":"winwin_init_2","path":"extensions/winwin/winwin.yy",},
