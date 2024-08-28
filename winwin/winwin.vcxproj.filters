@@ -30,10 +30,10 @@
     <ClInclude Include="gml_ext.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="winwin.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="StringConv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="winwin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
