@@ -55,6 +55,14 @@ dllg const char* winwin_keyboard_string_get(ww_ptr ww) {
 	r[0] = 0;
 	return (const char*)result.data();
 }
+/// ~
+dllg int winwin_keyboard_set_string_raw(ww_ptr ww, gml_buffer buf) {
+	auto& wks = ww->keyboard_string;
+	auto n = buf.tell() >> 2;
+	if (n > wks.capacity) n = wks.capacity;
+	memcpy_arr(wks.data, (uint32_t*)buf.data(), n);
+	return n;
+}
 
 // // // mouse
 

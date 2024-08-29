@@ -153,6 +153,10 @@
             1,
             2,
           ],"documentation":"","externalName":"winwin_keyboard_string_get_raw","help":"","hidden":true,"kind":11,"returnType":1,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_set_string_raw_raw","argCount":2,"args":[
+            1,
+            2,
+          ],"documentation":"","externalName":"winwin_keyboard_set_string_raw_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_is_over_raw","argCount":2,"args":[
             1,
             2,
@@ -359,10 +363,17 @@
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_exists","argCount":1,"args":[
             2,
           ],"documentation":"","externalName":"winwin_exists","help":"winwin_exists(ww)->","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_from_handle","argCount":1,"args":[
+            2,
+          ],"documentation":"","externalName":"winwin_from_handle","help":"winwin_from_handle(handle)->","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_draw_start","argCount":1,"args":[
             2,
           ],"documentation":"","externalName":"winwin_draw_start","help":"winwin_draw_start(window)->","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_draw_end","argCount":0,"args":[],"documentation":"","externalName":"winwin_draw_end","help":"winwin_draw_end()->","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_set_string","argCount":2,"args":[
+            2,
+            2,
+          ],"documentation":"","externalName":"winwin_keyboard_set_string","help":"winwin_keyboard_set_string(ww, str)->","hidden":false,"kind":2,"returnType":2,},
       ],"init":"","kind":2,"order":[
         {"name":"winwin_init","path":"extensions/winwin/winwin.yy",},
         {"name":"winwin_prepare_buffer","path":"extensions/winwin/winwin.yy",},
@@ -475,6 +486,10 @@
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_string_get","argCount":1,"args":[
             2,
           ],"documentation":"","externalName":"winwin_keyboard_string_get","help":"winwin_keyboard_string_get(ww)->string","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_set_string_raw","argCount":2,"args":[
+            2,
+            2,
+          ],"documentation":"","externalName":"winwin_keyboard_set_string_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_is_over","argCount":1,"args":[
             2,
           ],"documentation":"","externalName":"winwin_mouse_is_over","help":"winwin_mouse_is_over(ww)->bool","hidden":false,"kind":2,"returnType":2,},

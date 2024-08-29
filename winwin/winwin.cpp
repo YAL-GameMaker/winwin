@@ -130,7 +130,7 @@ dllg ww_ptr_create winwin_create(int x, int y, int width, int height, winwin_con
 }
 
 double winwin_draw_end_raw();
-dllg void winwin_destroy(gml_ptr_destroy<winwin> ww) {
+dllg void winwin_destroy(ww_ptr_destroy ww) {
     if (ww_target == ww) winwin_draw_end_raw();
     auto n = ww_list.size();
     for (auto i = 0u; i < n; i++) {
@@ -141,6 +141,7 @@ dllg void winwin_destroy(gml_ptr_destroy<winwin> ww) {
     }
     ww_map.erase(ww->hwnd);
     DestroyWindow(ww->hwnd);
-    // todo: destroy swapchain
+    ww->rtv->Release();
+    ww->swapchain->Release();
 }
 

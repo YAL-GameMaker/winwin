@@ -35,6 +35,12 @@ var _ptr = _ww.__ptr__;
 if (_ptr == pointer_null) return false;
 return winwin_exists_raw(_ptr);
 
+#define winwin_from_handle
+/// (handle)->
+var _ptr = argument0;
+if (!is_ptr(_ptr)) _ptr = ptr(_ptr);
+return global.__winwin_map[?_ptr];
+
 #define winwin_draw_start
 /// (window)->
 var _win = argument0;
@@ -61,3 +67,12 @@ if (!winwin_draw_end_raw()) return false;
 matrix_set(matrix_view, global.__winwin_last_view);
 matrix_set(matrix_projection, global.__winwin_last_proj);
 return true;
+
+#define winwin_keyboard_set_string
+/// (ww, str)->
+var _buf = winwin_prepare_buffer(4);
+buffer_seek(_buf, buffer_seek_start, 0);
+string_foreach(argument1, function(_char, _pos) /*=>*/ {
+	buffer_write(_buf, buffer_u32, ord(_char));
+});
+return winwin_keyboard_set_string_raw(argument0, _buf);

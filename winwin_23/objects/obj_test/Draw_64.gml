@@ -46,11 +46,8 @@ for (var i = 0; i < n; i++) {
 
 if (winwin_exists(extra)) {
 	var ks = winwin_keyboard_string_get(extra);
-	ks = string_repeat("e", 12 + (current_time div 100));
 	if (ks != extra_caption) {
-		trace(ks);
 		winwin_set_caption(extra, ks);
-		trace("OK?", string_byte_length(ks));
 		extra_caption = ks;
 	}
 	

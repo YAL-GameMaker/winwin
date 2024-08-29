@@ -138,6 +138,7 @@ struct winwin_config {
     bool noactivate;
 };
 
+using ww_ptr_create = ww_ptr;
 /**
     @dllg:type ww_ptr_create
     @gmlRead
@@ -150,7 +151,8 @@ struct winwin_config {
     } else _box = undefined;
     return _box;
 **/
-using ww_ptr_create = ww_ptr;
+
+using ww_ptr_find = ww_ptr;
 /**
     @dllg:type ww_ptr_find
     @gmlRead
@@ -166,4 +168,16 @@ using ww_ptr_create = ww_ptr;
     } else _box = undefined;
     return _box;
 **/
-using ww_ptr_find = ww_ptr;
+
+using ww_ptr_destroy = gml_ptr_destroy<winwin>;
+/**
+    @dllg:type ww_ptr_destroy
+    @gmlWrite
+    var _box_0 = $value;
+    if (instanceof(_box_0) != "winwin") { show_error("Expected a winwin, got " + string(_box_0), true); exit }
+    var _ptr_0 = _box_0.__ptr__;
+    if (_ptr_0 == pointer_null) { show_error("This winwin is already destroyed.", true); exit; }
+    _box_0.__ptr__ = pointer_null;
+    ds_map_delete(global.__winwin_map, _ptr_0);
+    buffer_write(_buf, buffer_u64, int64(_ptr_0));
+**/
