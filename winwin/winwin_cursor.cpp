@@ -28,12 +28,12 @@ HCURSOR winwin_cursor_init() {
 	return arrow;
 }
 
-dllg int winwin_get_cursor(ww_ptr ww) {
+dllg std::optional<int> winwin_get_cursor(ww_ptr ww) {
 	auto cr = ww->cursor;
 	for (int i = 0; i < std::size(winwin_cursors); i++) {
 		if (winwin_cursors[i] == cr) return -i;
 	}
-	return -1;
+	return {};
 }
 dllg bool winwin_set_cursor(ww_ptr ww, int cursor) {
 	cursor = -cursor;

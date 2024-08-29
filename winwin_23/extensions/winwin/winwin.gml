@@ -1,5 +1,5 @@
-#define winwin_init
-/// ()
+#define winwin_preinit
+//#init winwin_preinit
 //#global winwin_main
 var _inf = os_get_info();
 var _ok = winwin_init_raw(
@@ -9,6 +9,7 @@ var _ok = winwin_init_raw(
 	_inf[?"video_d3d11_swapchain"],
 );
 ds_map_destroy(_inf);
+global.__winwin_map = ds_map_create();
 winwin_main = winwin_init_2();
 return _ok;
 

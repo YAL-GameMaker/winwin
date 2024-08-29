@@ -1,5 +1,3 @@
-//show_message("!");
-winwin_init();
 var _width = room_width;
 var _height = room_height;
 //window_set_size(_width * 2, _height * 2);

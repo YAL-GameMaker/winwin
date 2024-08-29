@@ -114,6 +114,7 @@ dllg bool winwin_draw_start_raw(ww_ptr ww) {
 
     return true;
 }
+///~
 dllg double winwin_draw_end_raw() {
     auto ww = ww_target;
     if (ww == nullptr) {

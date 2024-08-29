@@ -25,10 +25,6 @@ set docPath=%solutionDir%export\%docName%
 echo Copying documentation...
 if not exist "%gmlDir23%\datafiles" mkdir "%gmlDir23%\datafiles"
 copy /Y %docPath% "%gmlDir23%\datafiles\%docName%"
-if not exist "%gmlDir22%\datafiles" mkdir "%gmlDir22%\datafiles"
-copy /Y %docPath% "%gmlDir22%\datafiles\%docName%"
-if not exist "%gmlDir14%\datafiles" mkdir "%gmlDir14%\datafiles"
-copy /Y %docPath% "%gmlDir14%\datafiles\%docName%"
 
 where /q gmxgen
 if %ERRORLEVEL% EQU 0 (
