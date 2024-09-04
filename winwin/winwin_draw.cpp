@@ -126,7 +126,7 @@ dllg double winwin_draw_end_raw() {
 
     winwin_draw_restore();
 
-    auto hr = ww->swapchain->Present(1, 0);
+    auto hr = ww->swapchain->Present(ww->sync_interval, 0);
     if (hr != S_OK) trace("hr %d", hr);
     return hr == S_OK;
 }

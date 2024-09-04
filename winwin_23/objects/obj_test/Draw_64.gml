@@ -1,4 +1,3 @@
-
 var n = array_length(eyes);
 for (var i = 0; i < n; i++) {
 	var ww = eyes[i];

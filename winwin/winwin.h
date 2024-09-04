@@ -104,6 +104,7 @@ struct winwin {
     ww_mousebits_tri mouse{}, mouse_next{};
     bool mouse_tracking = false;
     bool mouse_over = false;
+    int sync_interval = 0;
     //
     ww_size minSize{}, maxSize{};
 };
@@ -136,6 +137,7 @@ struct winwin_config {
     bool taskbar_button;
     bool clickthrough;
     bool noactivate;
+    int vsync;
 };
 
 using ww_ptr_create = ww_ptr;

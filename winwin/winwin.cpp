@@ -85,6 +85,7 @@ dllg ww_ptr_create winwin_create(int x, int y, int width, int height, winwin_con
         nullptr, nullptr, ww_base.hInstance, nullptr
     );
     ww->cursor = ww_base_cursor;
+    ww->sync_interval = config.vsync;
 
     ID3D11Device* device = ww_base.device;
 
