@@ -20,3 +20,19 @@ dllg const char* winwin_get_caption(ww_ptr ww) {
 dllg bool winwin_set_caption(ww_ptr ww, const char* caption) {
     return SetWindowTextW(ww->hwnd, ww_cc(caption));
 }
+
+dllg int8_t winwin_get_close_button(ww_ptr ww) {
+    return ww->close_button;
+}
+dllg bool winwin_set_close_button(ww_ptr ww, int8_t close_button_state) {
+    auto hwnd = ww->hwnd;
+    if (!hwnd) return false;
+    auto curr = ww->close_button;
+    if (curr == close_button_state) return true;
+    ww->close_button = close_button_state;
+    if ((curr == 0) != (close_button_state == 0)) {
+        auto menu = GetSystemMenu(hwnd, false);
+        return EnableMenuItem(menu, SC_CLOSE, MF_BYCOMMAND | (close_button_state == 0 ? MF_GRAYED : MF_ENABLED));
+    }
+    return true;
+}

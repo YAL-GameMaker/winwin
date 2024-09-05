@@ -206,6 +206,14 @@
             2,
             1,
           ],"documentation":"","externalName":"winwin_set_caption_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_close_button_raw","argCount":2,"args":[
+            1,
+            2,
+          ],"documentation":"","externalName":"winwin_get_close_button_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_close_button_raw","argCount":2,"args":[
+            1,
+            2,
+          ],"documentation":"","externalName":"winwin_set_close_button_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_x_raw","argCount":2,"args":[
             1,
             2,
@@ -529,6 +537,13 @@
             2,
             2,
           ],"documentation":"","externalName":"winwin_set_caption","help":"winwin_set_caption(ww, caption:string)->bool","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_close_button","argCount":1,"args":[
+            2,
+          ],"documentation":"","externalName":"winwin_get_close_button","help":"winwin_get_close_button(ww)->int","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_close_button","argCount":2,"args":[
+            2,
+            2,
+          ],"documentation":"","externalName":"winwin_set_close_button","help":"winwin_set_close_button(ww, close_button_state:int)->bool","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_x","argCount":1,"args":[
             2,
           ],"documentation":"","externalName":"winwin_get_x","help":"winwin_get_x(ww)->int?","hidden":false,"kind":2,"returnType":2,},

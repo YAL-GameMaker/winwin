@@ -45,6 +45,7 @@ return global.__winwin_map[?_ptr];
 #define winwin_draw_start
 /// (window)->
 var _win = argument0;
+draw_flush();
 if (!winwin_draw_start_raw(_win)) return false;
 global.__winwin_last_view = matrix_get(matrix_view);
 global.__winwin_last_proj = matrix_get(matrix_projection);

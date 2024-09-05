@@ -48,8 +48,6 @@ dllg ww_ptr_create winwin_init_2() {
 }
 
 dllg ww_ptr_create winwin_create(int x, int y, int width, int height, winwin_config config) {
-    auto ww = new winwin();
-    //
     DWORD dwExStyle = 0;
     DWORD dwStyle;
     if (config.kind == winwin_kind::borderless) {
@@ -67,16 +65,12 @@ dllg ww_ptr_create winwin_create(int x, int y, int width, int height, winwin_con
     if (config.noactivate) dwExStyle |= WS_EX_NOACTIVATE;
     if (config.clickthrough) dwExStyle |= WW_WS_EX_CLICKTHROUGH;
     //
-    ww->buf.width = width;
-    ww->buf.height = height;
-    ww->buf.new_width = width;
-    ww->buf.new_height = height;
     RECT rcClient = { x, y, x + width, y + height };
     AdjustWindowRectEx(&rcClient, dwStyle, false, dwExStyle);
     width = rcClient.right - rcClient.left;
     height = rcClient.bottom - rcClient.top;
     //
-    ww->hwnd = CreateWindowExW(
+    auto hwnd = CreateWindowExW(
         dwExStyle,
         winwin_class,
         ww_cc(config.caption),
@@ -84,6 +78,20 @@ dllg ww_ptr_create winwin_create(int x, int y, int width, int height, winwin_con
         x, y, width, height,
         nullptr, nullptr, ww_base.hInstance, nullptr
     );
+    if (hwnd == nullptr) return nullptr;
+    //
+    if (config.close_button == 0) {
+        auto menu = GetSystemMenu(hwnd, false);
+        EnableMenuItem(menu, SC_CLOSE, MF_BYCOMMAND | MF_GRAYED);
+    }
+    //
+    auto ww = new winwin();
+    ww->hwnd = hwnd;
+    ww->close_button = config.close_button;
+    ww->buf.width = width;
+    ww->buf.height = height;
+    ww->buf.new_width = width;
+    ww->buf.new_height = height;
     ww->cursor = ww_base_cursor;
 
     ID3D11Device* device = ww_base.device;

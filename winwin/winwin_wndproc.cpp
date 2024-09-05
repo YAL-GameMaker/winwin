@@ -42,6 +42,13 @@ LRESULT winwin_wndproc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
                 if (ww->maxSize.height) inf->ptMaxTrackSize.y = dy + *ww->maxSize.height;
             }
         }; break;
+
+        case WM_SYSCOMMAND: {
+            if (wparam == SC_CLOSE && ww->close_button == 2) {
+                ShowWindow(hwnd, SW_HIDE);
+                return TRUE;
+            }
+        }; break;
         
         // mouse:
         case WM_MOUSEMOVE: {

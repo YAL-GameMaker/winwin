@@ -35,9 +35,11 @@ for (var i = 0; i < n; i++) {
 		var dx = display_mouse_get_x() - ex;
 		var dy = display_mouse_get_y() - ey;
 		var dd = point_distance(0, 0, dx, dy);
-		dd = (200 / dd) / 15;
-		dx *= dd;
-		dy *= dd;
+		if (dd > 15) {
+			dd = (200 / dd) / 15;
+			dx *= dd;
+			dy *= dd;
+		}
 		draw_sprite_ext(spr_eyes, 1, 64 + max(0, k) * 64 + dx, 64 + dy, 1, 1, 0, c_white, 1);
 	}
 	
@@ -62,9 +64,8 @@ if (winwin_exists(extra)) {
 	draw_set_color(c_white);
 	draw_rectangle(2, 2, _width - 3, _height - 3, 1);
 	
+	// info:
 	var s = sfmt("Size: %x%", _width, _height);
-	
-	//s += "\nkeyboard_string: " + winwin_keyboard_string_get(extra);
 	for (var k = 0; k < 256; k++) {
 		if (winwin_keyboard_check(extra, k)) s += "\nHolding key " + string(k);
 		if (winwin_keyboard_check_pressed(extra, k)) {
@@ -76,6 +77,14 @@ if (winwin_exists(extra)) {
 	}
 	draw_text(7, 7, s);
 	
+	// close button state:
+	for (var k = 0; k < 3; k++) {
+		if (winwin_keyboard_check_pressed(extra, vk_f1 + k)) {
+			winwin_set_close_button(extra, k);
+		}
+	}
+	
+	// key history:
 	draw_set_halign(fa_right);
 	s = "Keys:"
 	for (var i = 0; i < ds_list_size(extra.key_list); i++) {

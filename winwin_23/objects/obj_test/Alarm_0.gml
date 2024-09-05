@@ -1,10 +1,11 @@
+var peeker_count = 1;
 var wwc := new winwin_config();
 wwc.caption = "👀";
 wwc.show = false;
 wwc.kind = winwin_kind_borderless;
 wwc.topmost = true;
 wwc.taskbar_button = false;
-for (var i = 0; i < 0; i++) {
+for (var i = 0; i < peeker_count; i++) {
 	var ww = winwin_create(window_get_x() + i * 150, window_get_y(), 128, 128, wwc);
 	ww.dragging = false;
 	ww.drag_x = 0;

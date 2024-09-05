@@ -6,9 +6,11 @@ var _height = room_height;
 var wwc := new winwin_config();
 wwc.caption = "Extra!";
 wwc.resize = true;
+wwc.close_button = 2;
 //wwc.kind = winwin_kind_tool;
 extra = winwin_create(window_get_x() - 400, window_get_y(), 350, 600, wwc);
 extra.key_list = ds_list_create();
+extra.show_in = 0;
 extra_caption = "";
 
 eyes = [];
