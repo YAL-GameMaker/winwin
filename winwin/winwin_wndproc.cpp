@@ -4,15 +4,14 @@
 #define __RELFILE__ "winwin_wndproc"
 
 LRESULT winwin_wndproc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
-    auto pair = ww_map.find(hwnd);
-    auto ww = pair != ww_map.end() ? pair->second : nullptr;
+    auto ww = ww_find(hwnd);
     if (!ww) { // ..?
         return DefWindowProc(hwnd, msg, wparam, lparam);
     }
     switch (msg) {
         case WM_SETCURSOR: {
             if (LOWORD(lparam) != HTCLIENT) break;
-            SetCursor(pair->second->cursor);
+            SetCursor(ww->cursor);
         }; break;
 
         case WM_SIZE: {

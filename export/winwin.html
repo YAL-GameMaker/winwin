@@ -433,10 +433,10 @@ Click on sections to expand/collapse them.<br>Quick display controls:
 		</p><p>
 		For example,
 		</p><pre class="gmlmd">
-<span class="kw">var</span> <span class="lv">wwc</span> <span class="op">=</span> <span class="kw">new</span> <a class="sf" href="#winwin_config">winwin_config</a><span class="op">(</span><span class="op">)</span><span class="op">;</span>
-<span class="lv">wwc</span><span class="op">.</span><span class="fd">caption</span> <span class="op">=</span> <span class="st">"Hello!"</span><span class="op">;</span>
-<span class="lv">wwc</span><span class="op">.</span><span class="fd">resize</span> <span class="op">=</span> <span class="sv">true</span><span class="op">;</span>
-<span class="uv">ww</span> <span class="op">=</span> <a class="sf" href="#winwin_create">winwin_create</a><span class="op">(</span><span class="sf">window_get_x</span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="nu">400</span><span class="op">,</span> <span class="sf">window_get_y</span><span class="op">(</span><span class="op">)</span><span class="op">,</span> <span class="nu">350</span><span class="op">,</span> <span class="nu">600</span><span class="op">,</span> <span class="lv">wwc</span><span class="op">)</span><span class="op">;</span>
+<span class="kw">var</span> <span class="lv">config</span> <span class="op">=</span> <span class="kw">new</span> <a class="sf" href="#winwin_config">winwin_config</a><span class="op">(</span><span class="op">)</span><span class="op">;</span>
+<span class="lv">config</span><span class="op">.</span><span class="fd">caption</span> <span class="op">=</span> <span class="st">"Hello!"</span><span class="op">;</span>
+<span class="lv">config</span><span class="op">.</span><span class="fd">resize</span> <span class="op">=</span> <span class="sv">true</span><span class="op">;</span>
+<span class="uv">window</span> <span class="op">=</span> <a class="sf" href="#winwin_create">winwin_create</a><span class="op">(</span><span class="sf">window_get_x</span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="nu">400</span><span class="op">,</span> <span class="sf">window_get_y</span><span class="op">(</span><span class="op">)</span><span class="op">,</span> <span class="nu">350</span><span class="op">,</span> <span class="nu">600</span><span class="op">,</span> <span class="lv">config</span><span class="op">)</span><span class="op">;</span>
 </pre></article></section><section><header id="winwin_destroy"><a href="#winwin_destroy" title="(permalink)">winwin_destroy(window)</a></header><article><p>
 		Destroys a previously created window.
 	</p></article></section><section><header id="winwin_exists"><a href="#winwin_exists" title="(permalink)">winwin_exists(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
@@ -464,7 +464,7 @@ Click on sections to expand/collapse them.<br>Quick display controls:
 		</p></article></section><section><header id="winwin_config.show"><a href="#winwin_config.show" title="(permalink)">show: bool</a></header><article><p>
 			Whether the window should be shown immediately after creation.
 			</p><p>
-			Setting this to <code>false</code> can be conv8enient if you're going to do
+			Setting this to <code>false</code> can be convenient if you're going to do
 			additional setup before showing the window to the user yourself
 			(using <a href="#winwin_set_visible">winwin_set_visible</a>).
 			</p><p>
@@ -482,7 +482,7 @@ Click on sections to expand/collapse them.<br>Quick display controls:
 			</p><p>
 			Currently only works for borderless windows
 			since tool windows can't have a taskbar button
-			and regular windows allow additional setup for this.
+			and regular windows require additional setup for this.
 			</p><p>
 			Defaults to <code>true</code>.
 		</p></article></section><section><header id="winwin_config.clickthrough"><a href="#winwin_config.clickthrough" title="(permalink)">clickthrough</a></header><article><p>
@@ -497,6 +497,18 @@ Click on sections to expand/collapse them.<br>Quick display controls:
 			Same effect as <a href="#winwin_set_noactivate">winwin_set_noactivate</a>.
 			</p><p>
 			Defaults to <code>false</code>.
+		</p></article></section><section><header id="winwin_config.close_button"><a href="#winwin_config.close_button" title="(permalink)">close_button</a></header><article><p>
+			Specifies whether the window's close button should be enabled and what it should do.
+			</p><p>
+			Same effect as <a href="#winwin_set_close_button">winwin_set_close_button</a>.
+			</p><p>
+			Defaults to <code>1</code>.
+		</p></article></section><section><header id="winwin_config.vsync"><a href="#winwin_config.vsync" title="(permalink)">vsync</a></header><article><p>
+			Specifies the window's vertical synchronization state.
+			</p><p>
+			Same effect as <a href="#winwin_set_vsync">winwin_set_vsync</a>.
+			</p><p>
+			Defaults to <code>0</code>.
 		</p></article></section></article></section><section><header id="winwin_main"><a href="#winwin_main" title="(permalink)">winwin_main</a></header><article><p>
 		This is a reference to your main game window.
 </p><p>
@@ -548,6 +560,10 @@ Click on sections to expand/collapse them.<br>Quick display controls:
 		</p><p>
 		Returns whether successful.
 		Can fail if you're already drawing to another window.
+	</p></article></section><section><header id="winwin_draw_clear"><a href="#winwin_draw_clear" title="(permalink)">winwin_draw_clear(color, alpha = 1)</a></header><article><p>
+		The built-in <code>draw_clear</code> and <code>draw_clear_alpha</code> functions cannot draw to additional
+		windows because they respect the game's original drawing bounds,
+		so I'm giving you this helper function for clearing the window to whatever color and opacity.
 	</p></article></section><section><header id="winwin_draw_end"><a href="#winwin_draw_end" title="(permalink)">winwin_draw_end()&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Stops drawing to the specified window and updates its contents.
 		</p><p>
@@ -556,13 +572,25 @@ Click on sections to expand/collapse them.<br>Quick display controls:
 		</p><p>
 		Returns whether successful.
 		Can fail if you're not drawing to a window.
-	</p></article></section><section><header id="winwin_resize_buffer"><a href="#winwin_resize_buffer" title="(permalink)">winwin_resize_buffer(window, width, height)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
+	</p></article></section><p>
+	A typical use of drawing functions might look as following:
+	</p><pre class="gmlmd">
+<a class="sf" href="#winwin_draw_start">winwin_draw_start</a><span class="op">(</span><span class="uv">my_window</span><span class="op">)</span><span class="op">;</span>
+<a class="sf" href="#winwin_draw_clear">winwin_draw_clear</a><span class="op">(</span><span class="sv">c_white</span><span class="op">)</span><span class="op">;</span>
+<span class="sf">draw_set_color</span><span class="op">(</span><span class="sv">c_black</span><span class="op">)</span><span class="op">;</span>
+<span class="sf">draw_text</span><span class="op">(</span><span class="nu">5</span><span class="op">,</span> <span class="nu">5</span><span class="op">,</span> <span class="st">"Hello!"</span><span class="op">)</span><span class="op">;</span>
+<a class="sf" href="#winwin_draw_end">winwin_draw_end</a><span class="op">(</span><span class="op">)</span><span class="op">;</span>
+</pre><section><header id="winwin_resize_buffer"><a href="#winwin_resize_buffer" title="(permalink)">winwin_resize_buffer(window, width, height)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Changes internal drawing buffer size of a window.
 		</p><p>
 		You shouldn't have to call this explicitly since it'll be called for you a few frames
 		after a window's size changes.
 		</p><p>
 		Returns whether successful.
+	</p></article></section><section><header id="winwin_draw_attn"><a href="#winwin_draw_attn" title="(permalink)">Known issues</a></header><article><p>
+		I do not go through the trouble of completely clearing-restoring the drawing state,
+		so there are occasional opportunities for self-sabotage if you are setting your own
+		matrices / clip rectangles / etc.
 	</p></article></section></article></section><section><header id="winwin_rect"><a href="#winwin_rect" title="(permalink)">Position and size</a></header><article><a class="sticky-side" href="#winwin_rect" title="Position and size"><span>Position and size</span></a><p>
 	These return the current position/size of a window.<br/>
 	They'll return <code>undefined</code> if the window has been closed or cannot be measured.
@@ -575,16 +603,22 @@ Click on sections to expand/collapse them.<br>Quick display controls:
 	These return min/max size of a window (or <code>undefined</code> if not set):
 	</p><section class="empty"><header id="window_get_min_width"><a href="#window_get_min_width" title="(permalink)">window_get_min_width(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header></section><section class="empty"><header id="window_get_min_height"><a href="#window_get_min_height" title="(permalink)">window_get_min_height(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header></section><section class="empty"><header id="window_get_max_width"><a href="#window_get_max_width" title="(permalink)">window_get_max_width(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header></section><section class="empty"><header id="window_get_max_height"><a href="#window_get_max_height" title="(permalink)">window_get_max_height(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header></section></article></section><section><header id="winwin_props"><a href="#winwin_props" title="(permalink)">Properties</a></header><article><a class="sticky-side" href="#winwin_props" title="Properties"><span>Properties</span></a><section><header id="winwin_set_caption"><a href="#winwin_set_caption" title="(permalink)">winwin_set_caption(window, caption)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Changes the caption/title of a window, like <code>window_set_caption</code>.
+		</p><p>
+		Returns whether successful.
 	</p></article></section><section><header id="winwin_get_caption"><a href="#winwin_get_caption" title="(permalink)">winwin_get_caption(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Returns the caption/title of a window.
 	</p></article></section><hr/><section><header id="winwin_set_visible"><a href="#winwin_set_visible" title="(permalink)">winwin_set_visible(window, visible)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Shows/hides a window.
+		</p><p>
+		Returns whether successful.
 	</p></article></section><section><header id="winwin_get_visible"><a href="#winwin_get_visible" title="(permalink)">winwin_get_visible(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Returns whether a window is visible.
 	</p></article></section><hr/><section><header id="winwin_set_taskbar_button_visible"><a href="#winwin_set_taskbar_button_visible" title="(permalink)">winwin_set_taskbar_button_visible(window, show_button)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Changes whether the taskbar button is visible.
 		</p><p>
 		Currently only works for borderless windows (see <a href="#winwin_config.taskbar_button">winwin_config.taskbar_button</a>).
+		</p><p>
+		Returns whether successful.
 	</p></article></section><section><header id="winwin_get_taskbar_button_visible"><a href="#winwin_get_taskbar_button_visible" title="(permalink)">winwin_get_taskbar_button_visible(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Returns whether a window's taskbar button is visible.
 	</p></article></section><hr/><section><header id="winwin_set_clickthrough"><a href="#winwin_set_clickthrough" title="(permalink)">winwin_set_clickthrough(window, enable_clickthrough)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
@@ -593,22 +627,55 @@ Click on sections to expand/collapse them.<br>Quick display controls:
 		Click-through windows let through all mouse events - good for overlays
 		or making some portions of the window
 		(e.g. ones with <a href="#winwin_enable_per_pixel_alpha">per-pixel transparency</a>) non-interactive.
+		</p><p>
+		Returns whether successful.
 	</p></article></section><section><header id="winwin_get_clickthrough"><a href="#winwin_get_clickthrough" title="(permalink)">winwin_get_clickthrough(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Returns whether a window is click-through.
 	</p></article></section><hr/><section><header id="winwin_set_noactivate"><a href="#winwin_set_noactivate" title="(permalink)">winwin_set_noactivate(window, disable_activation)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Returns whether the window should have activation disabled.
 		</p><p>
 		This prevents giving it focus in most usual means.
+		</p><p>
+		Returns whether successful.
 	</p></article></section><section><header id="winwin_get_noactivate"><a href="#winwin_get_noactivate" title="(permalink)">winwin_get_noactivate(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Returns whether a window has activation disabled.
+	</p></article></section><hr/><section><header id="winwin_set_close_button"><a href="#winwin_set_close_button" title="(permalink)">winwin_set_close_button(window, state)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
+		Changes a window's close button state. Allowed values are: </p><ul>
+		<li>	<code>0</code> (or <code>false</code>): close button is visibly disabled
+		</li><li>	<code>1</code> (or <code>true</code>): close button is enabled;<br/>
+			Closing the window destroys it, which you can check for using <a href="#winwin_exists">winwin_exists</a>.
+		</li><li>	<code>2</code>: close button is enabled;<br/>
+			Closing the window hides it (as with <a href="#winwin_set_visible">winwin_set_visible</a>),
+			which you can check for using <a href="#winwin_get_visible">winwin_get_visible</a>.
+		</li></ul><p>
+		Returns whether successful.
+	</p></article></section><section><header id="winwin_get_close_button"><a href="#winwin_get_close_button" title="(permalink)">winwin_get_close_button(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
+		Returns a window's close button state.
+	</p></article></section><hr/><section><header id="winwin_set_vsync"><a href="#winwin_set_vsync" title="(permalink)">winwin_set_vsync(window, vsync)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
+		Changes whether drawing to a specific window uses vertical synchronization.
+		</p><p>
+		Using values larger than <code>1</code> will draw every N-th blank.
+		</p><p>
+		The intricacies of using vsync across multiple windows of the same application
+		have not been extensively studied.
+	</p></article></section><section><header id="winwin_get_vsync"><a href="#winwin_get_vsync" title="(permalink)">winwin_get_vsync(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
+		Returns the window's vertical synchronization value.
 	</p></article></section></article></section><section><header id="winwin_order"><a href="#winwin_order" title="(permalink)">Z-Order</a></header><article><a class="sticky-side" href="#winwin_order" title="Z-Order"><span>Z-Order</span></a><section><header id="winwin_order_after"><a href="#winwin_order_after" title="(permalink)">winwin_order_after(window, other_window)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Puts the window in front of another window.
+		</p><p>
+		Returns whether successful.
 	</p></article></section><section><header id="winwin_order_front"><a href="#winwin_order_front" title="(permalink)">winwin_order_front(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Moves the window to the front (like when giving it focus).
+		</p><p>
+		Returns whether successful.
 	</p></article></section><section><header id="winwin_order_back"><a href="#winwin_order_back" title="(permalink)">winwin_order_back(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Moves the window to the back.
+		</p><p>
+		Returns whether successful.
 	</p></article></section><hr/><section><header id="winwin_set_topmost"><a href="#winwin_set_topmost" title="(permalink)">winwin_set_topmost(window, enable)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Changes whether the window should be stay-on-top.
+		</p><p>
+		Returns whether successful.
 	</p></article></section><section><header id="winwin_get_topmost"><a href="#winwin_get_topmost" title="(permalink)">winwin_get_topmost(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Returns whether the window is stay-on-top.
 	</p></article></section></article></section><section><header id="winwin_focus"><a href="#winwin_focus" title="(permalink)">Focus</a></header><article><a class="sticky-side" href="#winwin_focus" title="Focus"><span>Focus</span></a><section><header id="winwin_has_focus"><a href="#winwin_has_focus" title="(permalink)">winwin_has_focus(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
@@ -616,9 +683,16 @@ Click on sections to expand/collapse them.<br>Quick display controls:
 	</p></article></section><section><header id="winwin_get_focus"><a href="#winwin_get_focus" title="(permalink)">winwin_get_focus()&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Returns the window that currently has keyboard focus,
 		or <code>undefined</code> if there's none or it's not part of the current application.
-		</p><p>
-		<strong>MSDN:</strong> <a rel="nofollow" href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-GetFocus">GetFocus</a>
-	</p></article></section><section><header id="winwin_set_focus"><a href="#winwin_set_focus" title="(permalink)">winwin_set_focus(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
+		</p><pre class="error">hscript error!
+{ fileName =&gt; hscript, lineNumber =&gt; 9 } hscript:9: Invalid number of parameters. Got 1, required 2 for function 'msdn'
+Called from hscript/Interp.hx line 420
+Called from a C function
+Called from hscript/Interp.hx line 691
+Called from hscript/Interp.hx line 386
+Called from hscript/Interp.hx line 264
+Called from hscript/Interp.hx line 263
+Called from hscript/Interp.hx line 259
+Called from dmd/tags/TagExec.hx line 76</pre></article></section><section><header id="winwin_set_focus"><a href="#winwin_set_focus" title="(permalink)">winwin_set_focus(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Forces keyboard focus upon a window.
 		</p><p>
 		Returns whether successful.
@@ -720,12 +794,20 @@ Click on sections to expand/collapse them.<br>Quick display controls:
 		between all windows.
 	</p></article></section></article></section><section><header id="winwin_interop"><a href="#winwin_interop" title="(permalink)">Working with other extensions</a></header><article><a class="sticky-side" href="#winwin_interop" title="Working with other extensions"><span>Working with other extensions</span></a><section><header id="winwin_get_handle"><a href="#winwin_get_handle" title="(permalink)">winwin_get_handle(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Returns a WinAPI window handle for the given window,
-		just like the built-in <code>window_handle</code> function.
+		just like the built-in <code>window_handle</code> function does.
 	</p></article></section><section><header id="winwin_from_handle"><a href="#winwin_from_handle" title="(permalink)">winwin_from_handle(handle)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Converts a WinAPI window handle back to a window reference.
 		</p><p>
 		If there's no known window with that handle, returns <code>undefined</code>.
-	</p></article></section></article></section><section><header id="winwin_other"><a href="#winwin_other" title="(permalink)">Other functions</a></header><article><a class="sticky-side" href="#winwin_other" title="Other functions"><span>Other functions</span></a><section><header id="winwin_sleep"><a href="#winwin_sleep" title="(permalink)">winwin_sleep(milliseconds, process_messages)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article></article></section></article></section></p><!--doc>-->
+	</p></article></section></article></section><section><header id="winwin_other"><a href="#winwin_other" title="(permalink)">Other functions</a></header><article><a class="sticky-side" href="#winwin_other" title="Other functions"><span>Other functions</span></a><section><header id="winwin_sleep"><a href="#winwin_sleep" title="(permalink)">winwin_sleep(milliseconds, ?process_messages)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
+		A native sleep function that pauses the game for a number of milliseconds.
+		</p><p>
+		If <code>process_messages</code> is <code>true</code> (or not provided),
+		does message handling every 100ms and after the wait so that Windows
+		doesn't start showing your game window as "not responding".
+		</p><p>
+		<strong>MSDN:</strong> <a rel="nofollow" href="https://learn.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-Sleep">Sleep</a>
+	</p></article></section></article></section></p><!--doc>-->
 </section></main></div>
 <script type="text/javascript">(function() {
 	var doc, headers;

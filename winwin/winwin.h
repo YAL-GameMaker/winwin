@@ -104,7 +104,7 @@ struct winwin {
     ww_mousebits_tri mouse{}, mouse_next{};
     bool mouse_tracking = false;
     bool mouse_over = false;
-    int sync_interval = 0;
+    int8_t sync_interval = 0;
     int8_t close_button = 0;
     //
     ww_size minSize{}, maxSize{};
@@ -113,6 +113,10 @@ using ww_ptr = gml_ptr<winwin>;
 
 extern std::vector<winwin*> ww_list;
 extern std::unordered_map<HWND, winwin*> ww_map;
+inline winwin* ww_find(HWND hwnd) {
+    auto pair = ww_map.find(hwnd);
+    return pair != ww_map.end() ? pair->second : nullptr;
+}
 extern ww_ptr ww_main;
 extern ww_ptr ww_target;
 
@@ -138,7 +142,7 @@ struct winwin_config {
     bool taskbar_button;
     bool clickthrough;
     bool noactivate;
-    int vsync;
+    int8_t vsync;
     int8_t close_button;
 };
 

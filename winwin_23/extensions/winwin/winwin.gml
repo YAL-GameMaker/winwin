@@ -70,6 +70,37 @@ matrix_set(matrix_view, global.__winwin_last_view);
 matrix_set(matrix_projection, global.__winwin_last_proj);
 return true;
 
+#define winwin_draw_clear
+/// (color, alpha = 1)
+var _color = argument[0];
+var _alpha = argument_count > 1 ? argument[1] : 1;
+var _width = winwin_get_draw_width();
+var _height = winwin_get_draw_height();
+var _prev_color = draw_get_color();
+var _prev_alpha = draw_get_alpha();
+var _prev_blend = gpu_get_blendmode();
+var _pad = 2;
+if (_alpha < 1) {
+	gpu_set_blendmode(bm_subtract);
+	draw_set_color(c_white);
+	draw_set_alpha(1);
+	draw_rectangle(-_pad, -_pad, _width + _pad, _height + _pad, false);
+}
+//
+if (_alpha > 0) {
+	if (_alpha < 1) {
+		gpu_set_blendmode(bm_add);
+	} else gpu_set_blendmode(bm_normal);
+	draw_set_color(_color);
+	draw_set_alpha(_alpha);
+	draw_rectangle(-_pad, -_pad, _width + _pad, _height + _pad, false);
+}
+//
+gpu_set_blendmode(_prev_blend);
+draw_set_color(_prev_color);
+draw_set_alpha(_prev_alpha);
+//
+
 #define winwin_keyboard_set_string
 /// (ww, str)->
 var _buf = winwin_prepare_buffer(4);

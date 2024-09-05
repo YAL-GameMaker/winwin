@@ -20,10 +20,7 @@ for (var i = 0; i < n; i++) {
 	}
 	
 	winwin_draw_start(ww);
-	draw_set_color(c_white);
-	gpu_set_blendmode(bm_subtract);
-	draw_rectangle(-2, -2, 130, 130, false);
-	gpu_set_blendmode(bm_normal);
+	winwin_draw_clear(c_black, 0);
 	
 	draw_sprite(spr_eyes, 0, 64, 64);
 	var wx = winwin_get_x(ww);
@@ -58,7 +55,7 @@ if (winwin_exists(extra)) {
 	draw_set_color(#405070);
 	var _width = winwin_get_draw_width();
 	var _height = winwin_get_draw_height();
-	draw_rectangle(0, 0, _width, _height, false);
+	winwin_draw_clear(#405070);
 	
 	draw_set_color(c_white);
 	draw_rectangle(2, 2, _width - 3, _height - 3, 1);
@@ -99,16 +96,6 @@ if (winwin_exists(extra)) {
 	}
 	
 	winwin_draw_end();
-	
-	if (keyboard_check_pressed(vk_space)) {
-		for (var i = 0; i < 10; i++) {
-			winwin_draw_start(winwin_main);
-			draw_text(57, 57 + 20 * i, string(i));
-			winwin_draw_end();
-			var _till = current_time + 500;
-			while (current_time < _till) {}
-		}
-	}
 	
 	draw_text(5, 5, "Hello! " + string(current_time div 1000));
 } else {

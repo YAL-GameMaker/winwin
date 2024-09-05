@@ -36,3 +36,10 @@ dllg bool winwin_set_close_button(ww_ptr ww, int8_t close_button_state) {
     }
     return true;
 }
+
+dllg int8_t winwin_get_vsync(ww_ptr ww) {
+    return ww->sync_interval;
+}
+dllg void winwin_set_vsync(ww_ptr ww, int sync_interval) {
+    ww->sync_interval = sync_interval;
+}

@@ -16,10 +16,11 @@ The source code can be found on [GitHub](https://github.com/YAL-GameMaker/winwin
 Returns whether successful.
 ```
 ```exec
-function msdn(name) {
+function msdn(name, cat) {
+	if (cat == null) cat = "winuser";
 	return render("*MSDN:* [" + name
-		+ "](!https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-"
-		+ name + ")");
+		+ "](!https://learn.microsoft.com/en-us/windows/win32/api/" + cat + "/"
+		+ "nf-" + cat + "-" + name + ")");
 }
 null;
 ```
@@ -37,10 +38,10 @@ null;
 		
 		For example,
 		```
-		var wwc = new winwin_config();
-		wwc.caption = "Hello!";
-		wwc.resize = true;
-		ww = winwin_create(window_get_x() - 400, window_get_y(), 350, 600, wwc);
+		var config = new winwin_config();
+		config.caption = "Hello!";
+		config.resize = true;
+		window = winwin_create(window_get_x() - 400, window_get_y(), 350, 600, config);
 		```
 	}
 	#[winwin_destroy(window)]() {
@@ -80,7 +81,7 @@ null;
 		#[show: bool](.) {
 			Whether the window should be shown immediately after creation.
 			
-			Setting this to `false` can be conv8enient if you're going to do
+			Setting this to `false` can be convenient if you're going to do
 			additional setup before showing the window to the user yourself
 			(using [winwin_set_visible]).
 			
@@ -100,7 +101,7 @@ null;
 			
 			Currently only works for borderless windows
 			since tool windows can't have a taskbar button
-			and regular windows allow additional setup for this.
+			and regular windows require additional setup for this.
 			
 			Defaults to `true`.
 		}
@@ -117,6 +118,20 @@ null;
 			Same effect as [winwin_set_noactivate].
 			
 			Defaults to `false`.
+		}
+		#[close_button](.) {
+			Specifies whether the window's close button should be enabled and what it should do.
+			
+			Same effect as [winwin_set_close_button].
+			
+			Defaults to `1`.
+		}
+		#[vsync](.) {
+			Specifies the window's vertical synchronization state.
+			
+			Same effect as [winwin_set_vsync].
+			
+			Defaults to `0`.
 		}
 	}
 	#[winwin_main]() {
@@ -193,6 +208,11 @@ null;
 		%[ok]
 		Can fail if you're already drawing to another window.
 	}
+	#[winwin_draw_clear(color, alpha = 1)]() {
+		The built-in `draw_clear` and `draw_clear_alpha` functions cannot draw to additional
+		windows because they respect the game's original drawing bounds,
+		so I'm giving you this helper function for clearing the window to whatever color and opacity.
+	}
 	#[winwin_draw_end()->]() {
 		Stops drawing to the specified window and updates its contents.
 		
@@ -202,6 +222,14 @@ null;
 		%[ok]
 		Can fail if you're not drawing to a window.
 	}
+	A typical use of drawing functions might look as following:
+	```gml
+	winwin_draw_start(my_window);
+	winwin_draw_clear(c_white);
+	draw_set_color(c_black);
+	draw_text(5, 5, "Hello!");
+	winwin_draw_end();
+	```
 	#[winwin_resize_buffer(window, width, height)->]() {
 		Changes internal drawing buffer size of a window.
 		
@@ -209,6 +237,11 @@ null;
 		after a window's size changes.
 		
 		%[ok]
+	}
+	#[Known issues](winwin_draw_attn) {
+		I do not go through the trouble of completely clearing-restoring the drawing state,
+		so there are occasional opportunities for self-sabotage if you are setting your own
+		matrices / clip rectangles / etc.
 	}
 }
 #[Position and size](winwin_rect) {
@@ -237,6 +270,8 @@ null;
 #[Properties](winwin_props) {
 	#[winwin_set_caption(window, caption)->]() {
 		Changes the caption/title of a window, like `window_set_caption`.
+		
+		%[ok]
 	}
 	#[winwin_get_caption(window)->]() {
 		Returns the caption/title of a window.
@@ -244,6 +279,8 @@ null;
 	---
 	#[winwin_set_visible(window, visible)->]() {
 		Shows/hides a window.
+		
+		%[ok]
 	}
 	#[winwin_get_visible(window)->]() {
 		Returns whether a window is visible.
@@ -253,6 +290,8 @@ null;
 		Changes whether the taskbar button is visible.
 		
 		Currently only works for borderless windows (see [winwin_config.taskbar_button]).
+		
+		%[ok]
 	}
 	#[winwin_get_taskbar_button_visible(window)->]() {
 		Returns whether a window's taskbar button is visible.
@@ -264,6 +303,8 @@ null;
 		Click-through windows let through all mouse events - good for overlays
 		or making some portions of the window
 		(e.g. ones with [per-pixel transparency](winwin_enable_per_pixel_alpha)) non-interactive.
+		
+		%[ok]
 	}
 	#[winwin_get_clickthrough(window)->]() {
 		Returns whether a window is click-through.
@@ -273,24 +314,62 @@ null;
 		Returns whether the window should have activation disabled.
 		
 		This prevents giving it focus in most usual means.
+		
+		%[ok]
 	}
 	#[winwin_get_noactivate(window)->]() {
 		Returns whether a window has activation disabled.
+	}
+	---
+	#[winwin_set_close_button(window, state)->]() {
+		Changes a window's close button state. Allowed values are: --{
+		-	`0` (or `false`): close button is visibly disabled
+		-	`1` (or `true`): close button is enabled;\
+			Closing the window destroys it, which you can check for using [winwin_exists].
+		-	`2`: close button is enabled;\
+			Closing the window hides it (as with [winwin_set_visible]),
+			which you can check for using [winwin_get_visible].
+		}
+		
+		%[ok]
+	}
+	#[winwin_get_close_button(window)->]() {
+		Returns a window's close button state.
+	}
+	---
+	#[winwin_set_vsync(window, vsync)->]() {
+		Changes whether drawing to a specific window uses vertical synchronization.
+		
+		Using values larger than `1` will draw every N-th blank.
+		
+		The intricacies of using vsync across multiple windows of the same application
+		have not been extensively studied.
+	}
+	#[winwin_get_vsync(window)->]() {
+		Returns the window's vertical synchronization value.
 	}
 }
 #[Z-Order](winwin_order) {
 	#[winwin_order_after(window, other_window)->]() {
 		Puts the window in front of another window.
+		
+		%[ok]
 	}
 	#[winwin_order_front(window)->]() {
 		Moves the window to the front (like when giving it focus).
+		
+		%[ok]
 	}
 	#[winwin_order_back(window)->]() {
 		Moves the window to the back.
+		
+		%[ok]
 	}
 	---
 	#[winwin_set_topmost(window, enable)->]() {
 		Changes whether the window should be stay-on-top.
+		
+		%[ok]
 	}
 	#[winwin_get_topmost(window)->]() {
 		Returns whether the window is stay-on-top.
@@ -427,7 +506,7 @@ null;
 #[Working with other extensions](winwin_interop) {
 	#[winwin_get_handle(window)->]() {
 		Returns a WinAPI window handle for the given window,
-		just like the built-in `window_handle` function.
+		just like the built-in `window_handle` function does.
 	}
 	#[winwin_from_handle(handle)->]() {
 		Converts a WinAPI window handle back to a window reference.
@@ -436,7 +515,13 @@ null;
 	}
 }
 #[Other functions](winwin_other) {
-	#[winwin_sleep(milliseconds, process_messages)->]() {
+	#[winwin_sleep(milliseconds, ?process_messages)->]() {
+		A native sleep function that pauses the game for a number of milliseconds.
 		
+		If `process_messages` is `true` (or not provided),
+		does message handling every 100ms and after the wait so that Windows
+		doesn't start showing your game window as "not responding".
+		
+		${msdn("Sleep", "synchapi")}
 	}
 }

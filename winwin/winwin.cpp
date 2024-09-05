@@ -165,7 +165,7 @@ void ProcessMessages() {
         } else break;
     }
 }
-dllg void winwin_sleep(int ms, bool process_messages) {
+dllg void winwin_sleep(int ms, bool process_messages = true) {
     if (!process_messages) {
         Sleep(ms);
         return;
