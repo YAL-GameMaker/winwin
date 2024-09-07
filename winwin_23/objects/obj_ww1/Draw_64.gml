@@ -22,7 +22,7 @@ for (var i = 0; i < n; i++) {
 	winwin_draw_start(ww);
 	winwin_draw_clear(c_black, 0);
 	
-	draw_sprite(spr_eyes, 0, 64, 64);
+	draw_sprite(spr_ww1_eyes, 0, 64, 64);
 	var wx = winwin_get_x(ww);
 	var wy = winwin_get_y(ww);
 	for (var k = -1; k <= 1; k += 2) {
@@ -36,7 +36,7 @@ for (var i = 0; i < n; i++) {
 			dx *= dd;
 			dy *= dd;
 		}
-		draw_sprite_ext(spr_eyes, 1, 64 + max(0, k) * 64 + dx, 64 + dy, 1, 1, 0, c_white, 1);
+		draw_sprite_ext(spr_ww1_eyes, 1, 64 + max(0, k) * 64 + dx, 64 + dy, 1, 1, 0, c_white, 1);
 	}
 	
 	winwin_draw_end();
@@ -62,6 +62,7 @@ if (winwin_exists(extra)) {
 	
 	// info:
 	var s = sfmt("Size: %x%", _width, _height);
+	s += "\nTry keyboard, mouse here";
 	for (var k = 0; k < 256; k++) {
 		if (winwin_keyboard_check(extra, k)) s += "\nHolding key " + string(k);
 		if (winwin_keyboard_check_pressed(extra, k)) {

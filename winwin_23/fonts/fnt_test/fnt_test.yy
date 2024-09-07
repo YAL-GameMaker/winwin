@@ -1,8 +1,12 @@
 {
+  "resourceType": "GMFont",
+  "resourceVersion": "1.0",
+  "name": "fnt_test",
   "hinting": 0,
   "glyphOperations": 0,
   "interpreter": 0,
   "pointRounding": 0,
+  "applyKerning": 0,
   "fontName": "Ubuntu Condensed SemiItalic",
   "styleName": "Regular",
   "size": 24.0,
@@ -20,6 +24,8 @@
     "path": "texturegroups/Default",
   },
   "ascenderOffset": 0,
+  "ascender": 0,
+  "lineHeight": 0,
   "glyphs": {
     "32": {"x":226,"y":75,"w":4,"h":24,"character":32,"shift":4,"offset":0,},
     "33": {"x":174,"y":75,"w":6,"h":24,"character":33,"shift":6,"offset":0,},
@@ -116,7 +122,7 @@
     "124": {"x":195,"y":75,"w":6,"h":24,"character":124,"shift":6,"offset":0,},
     "125": {"x":152,"y":75,"w":7,"h":24,"character":125,"shift":7,"offset":0,},
     "126": {"x":107,"y":25,"w":10,"h":24,"character":126,"shift":10,"offset":0,},
-	"9647": {"x":157,"y":50,"w":9,"h":24,"character":9647,"shift":9,"offset":0,},
+    "9647": {"x":157,"y":50,"w":9,"h":24,"character":9647,"shift":9,"offset":0,},
   },
   "kerningPairs": [],
   "ranges": [
@@ -126,11 +132,7 @@
   "canGenerateBitmap": true,
   "maintainGms1Font": true,
   "parent": {
-    "name": "Fonts",
-    "path": "folders/Fonts.yy",
+    "name": "Shared",
+    "path": "folders/Shared.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "fnt_test",
-  "tags": [],
-  "resourceType": "GMFont",
 }
