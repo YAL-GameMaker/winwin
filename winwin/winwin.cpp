@@ -47,7 +47,7 @@ dllg ww_ptr_create winwin_init_2() {
     return ww_base.ref;
 }
 
-dllg ww_ptr_create winwin_create(int x, int y, int width, int height, winwin_config config) {
+bool winwin_create_impl(winwin* ww, winwin_config& config, int x, int y, int width, int height) {
     DWORD dwExStyle = 0;
     DWORD dwStyle;
     if (config.kind == winwin_kind::borderless) {
@@ -67,25 +67,22 @@ dllg ww_ptr_create winwin_create(int x, int y, int width, int height, winwin_con
     //
     RECT rcClient = { x, y, x + width, y + height };
     AdjustWindowRectEx(&rcClient, dwStyle, false, dwExStyle);
-    width = rcClient.right - rcClient.left;
-    height = rcClient.bottom - rcClient.top;
     //
     auto hwnd = CreateWindowExW(
         dwExStyle,
         winwin_class,
         ww_cc(config.caption),
         dwStyle,
-        x, y, width, height,
+        rcClient.left, rcClient.top, rect_width(rcClient), rect_height(rcClient),
         nullptr, nullptr, ww_base.hInstance, nullptr
     );
-    if (hwnd == nullptr) return nullptr;
+    if (hwnd == nullptr) return false;
     //
     if (config.close_button == 0) {
         auto menu = GetSystemMenu(hwnd, false);
         EnableMenuItem(menu, SC_CLOSE, MF_BYCOMMAND | MF_GRAYED);
     }
     //
-    auto ww = new winwin();
     ww->hwnd = hwnd;
     ww->close_button = config.close_button;
     ww->buf.width = width;
@@ -135,7 +132,101 @@ dllg ww_ptr_create winwin_create(int x, int y, int width, int height, winwin_con
 
     if (config.show) ShowWindow(ww->hwnd, SW_SHOW);
     if (config.topmost) SetWindowPos(ww->hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+    return true;
+}
+DWORD WINAPI winwin_thread(void* param) {
+    auto ww = (winwin*)param;
+    auto cohr = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+    IsGUIThread(true);
+
+    auto& cr = ww->init.rect;
+    auto ok = winwin_create_impl(ww, *ww->init.config, cr.x, cr.y, cr.width, cr.height);
+
+    if (ok) {
+        ww->mt.section = new CRITICAL_SECTION();
+        InitializeCriticalSection(ww->mt.section);
+    }
+    ww->init.ok = ok;
+    SetEvent(ww->mt.ready);
+    if (!ok) {
+        CoUninitialize();
+        return 0;
+    }
+
+    MSG msg{};
+    while (GetMessage(&msg, ww->hwnd, 0, 0)) {
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+    }
+
+    CoUninitialize();
+    return static_cast<DWORD>(msg.wParam);
+}
+dllg ww_ptr_create winwin_create(int x, int y, int width, int height, winwin_config config) {
+    auto ww = new winwin();
+    bool ok;
+    if (config.thread) {
+        //
+        auto &ir = ww->init.rect;
+        ir.x = x;
+        ir.y = y;
+        ir.width = width;
+        ir.height = height;
+        //
+        ww->init.config = new winwin_config();
+        static_assert(std::is_trivially_copyable_v<winwin_config>, "winwin_config must be trivially copyable");
+        memcpy_arr(ww->init.config, &config, 1);
+        //
+        ww->mt.ready = CreateEvent(nullptr, TRUE, FALSE, nullptr);
+        CreateThread(nullptr, 0, winwin_thread, ww, 0, &ww->mt.thread_id);
+        WaitForSingleObject(ww->mt.ready, INFINITE);
+        ok = ww->init.ok;
+    } else {
+        ok = winwin_create_impl(ww, config, x, y, width, height);
+    }
+    if (!ok) {
+        delete ww;
+        return nullptr;
+    }
     return ww;
+}
+winwin::~winwin() {
+    this->mt.enter();
+    if (this->hwnd) {
+        if (this->mt.section) {
+            // just tell it to close, I guess? We don't own the window
+            this->close_button = 1;
+            PostMessage(this->hwnd, WM_CLOSE, 0, 0);
+        } else {
+            DestroyWindow(this->hwnd);
+        }
+        this->hwnd = nullptr;
+    }
+    //
+    if (this->init.config) {
+        delete this->init.config;
+        this->init.config = nullptr;
+    }
+    //
+    auto& mt = this->mt;
+    if (mt.ready) {
+        CloseHandle(mt.ready);
+        mt.ready = NULL;
+    }
+    if (mt.thread) {
+        CloseHandle(mt.thread);
+        mt.thread = NULL;
+    }
+    //
+    this->rtv->Release();
+    this->swapchain->Release();
+    //
+    auto section = this->mt.section;
+    if (section) {
+        this->mt.section = nullptr;
+        LeaveCriticalSection(section);
+        DeleteCriticalSection(section);
+    }
 }
 
 double winwin_draw_end_raw();
@@ -150,8 +241,7 @@ dllg void winwin_destroy(ww_ptr_destroy ww) {
     }
     ww_map.erase(ww->hwnd);
     DestroyWindow(ww->hwnd);
-    ww->rtv->Release();
-    ww->swapchain->Release();
+    delete ww;
 }
 
 void ProcessMessages() {

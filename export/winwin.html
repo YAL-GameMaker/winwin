@@ -3,6 +3,7 @@
 <title>winwin cheat sheet</title>
 <meta name="viewport" content="width=device-width" />
 <meta name="livenode" content="#doc" />
+<meta property="theme-color" content="#FFF037" />
 <meta property="og:type" content="article" />
 <meta property="og:locale" content="en_us" />
 <meta property="og:site_name" content="YellowAfterlife" />
@@ -299,6 +300,48 @@ pre.gmlmd a.sf, #doc pre a.sv {
 #night:checked + .main pre.gmlmd a.sv {
 	background-color: #422;
 }</style>
+<style type="text/css" id="nav_menu">.main {
+	display: flex;
+	flex-direction: row-reverse;
+	height: 100%;
+	height: 100vh;
+}
+.main-center {
+	flex-grow: 1;
+	height: 100%;
+	height: 100vh;
+	overflow: auto;
+}
+.navmenu {
+	width: 250px;
+	height: 100%;
+	height: 100vh;
+	box-sizing: border-box;
+	overflow-x: hidden;
+	overflow-y: auto;
+	resize: horizontal;
+	margin-right: 10px;
+	
+	word-break: break-word;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	
+	background: white;
+	border: 0.3em solid white;
+}
+.navmenu ul {
+	margin: 0;
+	padding-left: 1.5em;
+}
+.navmenu a {
+	overflow: hidden;
+}
+@media (max-width: 760px) {
+	.navmenu {
+		display: none;
+	}
+}</style>
+<meta name="livenode2" content=".main > nav" />
 <style type="text/css" id="night_css">.main label[for="night"] {
 	cursor: pointer;
 }
@@ -306,8 +349,10 @@ pre.gmlmd a.sf, #doc pre a.sv {
 #night:checked + .main {
 	background-color: #424242;
 }
-#night:checked + .main .page {
+#night:checked + .main .page,
+#night:checked + .main .navmenu {
 	background-color: #1c1c1c;
+	border-color: #1c1c1c;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 	color: white;
 }
@@ -329,6 +374,7 @@ pre.gmlmd a.sf, #doc pre a.sv {
 #night:checked + .main #doc section + p,
 #night:checked + .main #doc hr,
 #night:checked + .main #doc ul,
+#night:checked + .main #doc ol,
 #night:checked + .main #doc table,
 #night:checked + .main #doc table td,
 #night:checked + .main #doc table th
@@ -398,6 +444,7 @@ pre.gmlmd a.sf, #doc pre a.sv {
 		};
 	} else night.checked = dark;
 })();</script>
+<div class="main-center">
 <main class="page">
 <section class="intro">
 <h1 style='transform: skewX(-5deg); margin: 0.5em 0;'>Windows' windows</h1><p>This is a "cheat sheet" for "winwin" extension by YellowAfterlife.
@@ -413,16 +460,26 @@ Click on sections to expand/collapse them.<br>Quick display controls:
 &middot; <a href="javascript:void(0)" onclick="opt_all(); return false">Everything</a>
 &middot; <a href="javascript:void(0)"><label for="night">Toggle night mode</label></a><br/>
 </section><section id="doc">
-<!--<doc--><p>
+<!--<doc--><p><p>
+
 <style>
-.main {
-	background-color: #889EC5;
-}
-#night:checked + .main {
-	background-color: #405070;
-}
+.main { background-color: #899FC6 }
+.page { box-shadow: 0 0 8px rgba(0, 0, 0, 0.3) }
+#night:checked + .main { background-color: #405070 }
+#night:checked + .main .page { background-color: #1A202D }
 </style>
-<section><header id="Basics"><a href="#Basics" title="(permalink)">Basics</a></header><article><a class="sticky-side" href="#Basics" title="Basics"><span>Basics</span></a><section><header id="winwin_update"><a href="#winwin_update" title="(permalink)">winwin_update()</a></header><article><p>
+
+
+
+
+
+
+
+
+
+
+
+</p><section><header id="Basics"><a href="#Basics" title="(permalink)">Basics</a></header><article><a class="sticky-side" href="#Basics" title="Basics"><span>Basics</span></a><section><header id="winwin_update"><a href="#winwin_update" title="(permalink)">winwin_update()</a></header><article><p>
 		Call this once a frame!
 	</p></article></section><hr/><section><header id="winwin_create"><a href="#winwin_create" title="(permalink)">winwin_create(x, y, width, height, config)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Creates a new window!
@@ -498,17 +555,29 @@ Click on sections to expand/collapse them.<br>Quick display controls:
 			</p><p>
 			Defaults to <code>false</code>.
 		</p></article></section><section><header id="winwin_config.close_button"><a href="#winwin_config.close_button" title="(permalink)">close_button</a></header><article><p>
-			Specifies whether the window's close button should be enabled and what it should do.
+			Whether the window's close button should be enabled and what it should do.
 			</p><p>
 			Same effect as <a href="#winwin_set_close_button">winwin_set_close_button</a>.
 			</p><p>
 			Defaults to <code>1</code>.
 		</p></article></section><section><header id="winwin_config.vsync"><a href="#winwin_config.vsync" title="(permalink)">vsync</a></header><article><p>
-			Specifies the window's vertical synchronization state.
+			Indicates the window's vertical synchronization state.
 			</p><p>
 			Same effect as <a href="#winwin_set_vsync">winwin_set_vsync</a>.
 			</p><p>
 			Defaults to <code>0</code>.
+		</p></article></section><section><header id="winwin_config.thread"><a href="#winwin_config.thread" title="(permalink)">thread</a></header><article><p>
+			Whether the window should do its message handling on a different thread.
+			</p><p>
+			This takes marginally more resources and might have situational implications
+			(because the window is no longer owned by the thread where your game code and extensions run),
+			but this prevents the game window from freezing while the additional windows are being dragged around.
+			</p><p>
+			It is not possible to make <a href="#winwin_main">winwin_main</a> threaded,
+			but you could use <a href="https://yellowafterlife.itch.io/gamemaker-gameframe">Gameframe</a>
+			or <a href="#winwin_set_visible">hide</a> your main window and draw the game to another one.
+			</p><p>
+			Defaults to <code>false</code>.
 		</p></article></section></article></section><section><header id="winwin_main"><a href="#winwin_main" title="(permalink)">winwin_main</a></header><article><p>
 		This is a reference to your main game window.
 </p><p>
@@ -516,13 +585,13 @@ Click on sections to expand/collapse them.<br>Quick display controls:
 		<li>	Input functions do not work because that would mean doing all of the input handling twice. You can use the regular GM input functions.
 		</li><li>	Drawing functions (like <a href="#winwin_draw_start">winwin_draw_start</a>) don't really work and don't have to be used either.
 		</li></ul></article></section></article></section><section><header id="winwin_input"><a href="#winwin_input" title="(permalink)">Input</a></header><article><a class="sticky-side" href="#winwin_input" title="Input"><span>Input</span></a><p>
-	To be fair, you <i>could</i> just use keyboard_check_direct as a replacement for most of these, but where’s the fun in that?
-	</p><section><header id="winwin_keyboard"><a href="#winwin_keyboard" title="(permalink)">Keyboard</a></header><article><a class="sticky-side" href="#winwin_keyboard" title="Keyboard"><span>Keyboard</span></a><section class="empty"><header id="winwin_keyboard_check"><a href="#winwin_keyboard_check" title="(permalink)">winwin_keyboard_check(window, key)&#8203;<span class="ret-arrow">&#10140;</span></a></header></section><section class="empty"><header id="winwin_keyboard_check_pressed"><a href="#winwin_keyboard_check_pressed" title="(permalink)">winwin_keyboard_check_pressed(window, key)&#8203;<span class="ret-arrow">&#10140;</span></a></header></section><section class="empty"><header id="winwin_keyboard_check_released"><a href="#winwin_keyboard_check_released" title="(permalink)">winwin_keyboard_check_released(window, key)&#8203;<span class="ret-arrow">&#10140;</span></a></header></section><p>
+	To be fair, you <i>could</i> just use keyboard_check_direct as a replacement for most of these, but where's the fun in that?
+	</p><section class="empty"><header id="winwin_keyboard"><a href="#winwin_keyboard" title="(permalink)">Keyboard</a></header><article><a class="sticky-side" href="#winwin_keyboard" title="Keyboard"><span>Keyboard</span></a><section><header id="winwin_keyboard_check"><a href="#winwin_keyboard_check" title="(permalink)">winwin_keyboard_check(window, key)&#8203;<span class="ret-arrow">&#10140;</span></a></header></section><section class="empty"><header id="winwin_keyboard_check_pressed"><a href="#winwin_keyboard_check_pressed" title="(permalink)">winwin_keyboard_check_pressed(window, key)&#8203;<span class="ret-arrow">&#10140;</span></a></header></section><section class="empty"><header id="winwin_keyboard_check_released"><a href="#winwin_keyboard_check_released" title="(permalink)">winwin_keyboard_check_released(window, key)&#8203;<span class="ret-arrow">&#10140;</span></a></header></section><p>
 		Text entry:
 		</p><section><header id="winwin_keyboard_get_string"><a href="#winwin_keyboard_get_string" title="(permalink)">winwin_keyboard_get_string(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 			Like <code>keyboard_string</code>, but for additional windows.
 			</p><p>
-			The behaviour should generally be identical to how the built-in variable works, but without erasing it when the window loses focus (why’s that a thing, anyway?).
+			The behaviour should generally be identical to how the built-in variable works, but without erasing it when the window loses focus (why's that a thing, anyway?).
 		</p></article></section><section><header id="winwin_keyboard_set_string"><a href="#winwin_keyboard_set_string" title="(permalink)">winwin_keyboard_set_string(window, string)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 			Changes the current keyboard string for a window.
 		</p></article></section><p>
@@ -553,7 +622,12 @@ Click on sections to expand/collapse them.<br>Quick display controls:
 			Returns vertical wheel delta since last frame.
 			</p><p>
 			Per Microsoft documentation, 120 units should be equivalent to one wheel tick.
-		</p></article></section></article></section></article></section><section><header id="winwin_draw"><a href="#winwin_draw" title="(permalink)">Drawing</a></header><article><a class="sticky-side" href="#winwin_draw" title="Drawing"><span>Drawing</span></a><section><header id="winwin_draw_start"><a href="#winwin_draw_start" title="(permalink)">winwin_draw_start(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
+		</p></article></section></article></section><section><header id="winwin_gamepad"><a href="#winwin_gamepad" title="(permalink)">Gamepad</a></header><article><p>
+		Doing gamepad polling for each window would be both high-effort and computationally taxing,
+		but you can use extensions to poll gamepad input regardless of what window has focus
+		(<a href="https://yellowafterlife.itch.io/gamemaker-gamepad-force-focus">XInput</a>,
+		<a href="https://github.com/nkrapivin/dinput8hook">DirectInput</a>)
+	</p></article></section></article></section><section><header id="winwin_draw"><a href="#winwin_draw" title="(permalink)">Drawing</a></header><article><a class="sticky-side" href="#winwin_draw" title="Drawing"><span>Drawing</span></a><section><header id="winwin_draw_start"><a href="#winwin_draw_start" title="(permalink)">winwin_draw_start(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Starts drawing to the specified window.
 		</p><p>
 		By most means this is like surface_set_target, but for windows.
@@ -685,13 +759,13 @@ Click on sections to expand/collapse them.<br>Quick display controls:
 		or <code>undefined</code> if there's none or it's not part of the current application.
 		</p><pre class="error">hscript error!
 { fileName =&gt; hscript, lineNumber =&gt; 9 } hscript:9: Invalid number of parameters. Got 1, required 2 for function 'msdn'
-Called from hscript/Interp.hx line 420
+Called from hscript/Interp.hx line 415
 Called from a C function
-Called from hscript/Interp.hx line 691
-Called from hscript/Interp.hx line 386
-Called from hscript/Interp.hx line 264
-Called from hscript/Interp.hx line 263
+Called from hscript/Interp.hx line 684
+Called from hscript/Interp.hx line 381
 Called from hscript/Interp.hx line 259
+Called from hscript/Interp.hx line 258
+Called from hscript/Interp.hx line 254
 Called from dmd/tags/TagExec.hx line 76</pre></article></section><section><header id="winwin_set_focus"><a href="#winwin_set_focus" title="(permalink)">winwin_set_focus(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Forces keyboard focus upon a window.
 		</p><p>
@@ -808,7 +882,10 @@ Called from dmd/tags/TagExec.hx line 76</pre></article></section><section><heade
 		</p><p>
 		<strong>MSDN:</strong> <a rel="nofollow" href="https://learn.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-Sleep">Sleep</a>
 	</p></article></section></article></section></p><!--doc>-->
-</section></main></div>
+</section>
+</div>
+<!--<navmenu--><nav class="navmenu"><ul><li><a href="#Basics">Basics</a><ul><li><a href="#winwin_update">winwin_update()</a><ul></ul></li><li><a href="#winwin_create">winwin_create(x, y, width, height, config)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_destroy">winwin_destroy(window)</a><ul></ul></li><li><a href="#winwin_exists">winwin_exists(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_config">winwin_config()</a><ul><li><a href="#winwin_config.caption">caption: string</a><ul></ul></li><li><a href="#winwin_config.kind">kind: int</a><ul><li><a href="#winwin_kind_normal">winwin_kind_normal</a><ul></ul></li><li><a href="#winwin_kind_borderless">winwin_kind_borderless</a><ul></ul></li><li><a href="#winwin_kind_tool">winwin_kind_tool</a><ul></ul></li></ul></li><li><a href="#winwin_config.resize">resize: bool</a><ul></ul></li><li><a href="#winwin_config.show">show: bool</a><ul></ul></li><li><a href="#winwin_config.topmost">topmost</a><ul></ul></li><li><a href="#winwin_config.taskbar_button">taskbar_button</a><ul></ul></li><li><a href="#winwin_config.clickthrough">clickthrough</a><ul></ul></li><li><a href="#winwin_config.noactivate">noactivate</a><ul></ul></li><li><a href="#winwin_config.close_button">close_button</a><ul></ul></li><li><a href="#winwin_config.vsync">vsync</a><ul></ul></li><li><a href="#winwin_config.thread">thread</a><ul></ul></li></ul></li><li><a href="#winwin_main">winwin_main</a><ul></ul></li></ul></li><li><a href="#winwin_input">Input</a><ul><li><a href="#winwin_keyboard">Keyboard</a><ul><li><a href="#winwin_keyboard_check">winwin_keyboard_check(window, key)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_keyboard_check_pressed">winwin_keyboard_check_pressed(window, key)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_keyboard_check_released">winwin_keyboard_check_released(window, key)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_keyboard_get_string">winwin_keyboard_get_string(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_keyboard_set_string">winwin_keyboard_set_string(window, string)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_keyboard_get_max_string_length">winwin_keyboard_get_max_string_length(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_keyboard_set_max_string_length">winwin_keyboard_set_max_string_length(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li></ul></li><li><a href="#winwin_mouse">Mouse</a><ul><li><a href="#winwin_mouse_is_over">winwin_mouse_is_over(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_mouse_get_x">winwin_mouse_get_x(window)&#8203;<span class="ret-arrow">&#10140;</span>int</a><ul></ul></li><li><a href="#winwin_mouse_get_y">winwin_mouse_get_y(window)&#8203;<span class="ret-arrow">&#10140;</span>int</a><ul></ul></li><li><a href="#winwin_mouse_check_button">winwin_mouse_check_button(window, button)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_mouse_check_button_pressed">winwin_mouse_check_button_pressed(window, button)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_mouse_check_button_released">winwin_mouse_check_button_released(window, button)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_mouse_wheel_up">winwin_mouse_wheel_up(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_mouse_wheel_down">winwin_mouse_wheel_down(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_mouse_wheel_get_delta_x">winwin_mouse_wheel_get_delta_x(window)&#8203;<span class="ret-arrow">&#10140;</span>int</a><ul></ul></li><li><a href="#winwin_mouse_wheel_get_delta_y">winwin_mouse_wheel_get_delta_y(window)&#8203;<span class="ret-arrow">&#10140;</span>int</a><ul></ul></li></ul></li><li><a href="#winwin_gamepad">Gamepad</a><ul></ul></li></ul></li><li><a href="#winwin_draw">Drawing</a><ul><li><a href="#winwin_draw_start">winwin_draw_start(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_draw_clear">winwin_draw_clear(color, alpha = 1)</a><ul></ul></li><li><a href="#winwin_draw_end">winwin_draw_end()&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_resize_buffer">winwin_resize_buffer(window, width, height)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_draw_attn">Known issues</a><ul></ul></li></ul></li><li><a href="#winwin_rect">Position and size</a><ul><li><a href="#winwin_get_x">winwin_get_x(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_get_y">winwin_get_y(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_get_width">winwin_get_width(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_get_height">winwin_get_height(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_set_position">winwin_set_position(window, x, y)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_set_size">winwin_set_size(window, width, height)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_set_rectangle">winwin_set_rectangle(window, x, y, width, height)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#window_set_min_width">window_set_min_width(window, ?min_width?)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#window_set_min_height">window_set_min_height(window, ?min_height?)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#window_set_max_width">window_set_max_width(window, ?max_width?)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#window_set_max_height">window_set_max_height(window, ?max_height?)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#window_get_min_width">window_get_min_width(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#window_get_min_height">window_get_min_height(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#window_get_max_width">window_get_max_width(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#window_get_max_height">window_get_max_height(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li></ul></li><li><a href="#winwin_props">Properties</a><ul><li><a href="#winwin_set_caption">winwin_set_caption(window, caption)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_get_caption">winwin_get_caption(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_set_visible">winwin_set_visible(window, visible)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_get_visible">winwin_get_visible(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_set_taskbar_button_visible">winwin_set_taskbar_button_visible(window, show_button)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_get_taskbar_button_visible">winwin_get_taskbar_button_visible(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_set_clickthrough">winwin_set_clickthrough(window, enable_clickthrough)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_get_clickthrough">winwin_get_clickthrough(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_set_noactivate">winwin_set_noactivate(window, disable_activation)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_get_noactivate">winwin_get_noactivate(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_set_close_button">winwin_set_close_button(window, state)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_get_close_button">winwin_get_close_button(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_set_vsync">winwin_set_vsync(window, vsync)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_get_vsync">winwin_get_vsync(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li></ul></li><li><a href="#winwin_order">Z-Order</a><ul><li><a href="#winwin_order_after">winwin_order_after(window, other_window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_order_front">winwin_order_front(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_order_back">winwin_order_back(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_set_topmost">winwin_set_topmost(window, enable)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_get_topmost">winwin_get_topmost(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li></ul></li><li><a href="#winwin_focus">Focus</a><ul><li><a href="#winwin_has_focus">winwin_has_focus(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_get_focus">winwin_get_focus()&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_set_focus">winwin_set_focus(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li></ul></li><li><a href="#winwin_shape">Window shapes</a><ul><li><a href="#winwin_get_alpha">winwin_get_alpha(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_set_alpha">winwin_set_alpha(window, alpha)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_set_chromakey">winwin_set_chromakey(window, color)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_get_chromakey">winwin_get_chromakey(window)&#8203;<span class="ret-arrow">&#10140;</span>int</a><ul></ul></li><li><a href="#winwin_enable_per_pixel_alpha">winwin_enable_per_pixel_alpha(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li></ul></li><li><a href="#winwin_cursor">Cursors</a><ul><li><a href="#winwin_set_cursor">winwin_set_cursor(window, cursor)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_get_cursor">winwin_get_cursor(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_set_cursor_handle">winwin_set_cursor_handle(window, hcursor)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_get_cursor_handle">winwin_get_cursor_handle(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li></ul></li><li><a href="#winwin_interop">Working with other extensions</a><ul><li><a href="#winwin_get_handle">winwin_get_handle(window)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li><li><a href="#winwin_from_handle">winwin_from_handle(handle)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li></ul></li><li><a href="#winwin_other">Other functions</a><ul><li><a href="#winwin_sleep">winwin_sleep(milliseconds, ?process_messages)&#8203;<span class="ret-arrow">&#10140;</span></a><ul></ul></li></ul></li></ul></nav><!--navmenu>-->
+</main></div>
 <script type="text/javascript">(function() {
 	var doc, headers;
 	//

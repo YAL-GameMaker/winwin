@@ -8,10 +8,14 @@ LRESULT winwin_wndproc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
     if (!ww) { // ..?
         return DefWindowProc(hwnd, msg, wparam, lparam);
     }
+    ww->mt.enter();
     switch (msg) {
-        case WM_SETCURSOR: {
-            if (LOWORD(lparam) != HTCLIENT) break;
-            SetCursor(ww->cursor);
+        case WM_DESTROY: {
+            if (ww->mt.section != nullptr) {
+                PostQuitMessage(0);
+                ww->mt.leave();
+                return 0;
+            }
         }; break;
 
         case WM_SIZE: {
@@ -45,11 +49,16 @@ LRESULT winwin_wndproc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
         case WM_SYSCOMMAND: {
             if (wparam == SC_CLOSE && ww->close_button == 2) {
                 ShowWindow(hwnd, SW_HIDE);
+                ww->mt.leave();
                 return TRUE;
             }
         }; break;
         
         // mouse:
+        case WM_SETCURSOR: {
+            if (LOWORD(lparam) != HTCLIENT) break;
+            SetCursor(ww->cursor);
+        }; break;
         case WM_MOUSEMOVE: {
             ww->mouse_x = GET_X_LPARAM(lparam);
             ww->mouse_y = GET_Y_LPARAM(lparam);
@@ -122,5 +131,6 @@ LRESULT winwin_wndproc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
             winwin_keyboard_string_proc(ww, (uint32_t)wparam);
         }; break;
     }
+    ww->mt.leave();
     return DefWindowProc(hwnd, msg, wparam, lparam);
 }

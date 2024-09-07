@@ -85,6 +85,26 @@ struct ww_size {
     std::optional<int> width = {}, height = {};
 };
 
+///
+enum class winwin_kind {
+    normal,
+    borderless,
+    tool,
+};
+struct winwin_config {
+    const char* caption;
+    winwin_kind kind;
+    bool resize;
+    bool show;
+    bool topmost;
+    bool taskbar_button;
+    bool clickthrough;
+    bool noactivate;
+    int8_t vsync;
+    int8_t close_button;
+    bool thread;
+};
+
 struct winwin {
     HWND hwnd = NULL;
     IDXGISwapChain* swapchain = nullptr;
@@ -104,10 +124,31 @@ struct winwin {
     ww_mousebits_tri mouse{}, mouse_next{};
     bool mouse_tracking = false;
     bool mouse_over = false;
-    int8_t sync_interval = 0;
-    int8_t close_button = 0;
     //
     ww_size minSize{}, maxSize{};
+    //
+    int8_t sync_interval = 0;
+    int8_t close_button = 0;
+    // threading
+    struct {
+        winwin_config* config = nullptr;
+        struct { int x, y, width, height; } rect;
+        bool ok = false;
+    } init;
+    struct {
+        HANDLE thread = NULL;
+        DWORD thread_id = 0;
+        CRITICAL_SECTION* section = nullptr;
+        HANDLE ready = NULL;
+        void enter() {
+            if (section) EnterCriticalSection(section);
+        }
+        void leave() {
+            if (section) LeaveCriticalSection(section);
+        }
+    } mt;
+    //
+    ~winwin();
 };
 using ww_ptr = gml_ptr<winwin>;
 
@@ -126,25 +167,6 @@ constexpr LONG WW_WS_EX_CLICKTHROUGH = (WS_EX_TRANSPARENT | WS_EX_LAYERED);
 #define ww_cc(str) ww_c1.proc(str)
 inline LONG rect_width(RECT& r) { return r.right - r.left; }
 inline LONG rect_height(RECT& r) { return r.bottom - r.top; }
-
-///
-enum class winwin_kind {
-    normal,
-    borderless,
-    tool,
-};
-struct winwin_config {
-    const char* caption;
-    winwin_kind kind;
-    bool resize;
-    bool show;
-    bool topmost;
-    bool taskbar_button;
-    bool clickthrough;
-    bool noactivate;
-    int8_t vsync;
-    int8_t close_button;
-};
 
 using ww_ptr_create = ww_ptr;
 /**

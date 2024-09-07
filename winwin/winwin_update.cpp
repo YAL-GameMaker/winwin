@@ -4,6 +4,7 @@
 bool winwin_resize_buffer(ww_ptr ww, int width, int height);
 dllg void winwin_update() {
     for (auto ww : ww_list) {
+        ww->mt.enter();
         if (ww->buf.resize_in > 0 && --ww->buf.resize_in <= 0) {
             winwin_resize_buffer(ww, ww->buf.new_width, ww->buf.new_height);
         }
@@ -24,5 +25,6 @@ dllg void winwin_update() {
         ww->mouse.hwheel = ww->mouse_next.hwheel;
         ww->mouse_next.hwheel = 0;
         //
+        ww->mt.leave();
     }
 }

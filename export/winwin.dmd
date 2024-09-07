@@ -120,18 +120,31 @@ null;
 			Defaults to `false`.
 		}
 		#[close_button](.) {
-			Specifies whether the window's close button should be enabled and what it should do.
+			Whether the window's close button should be enabled and what it should do.
 			
 			Same effect as [winwin_set_close_button].
 			
 			Defaults to `1`.
 		}
 		#[vsync](.) {
-			Specifies the window's vertical synchronization state.
+			Indicates the window's vertical synchronization state.
 			
 			Same effect as [winwin_set_vsync].
 			
 			Defaults to `0`.
+		}
+		#[thread](.) {
+			Whether the window should do its message handling on a different thread.
+			
+			This takes marginally more resources and might have situational implications
+			(because the window is no longer owned by the thread where your game code and extensions run),
+			but this prevents the game window from freezing while the additional windows are being dragged around.
+			
+			It is not possible to make [winwin_main] threaded,
+			but you could use [Gameframe](https://yellowafterlife.itch.io/gamemaker-gameframe)
+			or [hide](winwin_set_visible) your main window and draw the game to another one.
+			
+			Defaults to `false`.
 		}
 	}
 	#[winwin_main]() {
@@ -144,7 +157,7 @@ null;
 	}
 }
 #[Input](winwin_input) {
-	To be fair, you _could_ just use keyboard_check_direct as a replacement for most of these, but where’s the fun in that?
+	To be fair, you _could_ just use keyboard_check_direct as a replacement for most of these, but where's the fun in that?
 	#[Keyboard](winwin_keyboard) {
 		#[winwin_keyboard_check(window, key)->]() {}
 		#[winwin_keyboard_check_pressed(window, key)->]() {}
@@ -153,7 +166,7 @@ null;
 		#[winwin_keyboard_get_string(window)->]() {
 			Like `keyboard_string`, but for additional windows.
 			
-			The behaviour should generally be identical to how the built-in variable works, but without erasing it when the window loses focus (why’s that a thing, anyway?).
+			The behaviour should generally be identical to how the built-in variable works, but without erasing it when the window loses focus (why's that a thing, anyway?).
 		}
 		#[winwin_keyboard_set_string(window, string)->]() {
 			Changes the current keyboard string for a window.
@@ -197,6 +210,12 @@ null;
 			
 			Per Microsoft documentation, 120 units should be equivalent to one wheel tick.
 		}
+	}
+	#[Gamepad](winwin_gamepad) {
+		Doing gamepad polling for each window would be both high-effort and computationally taxing,
+		but you can use extensions to poll gamepad input regardless of what window has focus
+		([XInput](https://yellowafterlife.itch.io/gamemaker-gamepad-force-focus),
+		[DirectInput](https://github.com/nkrapivin/dinput8hook))
 	}
 }
 #[Drawing](winwin_draw) {

@@ -214,6 +214,14 @@
             1,
             2,
           ],"documentation":"","externalName":"winwin_set_close_button_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_vsync_raw","argCount":2,"args":[
+            1,
+            2,
+          ],"documentation":"","externalName":"winwin_get_vsync_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_vsync_raw","argCount":2,"args":[
+            1,
+            2,
+          ],"documentation":"","externalName":"winwin_set_vsync_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_x_raw","argCount":2,"args":[
             1,
             2,
@@ -374,6 +382,7 @@
             2,
           ],"documentation":"","externalName":"winwin_draw_start","help":"winwin_draw_start(window)->","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_draw_end","argCount":0,"args":[],"documentation":"","externalName":"winwin_draw_end","help":"winwin_draw_end()->","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_draw_clear","argCount":-1,"args":[],"documentation":"","externalName":"winwin_draw_clear","help":"winwin_draw_clear(color, alpha = 1)","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_set_string","argCount":2,"args":[
             2,
             2,
@@ -396,10 +405,7 @@
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_destroy","argCount":1,"args":[
             2,
           ],"documentation":"","externalName":"winwin_destroy","help":"winwin_destroy(ww)","hidden":false,"kind":2,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_sleep","argCount":2,"args":[
-            2,
-            2,
-          ],"documentation":"","externalName":"winwin_sleep","help":"winwin_sleep(ms:int, process_messages:bool)","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_sleep","argCount":-1,"args":[],"documentation":"","externalName":"winwin_sleep","help":"winwin_sleep(ms:int, process_messages:bool = true)","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_topmost","argCount":1,"args":[
             2,
           ],"documentation":"","externalName":"winwin_get_topmost","help":"winwin_get_topmost(ww)->bool","hidden":false,"kind":2,"returnType":2,},
@@ -544,6 +550,13 @@
             2,
             2,
           ],"documentation":"","externalName":"winwin_set_close_button","help":"winwin_set_close_button(ww, close_button_state:int)->bool","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_vsync","argCount":1,"args":[
+            2,
+          ],"documentation":"","externalName":"winwin_get_vsync","help":"winwin_get_vsync(ww)->int","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_vsync","argCount":2,"args":[
+            2,
+            2,
+          ],"documentation":"","externalName":"winwin_set_vsync","help":"winwin_set_vsync(ww, sync_interval:int)","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_x","argCount":1,"args":[
             2,
           ],"documentation":"","externalName":"winwin_get_x","help":"winwin_get_x(ww)->int?","hidden":false,"kind":2,"returnType":2,},
