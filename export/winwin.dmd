@@ -26,8 +26,8 @@ null;
 ```
 #[Getting started](start) {
 	--{
-	-	Call [winwin_update] once a frame from some controller object
-	-	[Create] window(s)
+	-	Call [winwin_update] once a frame in a persistent object
+	-	[Create](winwin_create) window(s)
 	-	[Draw to them](winwin_draw)
 	-	[Do input polling if desired](winwin_input)
 	}
@@ -158,10 +158,67 @@ null;
 	#[winwin_main]() {
 		This is a reference to your main game window.
 
-		It enables using a handful of extension functions on it, with some exceptions: --{
-		-	Input functions do not work because that would mean doing all of the input handling twice. You can use the regular GM input functions.
-		-	Drawing functions (like [winwin_draw_start]) don't really work and don't have to be used either.
+		It enables using a handful of extension functions on it, with some remarks: --{
+		-	Input functions just call the respective GM functions
+			since GM is responsible for input handling on the game window.
+		-	Drawing functions (like [winwin_draw_start]) don't really work
+			and don't have to be used either.
+		-	Cursor functions don't work, but you can use the built-in functions
+			(and/or [Native Cursors](https://yellowafterlife.itch.io/gamemaker-native-cursors)).
 		}
+	}
+}
+#[Drawing](winwin_draw) {
+	#[winwin_draw_start(window)->]() {
+		Starts drawing to the specified window.
+		
+		By most means this is like surface_set_target, but for windows.
+		
+		%[ok]
+		Can fail if you're already drawing to another window.
+	}
+	#[winwin_draw_clear(color, alpha = 1)]() {
+		The built-in `draw_clear` and `draw_clear_alpha` functions cannot draw to additional
+		windows because they respect the game's original drawing bounds,
+		so I'm giving you this helper function for clearing the window to whatever color and opacity.
+	}
+	#[winwin_draw_sync()->]() {
+		If you're doing a `surface_set_target` while drawing to an additional window,
+		call this after `surface_reset_target` to make GM draw to that window window again
+		(otherwise the subsequent drawing operations will end up in the main window instead).
+		
+		%[ok]
+		Returns false if you're not drawing to a window.
+	}
+	#[winwin_draw_end()->]() {
+		Stops drawing to the specified window and updates its contents.
+		
+		This happens immediately and can be used to display debug information
+		in additional windows while the game is busy (e.g. generating a level).
+		
+		%[ok]
+		Returns false if you're not drawing to a window.
+	}
+	A typical use of drawing functions might look as following:
+	```gml
+	winwin_draw_start(my_window);
+	winwin_draw_clear(c_white);
+	draw_set_color(c_black);
+	draw_text(5, 5, "Hello!");
+	winwin_draw_end();
+	```
+	#[winwin_resize_buffer(window, width, height)->]() {
+		Changes internal drawing buffer size of a window.
+		
+		You shouldn't have to call this explicitly since it'll be called for you a few frames
+		after a window's size changes.
+		
+		%[ok]
+	}
+	#[Known issues](winwin_draw_attn) {
+		I do not go through the trouble of completely clearing-restoring the drawing state,
+		so there are occasional opportunities for self-sabotage if you are setting your own
+		matrices / clip rectangles / etc.
 	}
 }
 #[Input](winwin_input) {
@@ -224,51 +281,6 @@ null;
 		but you can use extensions to poll gamepad input regardless of what window has focus
 		([XInput](https://yellowafterlife.itch.io/gamemaker-gamepad-force-focus),
 		[DirectInput](https://github.com/nkrapivin/dinput8hook))
-	}
-}
-#[Drawing](winwin_draw) {
-	#[winwin_draw_start(window)->]() {
-		Starts drawing to the specified window.
-		
-		By most means this is like surface_set_target, but for windows.
-		
-		%[ok]
-		Can fail if you're already drawing to another window.
-	}
-	#[winwin_draw_clear(color, alpha = 1)]() {
-		The built-in `draw_clear` and `draw_clear_alpha` functions cannot draw to additional
-		windows because they respect the game's original drawing bounds,
-		so I'm giving you this helper function for clearing the window to whatever color and opacity.
-	}
-	#[winwin_draw_end()->]() {
-		Stops drawing to the specified window and updates its contents.
-		
-		This happens immediately and can be used to display debug information
-		in additional windows while the game is busy (e.g. generating a level).
-		
-		%[ok]
-		Can fail if you're not drawing to a window.
-	}
-	A typical use of drawing functions might look as following:
-	```gml
-	winwin_draw_start(my_window);
-	winwin_draw_clear(c_white);
-	draw_set_color(c_black);
-	draw_text(5, 5, "Hello!");
-	winwin_draw_end();
-	```
-	#[winwin_resize_buffer(window, width, height)->]() {
-		Changes internal drawing buffer size of a window.
-		
-		You shouldn't have to call this explicitly since it'll be called for you a few frames
-		after a window's size changes.
-		
-		%[ok]
-	}
-	#[Known issues](winwin_draw_attn) {
-		I do not go through the trouble of completely clearing-restoring the drawing state,
-		so there are occasional opportunities for self-sabotage if you are setting your own
-		matrices / clip rectangles / etc.
 	}
 }
 #[Position and size](winwin_rect) {
@@ -557,7 +569,7 @@ null;
 	the limit works as (value / active window count) instead.
 	
 	The underlying cause seems to be that NVIDIA driver counts `Present` calls
-	on per-process rather than per-window.
+	on per-process basis rather than per-window.
 	
 	I haven't come up with a Cool Workaround for this yet,
 	but if the user has set up it themselves, they can also remove the override.

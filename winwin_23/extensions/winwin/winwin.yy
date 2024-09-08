@@ -117,10 +117,6 @@
             1,
             2,
           ],"documentation":"","externalName":"winwin_draw_start_raw_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_draw_end_raw_raw","argCount":2,"args":[
-            1,
-            2,
-          ],"documentation":"","externalName":"winwin_draw_end_raw_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_has_focus_raw","argCount":2,"args":[
             1,
             2,
@@ -313,8 +309,10 @@
             1,
             1,
           ],"documentation":"","externalName":"winwin_init_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_draw_end_raw","argCount":0,"args":[],"documentation":"","externalName":"winwin_draw_end_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_draw_width","argCount":0,"args":[],"documentation":"","externalName":"winwin_get_draw_width","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_draw_height","argCount":0,"args":[],"documentation":"","externalName":"winwin_get_draw_height","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_draw_sync_raw","argCount":0,"args":[],"documentation":"","externalName":"winwin_draw_sync_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_exists_raw","argCount":1,"args":[
             1,
           ],"documentation":"","externalName":"winwin_exists_raw","help":"","hidden":true,"kind":11,"returnType":2,},
@@ -381,6 +379,7 @@
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_draw_start","argCount":1,"args":[
             2,
           ],"documentation":"","externalName":"winwin_draw_start","help":"winwin_draw_start(window)->","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_draw_sync","argCount":0,"args":[],"documentation":"","externalName":"winwin_draw_sync","help":"winwin_draw_sync()->","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_draw_end","argCount":0,"args":[],"documentation":"","externalName":"winwin_draw_end","help":"winwin_draw_end()->","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_draw_clear","argCount":-1,"args":[],"documentation":"","externalName":"winwin_draw_clear","help":"winwin_draw_clear(color, alpha = 1)","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_set_string","argCount":2,"args":[
@@ -473,7 +472,6 @@
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_draw_start_raw","argCount":1,"args":[
             2,
           ],"documentation":"","externalName":"winwin_draw_start_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_draw_end_raw","argCount":0,"args":[],"documentation":"","externalName":"winwin_draw_end_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_has_focus","argCount":1,"args":[
             2,
           ],"documentation":"","externalName":"winwin_has_focus","help":"winwin_has_focus(ww)->bool","hidden":false,"kind":2,"returnType":2,},

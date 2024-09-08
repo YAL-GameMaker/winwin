@@ -72,6 +72,6 @@ dllg bool winwin_get_visible(ww_ptr ww) {
 }
 dllg bool winwin_set_visible(ww_ptr ww, bool visible) {
     auto hwnd = ww->hwnd;
-    ShowWindow(hwnd, visible ? SW_SHOW : SW_HIDE);
+    ShowWindow(hwnd, visible ? SW_SHOWNOACTIVATE : SW_HIDE);
     return true;
 }

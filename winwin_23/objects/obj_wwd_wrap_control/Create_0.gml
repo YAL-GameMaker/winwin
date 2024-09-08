@@ -17,3 +17,4 @@ for (var i = 0; i < 3; i++) {
 		winwin_set_visible(self, true);
 	})
 }
+surf = surface_create(128, 128);

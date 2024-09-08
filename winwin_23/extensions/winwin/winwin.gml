@@ -49,17 +49,25 @@ draw_flush();
 if (!winwin_draw_start_raw(_win)) return false;
 global.__winwin_last_view = matrix_get(matrix_view);
 global.__winwin_last_proj = matrix_get(matrix_projection);
+
 var _dw = winwin_get_draw_width();
 var _dh = winwin_get_draw_height();
-//trace(_dw, _dh);
-matrix_set(matrix_view, matrix_build_lookat(
+global.__winwin_curr_view = matrix_build_lookat(
     _dw / 2, _dh / 2, -16000,
     _dw / 2, _dh / 2, 0,
     0, -1, 0
-));
-matrix_set(matrix_projection, matrix_build_projection_ortho(
-   -_dw, _dh, 1, 32000 
-));
+);
+global.__winwin_curr_proj = matrix_build_projection_ortho(-_dw, _dh, 1, 32000);
+
+matrix_set(matrix_view, global.__winwin_curr_view);
+matrix_set(matrix_projection, global.__winwin_curr_proj);
+return true;
+
+#define winwin_draw_sync
+/// ()->
+if (!winwin_draw_sync_raw()) return false;
+matrix_set(matrix_view, global.__winwin_curr_view);
+matrix_set(matrix_projection, global.__winwin_curr_proj);
 return true;
 
 #define winwin_draw_end

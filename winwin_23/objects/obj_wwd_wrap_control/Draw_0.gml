@@ -5,6 +5,7 @@ draw_text(7, 7, "Dino sprite from:"
 var n = array_length(windows);
 for (var i = 0; i < n; i++) {
 	var _window = windows[i];
+	if (!winwin_exists(_window)) continue;
 	var _main = _window == winwin_main;
 	if (!_main) {
 		// (if it's the game window, we're already drawing there)

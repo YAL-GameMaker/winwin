@@ -130,7 +130,7 @@ bool winwin_create_impl(winwin* ww, winwin_config& config, int x, int y, int wid
     ww_list.push_back(ww);
     ww_map[ww->hwnd] = ww;
 
-    if (config.show) ShowWindow(ww->hwnd, SW_SHOW);
+    if (config.show) ShowWindow(ww->hwnd, SW_SHOWNOACTIVATE);
     if (config.topmost) SetWindowPos(ww->hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
     return true;
 }
@@ -229,7 +229,7 @@ winwin::~winwin() {
     }
 }
 
-double winwin_draw_end_raw();
+dllx double winwin_draw_end_raw();
 dllg void winwin_destroy(ww_ptr_destroy ww) {
     if (ww_target == ww) winwin_draw_end_raw();
     auto n = ww_list.size();

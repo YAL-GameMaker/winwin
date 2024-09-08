@@ -43,6 +43,20 @@ dllx double winwin_get_draw_height() {
     return ww_draw.height;
 }
 
+void winwin_draw_set(winwin* ww) {
+    auto ctx = ww_base.context;
+
+    ID3D11RenderTargetView* targets[ww_max_rtvs]{};
+    targets[0] = ww->rtv;
+    ctx->OMSetRenderTargets((UINT)std::size(targets), targets, nullptr);
+
+    CD3D11_VIEWPORT vp(0.0f, 0.0f, (float)ww_draw.width, (float)ww_draw.height);
+    ctx->RSSetViewports(1, &vp);
+
+    D3D11_RECT scissorRect = { 0, 0, ww_draw.width, ww_draw.height };
+    ctx->RSSetScissorRects(1, &scissorRect);
+}
+
 dllg bool winwin_resize_buffer(ww_ptr ww, int width, int height) {
     if (ww_target == ww) {
         trace("[winwin_resize_buffer] Can't resize buffer while drawing to it");
@@ -82,7 +96,6 @@ dllg bool winwin_draw_start_raw(ww_ptr ww) {
         return false;
     }
     ww_target = ww;
-    auto ctx = ww_base.context;
 
     // store state:
     winwin_draw_store();
@@ -102,20 +115,16 @@ dllg bool winwin_draw_start_raw(ww_ptr ww) {
     ww_draw.height = ww->buf.height;
 
     // set targets:
-    ID3D11RenderTargetView* targets[ww_max_rtvs]{};
-    targets[0] = ww->rtv;
-    ctx->OMSetRenderTargets((UINT)std::size(targets), targets, nullptr);
-
-    CD3D11_VIEWPORT vp(0.0f, 0.0f, (float)ww_draw.width, (float)ww_draw.height);
-    ctx->RSSetViewports(1, &vp);
-
-    D3D11_RECT scissorRect = { 0, 0, ww_draw.width, ww_draw.height };
-    ctx->RSSetScissorRects(1, &scissorRect);
+    winwin_draw_set(ww);
 
     return true;
 }
-///~
-dllg double winwin_draw_end_raw() {
+dllx double winwin_draw_sync_raw() {
+    if (!ww_target) return 0;
+    winwin_draw_set(ww_target);
+    return 1;
+}
+dllx double winwin_draw_end_raw() {
     auto ww = ww_target;
     if (ww == nullptr) {
         trace("[winwin_draw_end] Not drawing to a window!");
@@ -127,6 +136,13 @@ dllg double winwin_draw_end_raw() {
     winwin_draw_restore();
 
     auto hr = ww->swapchain->Present(ww->sync_interval, 0);
-    if (hr != S_OK) trace("hr %d", hr);
+    if (hr == S_OK) {
+        // OK!
+    } else if (hr == DXGI_STATUS_OCCLUDED) {
+        // TODO: should use DXGI_PRESENT_TEST..?
+        // https://learn.microsoft.com/en-us/windows/win32/direct3ddxgi/dxgi-status
+    } else {
+        trace("SwapChain->Present() failed, hresult=%d (0x%x)", hr, hr);
+    }
     return hr == S_OK;
 }
