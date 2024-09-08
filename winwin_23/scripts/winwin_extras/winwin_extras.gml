@@ -14,3 +14,4 @@ function winwin_config() constructor {
     static vsync = 0;
     static close_button = 1;
 }
+

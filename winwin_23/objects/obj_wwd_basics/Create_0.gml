@@ -12,7 +12,7 @@ config.thread = true;
 extra = winwin_create(window_get_x() - 350, window_get_y(), 350, 600, config);
 extra.key_list = ds_list_create();
 extra.show_in = 0;
-extra_caption = "";
+extra.last_caption = "";
 
 eyes = [];
 alarm[0] = 10;

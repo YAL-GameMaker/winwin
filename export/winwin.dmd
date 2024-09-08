@@ -24,6 +24,14 @@ function msdn(name, cat) {
 }
 null;
 ```
+#[Getting started](start) {
+	--{
+	-	Call [winwin_update] once a frame from some controller object
+	-	[Create] window(s)
+	-	[Draw to them](winwin_draw)
+	-	[Do input polling if desired](winwin_input)
+	}
+}
 #[Basics]() {
 	#[winwin_update()]() {
 		Call this once a frame!
@@ -543,4 +551,14 @@ null;
 		
 		${msdn("Sleep", "synchapi")}
 	}
+}
+#[Known issues](known-issues) {
+	If the user has set up a custom Max Frame Rate override in NVIDIA Control Panel,
+	the limit works as (value / active window count) instead.
+	
+	The underlying cause seems to be that NVIDIA driver counts `Present` calls
+	on per-process rather than per-window.
+	
+	I haven't come up with a Cool Workaround for this yet,
+	but if the user has set up it themselves, they can also remove the override.
 }

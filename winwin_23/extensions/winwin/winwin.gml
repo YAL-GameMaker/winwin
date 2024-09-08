@@ -103,6 +103,10 @@ draw_set_alpha(_prev_alpha);
 
 #define winwin_keyboard_set_string
 /// (ww, str)->
+if (argument0 == winwin_main) {
+	keyboard_string = argument1;
+	return true;
+}
 var _buf = winwin_prepare_buffer(4);
 buffer_seek(_buf, buffer_seek_start, 0);
 string_foreach(argument1, function(_char, _pos) /*=>*/ {

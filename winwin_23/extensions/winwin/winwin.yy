@@ -484,18 +484,18 @@
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_check","argCount":2,"args":[
             2,
             2,
-          ],"documentation":"","externalName":"winwin_keyboard_check","help":"winwin_keyboard_check(ww, key:int)->bool","hidden":false,"kind":2,"returnType":2,},
+          ],"documentation":"","externalName":"winwin_keyboard_check","help":"winwin_keyboard_check(ww, key:int)->bool @dllg:gmlheader if (argument0 == winwin_main) return keyboard_check(argument1);","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_check_pressed","argCount":2,"args":[
             2,
             2,
-          ],"documentation":"","externalName":"winwin_keyboard_check_pressed","help":"winwin_keyboard_check_pressed(ww, key:int)->bool","hidden":false,"kind":2,"returnType":2,},
+          ],"documentation":"","externalName":"winwin_keyboard_check_pressed","help":"winwin_keyboard_check_pressed(ww, key:int)->bool @dllg:gmlheader if (argument0 == winwin_main) return keyboard_check_pressed(argument1);","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_check_released","argCount":2,"args":[
             2,
             2,
-          ],"documentation":"","externalName":"winwin_keyboard_check_released","help":"winwin_keyboard_check_released(ww, key:int)->bool","hidden":false,"kind":2,"returnType":2,},
+          ],"documentation":"","externalName":"winwin_keyboard_check_released","help":"winwin_keyboard_check_released(ww, key:int)->bool @dllg:gmlheader if (argument0 == winwin_main) return keyboard_check_released(argument1);","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_string_get","argCount":1,"args":[
             2,
-          ],"documentation":"","externalName":"winwin_keyboard_string_get","help":"winwin_keyboard_string_get(ww)->string","hidden":false,"kind":2,"returnType":2,},
+          ],"documentation":"","externalName":"winwin_keyboard_string_get","help":"winwin_keyboard_string_get(ww)->string @dllg:gmlheader if (argument0 == winwin_main) return keyboard_string;","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_set_string_raw","argCount":2,"args":[
             2,
             2,
@@ -505,34 +505,34 @@
           ],"documentation":"","externalName":"winwin_mouse_is_over","help":"winwin_mouse_is_over(ww)->bool","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_get_x","argCount":1,"args":[
             2,
-          ],"documentation":"","externalName":"winwin_mouse_get_x","help":"winwin_mouse_get_x(ww)->int","hidden":false,"kind":2,"returnType":2,},
+          ],"documentation":"","externalName":"winwin_mouse_get_x","help":"winwin_mouse_get_x(ww)->int @dllg:gmlheader if (argument0 == winwin_main) return window_mouse_get_x();","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_get_y","argCount":1,"args":[
             2,
-          ],"documentation":"","externalName":"winwin_mouse_get_y","help":"winwin_mouse_get_y(ww)->int","hidden":false,"kind":2,"returnType":2,},
+          ],"documentation":"","externalName":"winwin_mouse_get_y","help":"winwin_mouse_get_y(ww)->int @dllg:gmlheader if (argument0 == winwin_main) return window_mouse_get_y();","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_check_button","argCount":2,"args":[
             2,
             2,
-          ],"documentation":"","externalName":"winwin_mouse_check_button","help":"winwin_mouse_check_button(ww, button:int)->bool","hidden":false,"kind":2,"returnType":2,},
+          ],"documentation":"","externalName":"winwin_mouse_check_button","help":"winwin_mouse_check_button(ww, button:int)->bool @dllg:gmlheader if (argument0 == winwin_main) return mouse_check_button(argument1);","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_check_button_pressed","argCount":2,"args":[
             2,
             2,
-          ],"documentation":"","externalName":"winwin_mouse_check_button_pressed","help":"winwin_mouse_check_button_pressed(ww, button:int)->bool","hidden":false,"kind":2,"returnType":2,},
+          ],"documentation":"","externalName":"winwin_mouse_check_button_pressed","help":"winwin_mouse_check_button_pressed(ww, button:int)->bool @dllg:gmlheader if (argument0 == winwin_main) return mouse_check_button_pressed(argument1);","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_check_button_released","argCount":2,"args":[
             2,
             2,
-          ],"documentation":"","externalName":"winwin_mouse_check_button_released","help":"winwin_mouse_check_button_released(ww, button:int)->bool","hidden":false,"kind":2,"returnType":2,},
+          ],"documentation":"","externalName":"winwin_mouse_check_button_released","help":"winwin_mouse_check_button_released(ww, button:int)->bool @dllg:gmlheader if (argument0 == winwin_main) return mouse_check_button_released(argument1);","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_wheel_up","argCount":1,"args":[
             2,
-          ],"documentation":"","externalName":"winwin_mouse_wheel_up","help":"winwin_mouse_wheel_up(ww)->bool","hidden":false,"kind":2,"returnType":2,},
+          ],"documentation":"","externalName":"winwin_mouse_wheel_up","help":"winwin_mouse_wheel_up(ww)->bool @dllg:gmlheader if (argument0 == winwin_main) return mouse_wheel_up();","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_wheel_down","argCount":1,"args":[
             2,
-          ],"documentation":"","externalName":"winwin_mouse_wheel_down","help":"winwin_mouse_wheel_down(ww)->bool","hidden":false,"kind":2,"returnType":2,},
+          ],"documentation":"","externalName":"winwin_mouse_wheel_down","help":"winwin_mouse_wheel_down(ww)->bool @dllg:gmlheader if (argument0 == winwin_main) return mouse_wheel_down();","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_wheel_get_delta_x","argCount":1,"args":[
             2,
-          ],"documentation":"","externalName":"winwin_mouse_wheel_get_delta_x","help":"winwin_mouse_wheel_get_delta_x(ww)->bool","hidden":false,"kind":2,"returnType":2,},
+          ],"documentation":"","externalName":"winwin_mouse_wheel_get_delta_x","help":"winwin_mouse_wheel_get_delta_x(ww)->bool @dllg:gmlheader if (argument0 == winwin_main) return 0;","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_wheel_get_delta_y","argCount":1,"args":[
             2,
-          ],"documentation":"","externalName":"winwin_mouse_wheel_get_delta_y","help":"winwin_mouse_wheel_get_delta_y(ww)->bool","hidden":false,"kind":2,"returnType":2,},
+          ],"documentation":"","externalName":"winwin_mouse_wheel_get_delta_y","help":"winwin_mouse_wheel_get_delta_y(ww)->bool @dllg:gmlheader if (argument0 == winwin_main) return mouse_wheel_down() - mouse_wheel_up();","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_handle","argCount":1,"args":[
             2,
           ],"documentation":"","externalName":"winwin_get_handle","help":"winwin_get_handle(ww)->int","hidden":false,"kind":2,"returnType":2,},
