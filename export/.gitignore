@@ -6,3 +6,10 @@ winwin-for-GMS2/*
 winwin-for-GMS2.3+/*
 !winwin-for-GMS2.3+/winwin_23.yyp
 !winwin-for-GMS2.3+/metadata.json
+
+*.gmz
+*.gmez
+*.yyz
+*.yymp
+*.yymps
+*.zip

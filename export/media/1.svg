@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg6457"
+   width="465.45456"
+   height="261.81818"
+   viewBox="0 0 465.45456 261.81818"
+   sodipodi:docname="1.svg"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   inkscape:export-filename="1.png"
+   inkscape:export-xdpi="192"
+   inkscape:export-ydpi="192"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs6461" />
+  <sodipodi:namedview
+     id="namedview6459"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="2.5495128"
+     inkscape:cx="203.76442"
+     inkscape:cy="114.13945"
+     inkscape:window-width="2560"
+     inkscape:window-height="1377"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g6463" />
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Image"
+     id="g6463">
+    <image
+       width="465.45454"
+       height="261.81818"
+       preserveAspectRatio="none"
+       style="image-rendering:optimizeSpeed"
+       xlink:href="1-arrows.png"
+       id="image6465" />
+    <text
+       xml:space="preserve"
+       style="font-size:24px;line-height:1.25;font-family:'Ubuntu Condensed SemiItalic';-inkscape-font-specification:'Ubuntu Condensed SemiItalic';fill:#ffffff;fill-opacity:1"
+       x="332.25974"
+       y="79.353874"
+       id="text6693"><tspan
+         sodipodi:role="line"
+         id="tspan6691"
+         x="332.25974"
+         y="79.353874">game window</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;line-height:1.25;font-family:'Ubuntu Condensed SemiItalic';-inkscape-font-specification:'Ubuntu Condensed SemiItalic';fill:#ffffff;fill-opacity:1"
+       x="31.057894"
+       y="234.11504"
+       id="text7060"><tspan
+         sodipodi:role="line"
+         id="tspan7058"
+         x="31.057894"
+         y="234.11504">extra window</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;line-height:1;font-family:'Ubuntu Condensed SemiItalic';-inkscape-font-specification:'Ubuntu Condensed SemiItalic';fill:#ffffff;fill-opacity:1"
+       x="243.50781"
+       y="201.38776"
+       id="text7064"><tspan
+         sodipodi:role="line"
+         id="tspan7062"
+         x="243.50781"
+         y="201.38776">also a window!</tspan><tspan
+         sodipodi:role="line"
+         x="243.50781"
+         y="225.38776"
+         id="tspan7066">(custom shape)</tspan></text>
+  </g>
+</svg>

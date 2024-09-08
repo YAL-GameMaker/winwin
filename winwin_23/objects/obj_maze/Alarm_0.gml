@@ -1,0 +1,1 @@
+maze = scr_maze_gen(20, 20, window);
