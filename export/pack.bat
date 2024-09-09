@@ -34,8 +34,8 @@ cd ..
 
 del /Q winwin-demo.yyz
 cd ..\winwin_23
-cmd /C 7z winwin-demo.zip *
+cmd /C 7z a winwin-demo.zip *
 move winwin-demo.zip ..\export\winwin-demo.yyz
-move ..\export
+cd ..\export
 
 pause

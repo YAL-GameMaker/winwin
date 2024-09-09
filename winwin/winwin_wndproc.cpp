@@ -3,7 +3,7 @@
 #include <windowsx.h>
 #define __RELFILE__ "winwin_wndproc"
 
-LRESULT winwin_wndproc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
+LRESULT CALLBACK winwin_wndproc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
     auto ww = ww_find(hwnd);
     if (!ww) { // ..?
         return DefWindowProc(hwnd, msg, wparam, lparam);
