@@ -1,19 +1,5 @@
+event_inherited();
 window = winwin_main;
-image_xscale = 4;
-image_yscale = 4;
-friction = 1.8;
-accel = 6;
-maxspeed = 8;
-check = function(_key) {
-	// take input from any window, really
-	var _windows = obj_wrap_control.windows;
-	var n = array_length(_windows);
-	for (var i = 0; i < n; i++) {
-		var _window = _windows[i];
-		if (winwin_keyboard_check(_windows[i], _key)) return true;
-	}
-	return false;
-}
 try_wrap = function(wx, wy, nx, ny, pad) {
 	// figure out which window can fit the character at nx,ny
 	var gx = wx + nx;

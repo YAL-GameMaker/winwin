@@ -31,7 +31,7 @@ for (var i = 0; i < n; i++) {
 		}
 	}
 	
-	winwin_draw_start(ww);
+	winwin_draw_begin(ww);
 	winwin_draw_clear(c_black, 0);
 	
 	draw_sprite(spr_eyes, 0, 64, 64);

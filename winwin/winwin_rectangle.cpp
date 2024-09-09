@@ -39,7 +39,7 @@ dllg bool winwin_set_position(ww_ptr ww, int x, int y) {
     int nx = r.left + (x - p.x);
     int ny = r.top + (y - p.y);
     //
-    return SetWindowPos(ww->hwnd, 0, nx, ny, 0, 0, SWP_NOZORDER | SWP_NOSIZE);
+    return SetWindowPos(ww->hwnd, 0, nx, ny, 0, 0, SWP_NOZORDER | SWP_NOSIZE | SWP_NOACTIVATE);
 }
 
 dllg bool winwin_set_size(ww_ptr ww, int width, int height) {
@@ -53,7 +53,7 @@ dllg bool winwin_set_size(ww_ptr ww, int width, int height) {
     auto adjWidth = rect_width(r);
     auto adjHeight = rect_height(r);
 
-    return SetWindowPos(hwnd, NULL, 0, 0, adjWidth, adjHeight, SWP_NOZORDER | SWP_NOMOVE);
+    return SetWindowPos(hwnd, NULL, 0, 0, adjWidth, adjHeight, SWP_NOZORDER | SWP_NOMOVE | SWP_NOACTIVATE);
 }
 
 dllg bool winwin_set_rectangle(ww_ptr ww, int x, int y, int width, int height) {
@@ -67,7 +67,7 @@ dllg bool winwin_set_rectangle(ww_ptr ww, int x, int y, int width, int height) {
     auto adjWidth = rect_width(r);
     auto adjHeight = rect_height(r);
 
-    return SetWindowPos(hwnd, NULL, r.left, r.top, adjWidth, adjHeight, SWP_NOZORDER | SWP_NOMOVE);
+    return SetWindowPos(hwnd, NULL, r.left, r.top, adjWidth, adjHeight, SWP_NOZORDER | SWP_NOMOVE | SWP_NOACTIVATE);
 }
 
 // min/max:

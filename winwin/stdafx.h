@@ -21,7 +21,7 @@
 #define dllx extern "C"
 #endif
 
-#define trace(...) { printf("[" __FUNCTION__ "] ", __LINE__); printf(__VA_ARGS__); printf("\n"); fflush(stdout); }
+#define trace(...) { printf("[" __FUNCTION__ "] "); printf(__VA_ARGS__); printf("\n"); fflush(stdout); }
 
 template<typename T> T* malloc_arr(size_t count) {
 	return (T*)malloc(sizeof(T) * count);

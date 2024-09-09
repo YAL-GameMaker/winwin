@@ -1,8 +1,5 @@
 {
-  "extensionId": {
-    "name": "winwin",
-    "path": "extensions/winwin/winwin.yy"
-  },
+  "extensionId": null,
   "resourceVersion": "1.0",
   "resourceType": "GMExtensionConfigSet",
   "configurables": null

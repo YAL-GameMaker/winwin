@@ -127,6 +127,11 @@ null;
 			
 			Defaults to `false`.
 		}
+		#[per_pixel_alpha](.) {
+			If `true`, essentially calls [winwin_enable_per_pixel_alpha] upon creating the window.
+			
+			Defaults to `false`.
+		}
 		#[close_button](.) {
 			Whether the window's close button should be enabled and what it should do.
 			
@@ -154,6 +159,11 @@ null;
 			
 			Defaults to `false`.
 		}
+		#[owner](.) {
+			If set, equivalent to [winwin_set_owner].
+			
+			Defaults to `undefined`.
+		}
 	}
 	#[winwin_main]() {
 		This is a reference to your main game window.
@@ -161,7 +171,7 @@ null;
 		It enables using a handful of extension functions on it, with some remarks: --{
 		-	Input functions just call the respective GM functions
 			since GM is responsible for input handling on the game window.
-		-	Drawing functions (like [winwin_draw_start]) don't really work
+		-	Drawing functions (like [winwin_draw_begin]) don't really work
 			and don't have to be used either.
 		-	Cursor functions don't work, but you can use the built-in functions
 			(and/or [Native Cursors](https://yellowafterlife.itch.io/gamemaker-native-cursors)).
@@ -169,7 +179,7 @@ null;
 	}
 }
 #[Drawing](winwin_draw) {
-	#[winwin_draw_start(window)->]() {
+	#[winwin_draw_begin(window)->]() {
 		Starts drawing to the specified window.
 		
 		By most means this is like surface_set_target, but for windows.
@@ -201,7 +211,7 @@ null;
 	}
 	A typical use of drawing functions might look as following:
 	```gml
-	winwin_draw_start(my_window);
+	winwin_draw_begin(my_window);
 	winwin_draw_clear(c_white);
 	draw_set_color(c_black);
 	draw_text(5, 5, "Hello!");
@@ -323,6 +333,20 @@ null;
 	}
 	#[winwin_get_visible(window)->]() {
 		Returns whether a window is visible.
+	}
+	---
+	#[winwin_set_owner(window, owner)]() {
+		Changes the window owner (`GWLP_HWNDPARENT`).
+		
+		Linked windows always appear over the owner window,
+		minimize along with it, and are generally what you want
+		for any pop-out panels and alike.
+		
+		`owner` can be `undefined` to un-link.
+	}
+	#[winwin_get_owner(window)->]() {
+		Returns the current window owner
+		(or `undefined` if not linked).
 	}
 	---
 	#[winwin_set_taskbar_button_visible(window, show_button)->]() {
@@ -563,14 +587,25 @@ null;
 		
 		${msdn("Sleep", "synchapi")}
 	}
+	#[winwin_game_end(exit_code = 0)->]() {
+		Calls a C `exit` function that kills your process on spot. No further code will execute.
+	}
 }
 #[Known issues](known-issues) {
-	If the user has set up a custom Max Frame Rate override in NVIDIA Control Panel,
-	the limit works as (value / active window count) instead.
-	
-	The underlying cause seems to be that NVIDIA driver counts `Present` calls
-	on per-process basis rather than per-window.
-	
-	I haven't come up with a Cool Workaround for this yet,
-	but if the user has set up it themselves, they can also remove the override.
+	##{
+	-	If the user has set up a custom Max Frame Rate override in NVIDIA Control Panel,
+		the limit works as (value / active window count) instead.
+		
+		The underlying cause seems to be that NVIDIA driver counts `Present` calls
+		on per-process basis rather than per-window.
+		
+		I haven't come up with a Cool Workaround for this yet,
+		but if the user has set up it themselves, they can also remove the override.
+	-	Drawing with shaders into additional windows works weird.
+		
+		Probably changes some D3D11 state that I'm not aware of.
+		
+		For now, you can draw things with shaders onto a surface and then draw that surface
+		into a window.
+	}
 }

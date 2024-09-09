@@ -85,26 +85,7 @@ struct ww_size {
     std::optional<int> width = {}, height = {};
 };
 
-///
-enum class winwin_kind {
-    normal,
-    borderless,
-    tool,
-};
-struct winwin_config {
-    const char* caption;
-    winwin_kind kind;
-    bool resize;
-    bool show;
-    bool topmost;
-    bool taskbar_button;
-    bool clickthrough;
-    bool noactivate;
-    int8_t vsync;
-    int8_t close_button;
-    bool thread;
-};
-
+struct winwin_config;
 struct winwin {
     HWND hwnd = NULL;
     IDXGISwapChain* swapchain = nullptr;
@@ -155,6 +136,7 @@ using ww_ptr = gml_ptr<winwin>;
 extern std::vector<winwin*> ww_list;
 extern std::unordered_map<HWND, winwin*> ww_map;
 inline winwin* ww_find(HWND hwnd) {
+    if (hwnd == NULL) return nullptr;
     auto pair = ww_map.find(hwnd);
     return pair != ww_map.end() ? pair->second : nullptr;
 }
@@ -169,45 +151,5 @@ inline LONG rect_width(RECT& r) { return r.right - r.left; }
 inline LONG rect_height(RECT& r) { return r.bottom - r.top; }
 
 using ww_ptr_create = ww_ptr;
-/**
-    @dllg:type ww_ptr_create
-    @gmlRead
-    var _ptr = buffer_read(_buf, buffer_u64);
-    var _box;
-    if (_ptr != 0) {
-        _ptr = ptr(_ptr);
-        _box = new winwin(_ptr);
-        global.__winwin_map[?_ptr] = _box;
-    } else _box = undefined;
-    return _box;
-**/
-
 using ww_ptr_find = ww_ptr;
-/**
-    @dllg:type ww_ptr_find
-    @gmlRead
-    var _ptr = buffer_read(_buf, buffer_u64);
-    var _box;
-    if (_ptr != 0) {
-        _ptr = ptr(_ptr);
-        _box = global.__winwin_map[?_ptr];
-        if (_box == undefined) {
-            _box = new winwin(_ptr);
-            global.__winwin_map[?_ptr] = _box;
-        }
-    } else _box = undefined;
-    return _box;
-**/
-
 using ww_ptr_destroy = gml_ptr_destroy<winwin>;
-/**
-    @dllg:type ww_ptr_destroy
-    @gmlWrite
-    var _box_0 = $value;
-    if (instanceof(_box_0) != "winwin") { show_error("Expected a winwin, got " + string(_box_0), true); exit }
-    var _ptr_0 = _box_0.__ptr__;
-    if (_ptr_0 == pointer_null) { show_error("This winwin is already destroyed.", true); exit; }
-    _box_0.__ptr__ = pointer_null;
-    ds_map_delete(global.__winwin_map, _ptr_0);
-    buffer_write(_buf, buffer_u64, int64(_ptr_0));
-**/

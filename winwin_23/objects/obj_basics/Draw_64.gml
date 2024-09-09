@@ -13,7 +13,7 @@ if (winwin_exists(extra)) {
 	}
 	
 	
-	winwin_draw_start(extra);
+	winwin_draw_begin(extra);
 	
 	draw_set_color(#405070);
 	var _width = winwin_get_draw_width();

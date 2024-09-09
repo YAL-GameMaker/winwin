@@ -1,3 +1,5 @@
+if (!winwin_exists(window)) exit;
+
 var pad = 16;
 var w_width = winwin_get_width(window);
 var w_height = winwin_get_height(window);

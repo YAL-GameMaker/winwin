@@ -43,3 +43,11 @@ dllg int8_t winwin_get_vsync(ww_ptr ww) {
 dllg void winwin_set_vsync(ww_ptr ww, int sync_interval) {
     ww->sync_interval = sync_interval;
 }
+
+dllg ww_ptr_find winwin_get_owner(ww_ptr ww) {
+    auto val = GetWindowLongPtr(ww->hwnd, GWLP_HWNDPARENT);
+    return ww_find((HWND)val);
+}
+dllg void winwin_set_owner(ww_ptr ww, std::optional<ww_ptr> owner) {
+    SetWindowLongPtr(ww->hwnd, GWLP_HWNDPARENT, (LONG_PTR)(owner ? (*owner)->hwnd : NULL));
+}

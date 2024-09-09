@@ -25,16 +25,16 @@ function scr_maze_gen(width, height, debug_window = undefined) {
 		);
 	}
 	//
-	for (;;) {
+	for (;;) { // maze generator loop!
 		grid[#cx, cy] |= MazeFlags.Visited;
 		if (debug_window != undefined) {
-			winwin_draw_start(debug_window);
+			winwin_draw_begin(debug_window);
 			winwin_draw_clear(#889EC5);
 			scr_maze_draw(grid, 0, 0, debug_size, cx, cy, dn);
 			winwin_draw_end();
 			winwin_sleep(16);
 		}
-		//
+		// check and mark adjacent cells
 		if (cx > 0) scr_maze_check_full(grid, right, bottom, cx - 1, cy);
 		if (cx < right) scr_maze_check_full(grid, right, bottom, cx + 1, cy);
 		if (cy > 0) scr_maze_check_full(grid, right, bottom, cx, cy - 1);
@@ -73,7 +73,8 @@ function scr_maze_gen(width, height, debug_window = undefined) {
 					// no cells without a Full flag left, the maze is complete!
 					break;
 				}
-				//
+				// todo: could use ds_grid_get_min to look up the next suitable element,
+				// though that's trickier with two conditions
 				ds_list_clear(nonFullList);
 				for (var i = 0; i < width; i++)
 				for (var k = 0; k < height; k++) {

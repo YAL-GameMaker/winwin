@@ -2,10 +2,12 @@
 
 #include "stdafx.h"
 #include "winwin.h"
+#include "winwin_config.h"
 
 std::vector<winwin*> ww_list{};
 std::unordered_map<HWND, winwin*> ww_map{};
 wm_base_t ww_base{};
+ww_ptr ww_main = nullptr;
 StringConv ww_c1, ww_c2;
 HCURSOR ww_base_cursor;
 
@@ -33,7 +35,7 @@ dllx double winwin_init_raw(void* hwnd, void* device, void* context, void* swapc
     wndc.hIcon = (HICON)GetClassLongPtr(ww_base.main_hwnd, GCLP_HICON);
     RegisterClass(&wndc);
     //
-    auto ww_main = new winwin();
+    ww_main = new winwin();
     ww_main->hwnd = ww_base.main_hwnd;
     ww_main->swapchain = ww_base.main_swapchain;
     ww_base.ref = ww_main;
@@ -63,7 +65,6 @@ bool winwin_create_impl(winwin* ww, winwin_config& config, int x, int y, int wid
         }
     }
     if (config.noactivate) dwExStyle |= WS_EX_NOACTIVATE;
-    if (config.clickthrough) dwExStyle |= WW_WS_EX_CLICKTHROUGH;
     //
     RECT rcClient = { x, y, x + width, y + height };
     AdjustWindowRectEx(&rcClient, dwStyle, false, dwExStyle);
@@ -129,9 +130,26 @@ bool winwin_create_impl(winwin* ww, winwin_config& config, int x, int y, int wid
 
     ww_list.push_back(ww);
     ww_map[ww->hwnd] = ww;
-
+    
+    if (config.owner) {
+        void winwin_set_owner(ww_ptr ww, std::optional<ww_ptr> owner);
+        winwin_set_owner(ww, config.owner);
+    }
+    if (config.per_pixel_alpha) {
+        bool winwin_enable_per_pixel_alpha(ww_ptr ww);
+        winwin_enable_per_pixel_alpha(ww);
+    }
     if (config.show) ShowWindow(ww->hwnd, SW_SHOWNOACTIVATE);
-    if (config.topmost) SetWindowPos(ww->hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+    if (config.clickthrough) {
+        if (config.show) {
+            // aside: setting this before show
+            bool winwin_set_clickthrough(ww_ptr ww, bool enable_clickthrough);
+            winwin_set_clickthrough(ww, true);
+        } else {
+            trace("Can't set clickthrough on an invisible window!");
+        }
+    }
+    if (config.topmost) SetWindowPos(ww->hwnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
     return true;
 }
 DWORD WINAPI winwin_thread(void* param) {
@@ -193,7 +211,7 @@ dllg ww_ptr_create winwin_create(int x, int y, int width, int height, winwin_con
 winwin::~winwin() {
     this->mt.enter();
     if (this->hwnd) {
-        if (this->mt.section) {
+        if (this->mt.section || this == ww_main) {
             // just tell it to close, I guess? We don't own the window
             this->close_button = 1;
             PostMessage(this->hwnd, WM_CLOSE, 0, 0);
@@ -244,33 +262,3 @@ dllg void winwin_destroy(ww_ptr_destroy ww) {
     delete ww;
 }
 
-void ProcessMessages() {
-    tagMSG m;
-    while (true) {
-        if (PeekMessageW(&m, NULL, 0, 0, PM_REMOVE)) {
-            if (m.message != WM_QUIT) {
-                TranslateMessage(&m);
-                DispatchMessageW(&m);
-            } else break;
-        } else break;
-    }
-}
-dllg void winwin_sleep(int ms, bool process_messages = true) {
-    if (!process_messages) {
-        Sleep(ms);
-        return;
-    }
-    constexpr int pm_step = 100;
-    while (ms > 0) {
-        int step;
-        if (ms > pm_step) {
-            step = pm_step;
-            ms -= pm_step;
-        } else {
-            step = ms;
-            ms = 0;
-        }
-        Sleep(step);
-        ProcessMessages();
-    }
-}

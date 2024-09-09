@@ -36,6 +36,12 @@
     <ClInclude Include="winwin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="winwin_auto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="winwin_config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -78,6 +84,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="winwin_rectangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="winwin_attach.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="winwin_misc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

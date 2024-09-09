@@ -1,6 +1,8 @@
 #define winwin_preinit
 //#init winwin_preinit
 //#global winwin_main
+//#global winwin_list
+//#global winwin_map
 var _inf = os_get_info();
 var _ok = winwin_init_raw(
 	window_handle(),
@@ -9,9 +11,19 @@ var _ok = winwin_init_raw(
 	_inf[?"video_d3d11_swapchain"],
 );
 ds_map_destroy(_inf);
-global.__winwin_map = ds_map_create();
+winwin_list = ds_list_create();
+winwin_map = ds_map_create();
 winwin_main = winwin_init_2();
 return _ok;
+
+#define winwin_cleanup
+//#final winwin_cleanup
+var i = ds_list_size(winwin_list);
+while (--i >= 0) {
+	var _window = winwin_list[|i];
+	if (_window == winwin_main) continue;
+	winwin_destroy(_window);
+}
 
 #define winwin_prepare_buffer
 /// (size:int)->buffer~
@@ -40,13 +52,13 @@ return winwin_exists_raw(_ptr);
 /// (handle)->
 var _ptr = argument0;
 if (!is_ptr(_ptr)) _ptr = ptr(_ptr);
-return global.__winwin_map[?_ptr];
+return winwin_map[?_ptr];
 
-#define winwin_draw_start
+#define winwin_draw_begin
 /// (window)->
 var _win = argument0;
 draw_flush();
-if (!winwin_draw_start_raw(_win)) return false;
+if (!winwin_draw_begin_raw(_win)) return false;
 global.__winwin_last_view = matrix_get(matrix_view);
 global.__winwin_last_proj = matrix_get(matrix_projection);
 

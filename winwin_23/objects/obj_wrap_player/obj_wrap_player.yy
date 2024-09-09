@@ -7,11 +7,14 @@
     "path": "sprites/spr_wrap_player_idle/spr_wrap_player_idle.yy",
   },
   "solid": false,
-  "visible": false,
+  "visible": true,
   "managed": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "obj_wrap_player_base",
+    "path": "objects/obj_wrap_player_base/obj_wrap_player_base.yy",
+  },
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -26,17 +29,10 @@
   "physicsShapePoints": [],
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":2,"eventType":3,"collisionObjectId":null,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,},
   ],
-  "properties": [
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"spr_idle","varType":5,"value":"spr_wrap_player_idle","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[
-        "GMSprite",
-      ],},
-    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"spr_walk","varType":5,"value":"spr_wrap_player_walk","rangeEnabled":false,"rangeMin":0.0,"rangeMax":10.0,"listItems":[],"multiselect":false,"filters":[
-        "GMSprite",
-      ],},
-  ],
+  "properties": [],
   "overriddenProperties": [],
   "parent": {
     "name": "2 - Wrap",

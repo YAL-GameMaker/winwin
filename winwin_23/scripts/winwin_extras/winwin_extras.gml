@@ -10,8 +10,10 @@ function winwin_config() constructor {
     static taskbar_button = true; // can only disable for borderless!
     static clickthrough = false;
     static noactivate = false;
+    static per_pixel_alpha = false;
     static thread = false;
     static vsync = 0;
     static close_button = 1;
+    static owner = undefined;
 }
 

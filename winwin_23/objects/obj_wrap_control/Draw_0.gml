@@ -9,7 +9,7 @@ for (var i = 0; i < n; i++) {
 	var _main = _window == winwin_main;
 	if (!_main) {
 		// (if it's the game window, we're already drawing there)
-		winwin_draw_start(_window);
+		winwin_draw_begin(_window);
 		winwin_draw_clear(#405070);
 	}
 	//

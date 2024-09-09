@@ -59,7 +59,7 @@ void winwin_draw_set(winwin* ww) {
 
 dllg bool winwin_resize_buffer(ww_ptr ww, int width, int height) {
     if (ww_target == ww) {
-        trace("[winwin_resize_buffer] Can't resize buffer while drawing to it");
+        trace("Can't resize buffer while drawing to it");
         return false;
     }
     // same size!
@@ -69,14 +69,14 @@ dllg bool winwin_resize_buffer(ww_ptr ww, int width, int height) {
     ww->rtv = nullptr;
     auto hr = ww->swapchain->ResizeBuffers(1, width, height, ww_dxgi_format, 0);
     if (hr != S_OK) {
-        trace("[winwin_resize_buffer] ResizeBuffers failed, hr=0x%x", hr);
+        trace("ResizeBuffers failed, hr=0x%x", hr);
         return false;
     }
 
     ID3D11Texture2D* pBackBuffer = nullptr;
     hr = ww->swapchain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)&pBackBuffer);
     if (pBackBuffer == nullptr) {
-        trace("[winwin_resize_buffer] GetBuffer failed, hr=0x%x", hr);
+        trace("GetBuffer failed, hr=0x%x", hr);
         return false;
     }
 
@@ -90,9 +90,9 @@ dllg bool winwin_resize_buffer(ww_ptr ww, int width, int height) {
 }
 
 /// ~
-dllg bool winwin_draw_start_raw(ww_ptr ww) {
+dllg bool winwin_draw_begin_raw(ww_ptr ww) {
     if (ww_target != nullptr) {
-        trace("[winwin_draw_start] Already drawing to a window!");
+        trace("Already drawing to a window!");
         return false;
     }
     ww_target = ww;
@@ -127,7 +127,7 @@ dllx double winwin_draw_sync_raw() {
 dllx double winwin_draw_end_raw() {
     auto ww = ww_target;
     if (ww == nullptr) {
-        trace("[winwin_draw_end] Not drawing to a window!");
+        trace("Not drawing to a window!");
         return false;
     }
     ww_target = nullptr;
