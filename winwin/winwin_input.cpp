@@ -105,10 +105,10 @@ dllg bool winwin_mouse_wheel_down(ww_ptr ww) {
 	return ww->mouse.wheel > 0;
 }
 /// @dllg:gmlheader if (argument0 == winwin_main) return 0;
-dllg bool winwin_mouse_wheel_get_delta_x(ww_ptr ww) {
+dllg int winwin_mouse_wheel_get_delta_x(ww_ptr ww) {
 	return ww->mouse.hwheel;
 }
 /// @dllg:gmlheader if (argument0 == winwin_main) return mouse_wheel_down() - mouse_wheel_up();
-dllg bool winwin_mouse_wheel_get_delta_y(ww_ptr ww) {
+dllg int winwin_mouse_wheel_get_delta_y(ww_ptr ww) {
 	return ww->mouse.wheel;
 }

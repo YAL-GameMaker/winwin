@@ -105,10 +105,10 @@ LRESULT CALLBACK winwin_wndproc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpara
             }
         }; break;
         case WM_MOUSEWHEEL: {
-            ww->mouse_next.wheel += HIWORD(wparam);
+            ww->mouse_next.wheel -= (int)GET_WHEEL_DELTA_WPARAM(wparam);
         }; break;
         case WM_MOUSEHWHEEL: {
-            ww->mouse_next.hwheel += HIWORD(wparam);
+            ww->mouse_next.hwheel += (int)GET_WHEEL_DELTA_WPARAM(wparam);
         }; break;
 
         // keyboard:

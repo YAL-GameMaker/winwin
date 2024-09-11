@@ -1,6 +1,7 @@
 {
   "resources": [
     {"id":{"name":"winwin","path":"extensions/winwin/winwin.yy",},"order":1,},
+    {"id":{"name":"winwin_extras","path":"scripts/winwin_extras/winwin_extras.yy",},"order":2,},
   ],
   "Options": [],
   "isDnDProject": false,
@@ -12,7 +13,7 @@
   },
   "RoomOrderNodes": [],
   "Folders": [
-    {"folderPath":"folders/Extensions.yy","order":23,"resourceVersion":"1.0","name":"Extensions","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/Extensions.yy","order":1,"resourceVersion":"1.0","name":"Extensions","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
@@ -20,9 +21,7 @@
   "TextureGroups": [
     {"isScaled":true,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":-1,"resourceVersion":"1.3","name":"Default","resourceType":"GMTextureGroup",},
   ],
-  "IncludedFiles": [
-    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"winwin.html","resourceType":"GMIncludedFile",},
-  ],
+  "IncludedFiles": [],
   "MetaData": {
     "IDEVersion": "2.3.2.560",
     "PackageType": "Asset",

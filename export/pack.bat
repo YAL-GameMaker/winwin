@@ -23,10 +23,16 @@ move /Y winwin-for-GMS2.zip ../winwin-for-GMS2.yymp
 cd ..
 
 :gms23only
+
 if not exist "winwin-for-GMS2.3+\extensions" mkdir "winwin-for-GMS2.3+\extensions"
-if not exist "winwin-for-GMS2.3+\datafiles" mkdir "winwin-for-GMS2.3+\datafiles"
 cmd /C copyre ..\winwin_23\extensions\winwin winwin-for-GMS2.3+\extensions\winwin
-cmd /C copyre ..\winwin_23\datafiles\winwin.html winwin-for-GMS2.3+\datafiles\winwin.html
+
+if not exist "winwin-for-GMS2.3+\scripts" mkdir "winwin-for-GMS2.3+\scripts"
+cmd /C copyre ..\winwin_23\scripts\winwin_extras winwin-for-GMS2.3+\scripts\winwin_extras
+
+::if not exist "winwin-for-GMS2.3+\datafiles" mkdir "winwin-for-GMS2.3+\datafiles"
+::cmd /C copyre ..\winwin_23\datafiles\winwin.html winwin-for-GMS2.3+\datafiles\winwin.html
+
 cd winwin-for-GMS2.3+
 cmd /C 7z a winwin.zip *
 move /Y winwin.zip ../winwin.yymps

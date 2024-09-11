@@ -52,10 +52,10 @@
     "children": [],
   },
   "RoomOrderNodes": [
+    {"roomId":{"name":"rm_basics","path":"rooms/rm_basics/rm_basics.yy",},},
     {"roomId":{"name":"rm_oob","path":"rooms/rm_oob/rm_oob.yy",},},
     {"roomId":{"name":"rm_maze","path":"rooms/rm_maze/rm_maze.yy",},},
     {"roomId":{"name":"rm_wrap","path":"rooms/rm_wrap/rm_wrap.yy",},},
-    {"roomId":{"name":"rm_basics","path":"rooms/rm_basics/rm_basics.yy",},},
   ],
   "Folders": [
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"1 - Basics","folderPath":"folders/1 - Basics.yy","order":2,},

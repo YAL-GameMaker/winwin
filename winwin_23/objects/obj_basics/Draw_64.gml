@@ -37,6 +37,13 @@ if (winwin_exists(extra)) {
 	}
 	draw_text(7, 7, s);
 	
+	//
+	var wheel_x = winwin_mouse_wheel_get_delta_x(extra) div 10;
+	var wheel_y = winwin_mouse_wheel_get_delta_y(extra) div 10;
+	if (wheel_x != 0 || wheel_y != 0) {
+		winwin_set_position(extra, winwin_get_x(extra) + wheel_x, winwin_get_y(extra) + wheel_y);
+	}
+	
 	// close button state:
 	for (var k = 0; k < 3; k++) {
 		if (winwin_keyboard_check_pressed(extra, vk_f1 + k)) {
