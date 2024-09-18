@@ -112,3 +112,39 @@ dllg int winwin_mouse_wheel_get_delta_x(ww_ptr ww) {
 dllg int winwin_mouse_wheel_get_delta_y(ww_ptr ww) {
 	return ww->mouse.wheel;
 }
+
+dllg void winwin_keyboard_clear(ww_ptr ww, int key) {
+	ww->keys.down.set(key, false);
+	ww->keys.pressed.set(key, false);
+	ww->keys.released.set(key, false);
+	//
+	ww->keys_next.down.set(key, false);
+	ww->keys_next.pressed.set(key, false);
+	ww->keys_next.released.set(key, false);
+}
+dllg void winwin_mouse_clear(ww_ptr ww, int button) {
+	ww->mouse.down.set(button, false);
+	ww->mouse.pressed.set(button, false);
+	ww->mouse.released.set(button, false);
+	//
+	ww->mouse_next.down.set(button, false);
+	ww->mouse_next.pressed.set(button, false);
+	ww->mouse_next.released.set(button, false);
+}
+dllg void winwin_io_clear(ww_ptr ww) {
+	ww->keys.down.clear();
+	ww->keys.pressed.clear();
+	ww->keys.released.clear();
+	//
+	ww->keys_next.down.clear();
+	ww->keys_next.pressed.clear();
+	ww->keys_next.released.clear();
+	//
+	ww->mouse.down.clear();
+	ww->mouse.pressed.clear();
+	ww->mouse.released.clear();
+	//
+	ww->mouse_next.down.clear();
+	ww->mouse_next.pressed.clear();
+	ww->mouse_next.released.clear();
+}

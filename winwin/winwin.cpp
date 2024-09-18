@@ -52,6 +52,8 @@ dllg ww_ptr_create winwin_init_2() {
 bool winwin_create_impl(winwin* ww, winwin_config& config, int x, int y, int width, int height) {
     DWORD dwExStyle = 0;
     DWORD dwStyle;
+    ww->kind = config.kind;
+    ww->has_shadow = config.kind != winwin_kind::borderless;
     if (config.kind == winwin_kind::borderless) {
         dwStyle = WS_POPUP;
         if (!config.taskbar_button) {

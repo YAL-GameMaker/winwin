@@ -18,6 +18,12 @@ LRESULT CALLBACK winwin_wndproc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpara
             }
         }; break;
 
+        case WM_NCCALCSIZE: if (ww->kind == winwin_kind::borderless) {
+            if (ww->has_shadow && wparam == TRUE) {
+                SetWindowLong(hwnd, DWLP_MSGRESULT, 0);
+                return TRUE;
+            } else return FALSE;
+        }; break;
         case WM_SIZE: {
             if (wparam == SIZE_MINIMIZED) {
                 ww->buf.resize_in = 0;

@@ -106,3 +106,25 @@ dllg bool winwin_enable_per_pixel_alpha(ww_ptr ww) {
 	DwmEnableBlurBehindWindow(ww->hwnd, &bb);
 	return 1;
 }
+
+dllg bool winwin_set_shadow(ww_ptr ww, bool enable) {
+	if (ww->kind != winwin_kind::borderless) return false;
+	ww->has_shadow = enable;
+	auto hwnd = ww->hwnd;
+	//
+	auto pad = enable ? 1 : 0;
+	MARGINS m{ pad, pad, pad, pad };
+	DwmExtendFrameIntoClientArea(hwnd, &m);
+	//
+	auto style = GetWindowLong(hwnd, GWL_STYLE);
+	if (enable) {
+		style |= WS_CAPTION;
+	} else style &= ~WS_CAPTION;
+	SetWindowLong(hwnd, GWL_STYLE, style);
+	//
+	SetWindowPos(hwnd, nullptr, 0, 0, 0, 0, SWP_NOZORDER | SWP_NOOWNERZORDER | SWP_NOMOVE | SWP_NOSIZE | SWP_FRAMECHANGED);
+	return true;
+}
+dllg bool winwin_get_shadow(ww_ptr ww) {
+	return ww->has_shadow;
+}

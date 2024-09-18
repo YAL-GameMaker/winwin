@@ -133,3 +133,17 @@ string_foreach(argument1, function(_char, _pos) /*=>*/ {
 	buffer_write(_buf, buffer_u32, ord(_char));
 });
 return winwin_keyboard_set_string_raw(argument0, _buf);
+
+#define winwin_minimize
+/// (ww)->
+return winwin_syscommand(argument0, 0xF020);
+
+#define winwin_minimise
+return winwin_syscommand(argument0, 0xF020);
+
+#define winwin_maximize
+/// (ww)->
+return winwin_syscommand(argument0, 0xF030);
+
+#define winwin_maximise
+return winwin_syscommand(argument0, 0xF030);

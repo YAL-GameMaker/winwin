@@ -46,6 +46,7 @@ dllg bool winwin_set_size(ww_ptr ww, int width, int height) {
     auto hwnd = ww->hwnd;
 
     auto dwStyle = GetWindowLong(hwnd, GWL_STYLE);
+    if (ww->kind == winwin_kind::borderless) dwStyle &= ~WS_CAPTION;
     auto dwExStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
     auto hasMenu = GetMenu(hwnd) != NULL;
     RECT r = { 0, 0, width, height };
@@ -60,14 +61,15 @@ dllg bool winwin_set_rectangle(ww_ptr ww, int x, int y, int width, int height) {
     auto hwnd = ww->hwnd;
 
     auto dwStyle = GetWindowLong(hwnd, GWL_STYLE);
+    if (ww->kind == winwin_kind::borderless) dwStyle &= ~WS_CAPTION;
     auto dwExStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
     auto hasMenu = GetMenu(hwnd) != NULL;
-    RECT r = { x, y, width, height };
+    RECT r = { x, y, x + width, y + height };
     if (!AdjustWindowRectEx(&r, dwStyle, hasMenu, dwExStyle)) return false;
     auto adjWidth = rect_width(r);
     auto adjHeight = rect_height(r);
 
-    return SetWindowPos(hwnd, NULL, r.left, r.top, adjWidth, adjHeight, SWP_NOZORDER | SWP_NOMOVE | SWP_NOACTIVATE);
+    return SetWindowPos(hwnd, NULL, r.left, r.top, adjWidth, adjHeight, SWP_NOZORDER | SWP_NOACTIVATE);
 }
 
 // min/max:
@@ -99,4 +101,19 @@ dllg bool window_set_max_width(ww_ptr ww, std::optional<int> max_width = {}) {
 dllg bool window_set_max_height(ww_ptr ww, std::optional<int> max_height = {}) {
     ww->maxSize.height = max_height;
     return true;
+}
+
+// state:
+dllg bool winwin_is_minimized(ww_ptr ww) {
+    return IsIconic(ww->hwnd);
+}
+dllg bool winwin_is_maximized(ww_ptr ww) {
+    WINDOWPLACEMENT wpl{};
+    wpl.length = sizeof(wpl);
+    if (!GetWindowPlacement(ww->hwnd, &wpl)) return false;
+    return wpl.showCmd == SW_MAXIMIZE;
+}
+///~
+dllg bool winwin_syscommand(ww_ptr ww, int command) {
+    return SendMessage(ww->hwnd, WM_SYSCOMMAND, command, 0);
 }

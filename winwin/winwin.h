@@ -15,6 +15,13 @@ struct wm_base_t {
 };
 extern wm_base_t ww_base;
 
+///
+enum class winwin_kind {
+    normal,
+    borderless,
+    tool,
+};
+
 struct ww_keybits {
     uint32_t segments[8]{};
     void clear() {
@@ -90,6 +97,9 @@ struct winwin {
     HWND hwnd = NULL;
     IDXGISwapChain* swapchain = nullptr;
     ID3D11RenderTargetView* rtv = nullptr;
+    //
+    winwin_kind kind = winwin_kind::normal;
+    bool has_shadow = true;
     //
     struct {
         int width, height;

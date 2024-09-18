@@ -257,6 +257,10 @@ null;
 			
 			%[ok]
 		}
+		Misc:
+		#[winwin_keyboard_clear(key)]() {
+			Clears state for a key.
+		}
 	}
 	#[Mouse](winwin_mouse) {
 		#[winwin_mouse_is_over(window)->]() {
@@ -284,6 +288,10 @@ null;
 			Returns vertical wheel delta since last frame.
 			
 			Per Microsoft documentation, 120 units should be equivalent to one wheel tick.
+		}
+		Misc:
+		#[winwin_mouse_clear(button)]() {
+			Clears state for a mouse button.
 		}
 	}
 	#[Gamepad](winwin_gamepad) {
@@ -315,6 +323,11 @@ null;
 	#[window_get_min_height(window)->]() {}
 	#[window_get_max_width(window)->]() {}
 	#[window_get_max_height(window)->]() {}
+	Misc:
+	#[winwin_is_minimized(window)->]() {}
+	#[winwin_is_maximized(window)->]() {}
+	#[winwin_minimize()]() {}
+	#[winwin_maximize()]() {}
 }
 #[Properties](winwin_props) {
 	#[winwin_set_caption(window, caption)->]() {
@@ -538,6 +551,12 @@ null;
 			with `bm_add` blend mode or any rectangle with `gpu_set_colourwriteenable`
 			(or `draw_set_colour_write_enable` for GMS1) of `(0, 0, 0, 1)`.
 		}
+	}
+	#[winwin_set_shadow(window, enable)]() {
+		Enables/disables shadow for a borderless window (default is false).
+	}
+	#[winwin_get_shadow(window)->]() {
+		Returns whether shadow is enabled for borderless window.
 	}
 }
 #[Cursors](winwin_cursor) {

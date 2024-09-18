@@ -1,12 +1,6 @@
 #pragma once
 #include "winwin.h"
 
-///
-enum class winwin_kind {
-    normal,
-    borderless,
-    tool,
-};
 struct winwin_config {
     const char* caption;
     winwin_kind kind;
