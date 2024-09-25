@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "sfmt",
-  "isDnD": false,
-  "isCompatibility": false,
-  "parent": {
-    "name": "Shared",
-    "path": "folders/Shared.yy",
+  "$GMScript":"v1",
+  "%Name":"sfmt",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"sfmt",
+  "parent":{
+    "name":"Shared",
+    "path":"folders/Shared.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

@@ -1,12 +1,13 @@
 {
-  "isDnD": false,
-  "isCompatibility": false,
-  "parent": {
-    "name": "Extensions",
-    "path": "folders/Extensions.yy",
+  "$GMScript":"v1",
+  "%Name":"winwin_extras",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"winwin_extras",
+  "parent":{
+    "name":"Extensions",
+    "path":"folders/Extensions.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "winwin_extras",
-  "tags": [],
-  "resourceType": "GMScript",
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }
