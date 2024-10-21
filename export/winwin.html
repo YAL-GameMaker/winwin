@@ -648,7 +648,7 @@ Click on sections to expand/collapse them.<br>Quick display controls:
 		matrices / clip rectangles / etc.
 	</p></article></section></article></section><section><header id="winwin_input"><a href="#winwin_input" title="(permalink)">Input</a></header><article><a class="sticky-side" href="#winwin_input" title="Input"><span>Input</span></a><p>
 	To be fair, you <i>could</i> just use keyboard_check_direct as a replacement for most of these, but where's the fun in that?
-	</p><section class="empty"><header id="winwin_keyboard"><a href="#winwin_keyboard" title="(permalink)">Keyboard</a></header><article><a class="sticky-side" href="#winwin_keyboard" title="Keyboard"><span>Keyboard</span></a><section><header id="winwin_keyboard_check"><a href="#winwin_keyboard_check" title="(permalink)">winwin_keyboard_check(window, key)&#8203;<span class="ret-arrow">&#10140;</span></a></header></section><section class="empty"><header id="winwin_keyboard_check_pressed"><a href="#winwin_keyboard_check_pressed" title="(permalink)">winwin_keyboard_check_pressed(window, key)&#8203;<span class="ret-arrow">&#10140;</span></a></header></section><section class="empty"><header id="winwin_keyboard_check_released"><a href="#winwin_keyboard_check_released" title="(permalink)">winwin_keyboard_check_released(window, key)&#8203;<span class="ret-arrow">&#10140;</span></a></header></section><p>
+	</p><section><header id="winwin_keyboard"><a href="#winwin_keyboard" title="(permalink)">Keyboard</a></header><article><a class="sticky-side" href="#winwin_keyboard" title="Keyboard"><span>Keyboard</span></a><section class="empty"><header id="winwin_keyboard_check"><a href="#winwin_keyboard_check" title="(permalink)">winwin_keyboard_check(window, key)&#8203;<span class="ret-arrow">&#10140;</span></a></header></section><section class="empty"><header id="winwin_keyboard_check_pressed"><a href="#winwin_keyboard_check_pressed" title="(permalink)">winwin_keyboard_check_pressed(window, key)&#8203;<span class="ret-arrow">&#10140;</span></a></header></section><section class="empty"><header id="winwin_keyboard_check_released"><a href="#winwin_keyboard_check_released" title="(permalink)">winwin_keyboard_check_released(window, key)&#8203;<span class="ret-arrow">&#10140;</span></a></header></section><p>
 		Text entry:
 		</p><section><header id="winwin_keyboard_get_string"><a href="#winwin_keyboard_get_string" title="(permalink)">winwin_keyboard_get_string(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 			Like <code>keyboard_string</code>, but for additional windows.
@@ -802,16 +802,9 @@ Click on sections to expand/collapse them.<br>Quick display controls:
 	</p></article></section><section><header id="winwin_get_focus"><a href="#winwin_get_focus" title="(permalink)">winwin_get_focus()&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Returns the window that currently has keyboard focus,
 		or <code>undefined</code> if there's none or it's not part of the current application.
-		</p><pre class="error">hscript error!
-{ fileName =&gt; hscript, lineNumber =&gt; 9 } hscript:9: Invalid number of parameters. Got 1, required 2 for function 'msdn'
-Called from hscript/Interp.hx line 415
-Called from a C function
-Called from hscript/Interp.hx line 684
-Called from hscript/Interp.hx line 381
-Called from hscript/Interp.hx line 259
-Called from hscript/Interp.hx line 258
-Called from hscript/Interp.hx line 254
-Called from dmd/tags/TagExec.hx line 76</pre></article></section><section><header id="winwin_set_focus"><a href="#winwin_set_focus" title="(permalink)">winwin_set_focus(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
+		</p><p>
+		<strong>MSDN:</strong> <a rel="nofollow" href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-GetFocus">GetFocus</a>
+	</p></article></section><section><header id="winwin_set_focus"><a href="#winwin_set_focus" title="(permalink)">winwin_set_focus(window)&#8203;<span class="ret-arrow">&#10140;</span></a></header><article><p>
 		Forces keyboard focus upon a window.
 		</p><p>
 		Returns whether successful.

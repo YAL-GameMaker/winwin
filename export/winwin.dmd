@@ -17,7 +17,12 @@ Returns whether successful.
 ```
 ```exec
 function msdn(name, cat) {
-	if (cat == null) cat = "winuser";
+	return render("*MSDN:* [" + name
+		+ "](!https://learn.microsoft.com/en-us/windows/win32/api/" + cat + "/"
+		+ "nf-" + cat + "-" + name + ")");
+}
+function msdnu(name) {
+	var cat = "winuser";
 	return render("*MSDN:* [" + name
 		+ "](!https://learn.microsoft.com/en-us/windows/win32/api/" + cat + "/"
 		+ "nf-" + cat + "-" + name + ")");
@@ -459,7 +464,7 @@ null;
 		Returns the window that currently has keyboard focus,
 		or `undefined` if there's none or it's not part of the current application.
 		
-		${msdn("GetFocus")}
+		${msdnu("GetFocus")}
 	}
 	#[winwin_set_focus(window)->]() {
 		Forces keyboard focus upon a window.
