@@ -1,9 +1,0 @@
-{
-  "extensionId": {
-    "name": "winmenu",
-    "path": "extensions/winmenu/winmenu.yy"
-  },
-  "resourceVersion": "1.0",
-  "resourceType": "GMExtensionConfigSet",
-  "configurables": null
-}

@@ -1,13 +1,11 @@
 {
-  "$GMScript":"v1",
-  "%Name":"trace",
-  "isCompatibility":false,
-  "isDnD":false,
-  "name":"trace",
-  "parent":{
-    "name":"Shared",
-    "path":"folders/Shared.yy",
+  "resourceType": "GMScript",
+  "resourceVersion": "1.0",
+  "name": "trace",
+  "isDnD": false,
+  "isCompatibility": false,
+  "parent": {
+    "name": "Shared",
+    "path": "folders/Shared.yy",
   },
-  "resourceType":"GMScript",
-  "resourceVersion":"2.0",
 }

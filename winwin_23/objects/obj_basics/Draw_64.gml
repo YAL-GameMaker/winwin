@@ -6,7 +6,7 @@ draw_set_alpha(1);
 draw_set_color(c_white);
 
 if (winwin_exists(extra)) {
-	var ks = winwin_keyboard_string_get(extra);
+	var ks = winwin_keyboard_get_string(extra);
 	if (ks != extra.last_caption) {
 		winwin_set_caption(extra, ks);
 		extra.last_caption = ks;
@@ -26,7 +26,7 @@ if (winwin_exists(extra)) {
 	// info:
 	var s = sfmt("Size: %x%", _width, _height);
 	s += "\nTry keyboard, mouse here";
-	for (var k = 0; k < 256; k++) {
+	for (var k = 2; k < 256; k++) {
 		if (winwin_keyboard_check(extra, k)) s += "\nHolding key " + string(k);
 		if (winwin_keyboard_check_pressed(extra, k)) {
 			ds_list_insert(extra.key_list, 0, k);
