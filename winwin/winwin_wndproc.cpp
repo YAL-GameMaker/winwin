@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "winwin.h"
 #include <windowsx.h>
+//#include "WM_NAME.h"
 #define __RELFILE__ "winwin_wndproc"
 
 LRESULT CALLBACK winwin_wndproc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
@@ -9,20 +10,37 @@ LRESULT CALLBACK winwin_wndproc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpara
         return DefWindowProc(hwnd, msg, wparam, lparam);
     }
     ww->mt.enter();
+    #define mt_return(value) { ww->mt.leave(); return value; }
+    #if 0
+    bool print = false;
+    switch (msg) {
+        case WM_NCHITTEST:
+        case WM_MOUSEMOVE:
+        case WM_NCMOUSEMOVE:
+        case WM_SETCURSOR:
+            break;
+        default:
+            print = true;
+            auto name = WM_NAME(msg);
+            if (name == nullptr) name = "?";
+            trace("msg=%s (%x) wp=%llx lp=%llx", name, msg, wparam, lparam);
+            break;
+    }
+    #endif
+    ww->mt.leave();
     switch (msg) {
         case WM_DESTROY: {
             if (ww->mt.section != nullptr) {
                 PostQuitMessage(0);
-                ww->mt.leave();
-                return 0;
+                mt_return(0);
             }
         }; break;
 
         case WM_NCCALCSIZE: if (ww->kind == winwin_kind::borderless) {
             if (ww->has_shadow && wparam == TRUE) {
                 SetWindowLong(hwnd, DWLP_MSGRESULT, 0);
-                return TRUE;
-            } else return FALSE;
+                mt_return(TRUE);
+            } else mt_return(FALSE);
         }; break;
         case WM_SIZE: {
             if (wparam == SIZE_MINIMIZED) {
@@ -55,8 +73,7 @@ LRESULT CALLBACK winwin_wndproc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpara
         case WM_SYSCOMMAND: {
             if (wparam == SC_CLOSE && ww->close_button == 2) {
                 ShowWindow(hwnd, SW_HIDE);
-                ww->mt.leave();
-                return TRUE;
+                mt_return(0);
             }
         }; break;
         

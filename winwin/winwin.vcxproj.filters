@@ -42,6 +42,9 @@
     <ClInclude Include="winwin_config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="WM_NAME.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

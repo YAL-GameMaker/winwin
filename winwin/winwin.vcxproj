@@ -186,6 +186,7 @@
     <ClInclude Include="winwin.h" />
     <ClInclude Include="winwin_auto.h" />
     <ClInclude Include="winwin_config.h" />
+    <ClInclude Include="WM_NAME.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="autogen.cpp" />
