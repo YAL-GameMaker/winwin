@@ -1,15 +1,15 @@
 #include "stdafx.h"
 #include "winwin.h"
 
-/// @dllg:gmlheader if (argument0 == winwin_main) return keyboard_check(argument1);
+/** @dllg:gmlheader if (argument0 == winwin_main) return keyboard_check(argument1); */
 dllg bool winwin_keyboard_check(ww_ptr ww, int key) {
 	return ww->keys.down.get(key);
 }
-/// @dllg:gmlheader if (argument0 == winwin_main) return keyboard_check_pressed(argument1);
+/** @dllg:gmlheader if (argument0 == winwin_main) return keyboard_check_pressed(argument1); */
 dllg bool winwin_keyboard_check_pressed(ww_ptr ww, int key) {
 	return ww->keys.pressed.get(key);
 }
-/// @dllg:gmlheader if (argument0 == winwin_main) return keyboard_check_released(argument1);
+/** @dllg:gmlheader if (argument0 == winwin_main) return keyboard_check_released(argument1); */
 dllg bool winwin_keyboard_check_released(ww_ptr ww, int key) {
 	return ww->keys.released.get(key);
 }
@@ -26,8 +26,8 @@ void winwin_keyboard_string_proc(ww_ptr ww, uint32_t c) {
 		wks.data[wks.size++] = c;
 	}
 }
-/// @dllg:gmlheader if (argument0 == winwin_main) return keyboard_string;
-dllg const char* winwin_keyboard_string_get(ww_ptr ww) {
+/** @dllg:gmlheader if (argument0 == winwin_main) return keyboard_string; */
+dllg const char* winwin_keyboard_get_string(ww_ptr ww) {
 	static std::vector<uint8_t> result{};
 	auto& wks = ww->keyboard_string;
 	auto size = wks.size;
@@ -74,41 +74,41 @@ dllg bool winwin_mouse_is_over(ww_ptr ww) {
 	return ww->mouse_over;
 }
 
-/// @dllg:gmlheader if (argument0 == winwin_main) return window_mouse_get_x();
+/** @dllg:gmlheader if (argument0 == winwin_main) return window_mouse_get_x(); */
 dllg int winwin_mouse_get_x(ww_ptr ww) {
 	return ww->mouse_x;
 }
-/// @dllg:gmlheader if (argument0 == winwin_main) return window_mouse_get_y();
+/** @dllg:gmlheader if (argument0 == winwin_main) return window_mouse_get_y(); */
 dllg int winwin_mouse_get_y(ww_ptr ww) {
 	return ww->mouse_y;
 }
 
-/// @dllg:gmlheader if (argument0 == winwin_main) return mouse_check_button(argument1);
+/** @dllg:gmlheader if (argument0 == winwin_main) return mouse_check_button(argument1); */
 dllg bool winwin_mouse_check_button(ww_ptr ww, int button) {
 	return ww->mouse.down.get(button);
 }
-/// @dllg:gmlheader if (argument0 == winwin_main) return mouse_check_button_pressed(argument1);
+/** @dllg:gmlheader if (argument0 == winwin_main) return mouse_check_button_pressed(argument1); */
 dllg bool winwin_mouse_check_button_pressed(ww_ptr ww, int button) {
 	return ww->mouse.pressed.get(button);
 }
-/// @dllg:gmlheader if (argument0 == winwin_main) return mouse_check_button_released(argument1);
+/** @dllg:gmlheader if (argument0 == winwin_main) return mouse_check_button_released(argument1); */
 dllg bool winwin_mouse_check_button_released(ww_ptr ww, int button) {
 	return ww->mouse.released.get(button);
 }
 
-/// @dllg:gmlheader if (argument0 == winwin_main) return mouse_wheel_up();
+/** @dllg:gmlheader if (argument0 == winwin_main) return mouse_wheel_up(); */
 dllg bool winwin_mouse_wheel_up(ww_ptr ww) {
 	return ww->mouse.wheel < 0;
 }
-/// @dllg:gmlheader if (argument0 == winwin_main) return mouse_wheel_down();
+/** @dllg:gmlheader if (argument0 == winwin_main) return mouse_wheel_down(); */
 dllg bool winwin_mouse_wheel_down(ww_ptr ww) {
 	return ww->mouse.wheel > 0;
 }
-/// @dllg:gmlheader if (argument0 == winwin_main) return 0;
+/** @dllg:gmlheader if (argument0 == winwin_main) return 0; */
 dllg int winwin_mouse_wheel_get_delta_x(ww_ptr ww) {
 	return ww->mouse.hwheel;
 }
-/// @dllg:gmlheader if (argument0 == winwin_main) return mouse_wheel_down() - mouse_wheel_up();
+/** @dllg:gmlheader if (argument0 == winwin_main) return mouse_wheel_down() - mouse_wheel_up(); */
 dllg int winwin_mouse_wheel_get_delta_y(ww_ptr ww) {
 	return ww->mouse.wheel;
 }
