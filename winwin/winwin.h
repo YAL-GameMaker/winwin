@@ -30,8 +30,16 @@ struct ww_keybits {
     void assign(ww_keybits& other) {
         memcpy(segments, other.segments, sizeof(segments));
     }
+    bool getAny() {
+        for (auto i = 0u; i < std::size(segments); i++) {
+            if (segments[i] != 0) return true;
+        }
+        return false;
+    }
     bool get(int i) {
         if (i < 0 || i >= 256) return false;
+        if (i == 0) return !getAny();
+        if (i == 1) return getAny();
         return ((segments[i >> 5] >> (i & 31)) & 1) != 0;
     }
     bool set(int i, bool val) {
