@@ -106,6 +106,7 @@ bool winwin_create_impl(winwin* ww, winwin_config& config, int x, int y, int wid
     scd.SampleDesc.Count = 1;
     scd.Windowed = TRUE;
     scd.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
+    scd.Flags = 0x0;
 
     IDXGIDevice* dxgiDevice = nullptr;
     device->QueryInterface(__uuidof(IDXGIDevice), (void**)&dxgiDevice);
@@ -117,6 +118,8 @@ bool winwin_create_impl(winwin* ww, winwin_config& config, int x, int y, int wid
     adapter->GetParent(__uuidof(IDXGIFactory), (void**)&factory);
 
     factory->CreateSwapChain(device, &scd, &ww->swapchain);
+    // not having DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH is not enough, you have to do this too:
+    factory->MakeWindowAssociation(ww->hwnd, DXGI_MWA_NO_ALT_ENTER);
 
     dxgiDevice->Release();
     adapter->Release();
