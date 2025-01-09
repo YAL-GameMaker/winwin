@@ -151,6 +151,14 @@
             1,
             2,
           ],"documentation":"","externalName":"winwin_keyboard_set_string_raw_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_get_max_string_length_raw","argCount":2,"args":[
+            1,
+            2,
+          ],"documentation":"","externalName":"winwin_keyboard_get_max_string_length_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_set_max_string_length_raw","argCount":2,"args":[
+            1,
+            2,
+          ],"documentation":"","externalName":"winwin_keyboard_set_max_string_length_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_is_over_raw","argCount":2,"args":[
             1,
             2,
@@ -546,6 +554,13 @@
             2,
             2,
           ],"documentation":"","externalName":"winwin_keyboard_set_string_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_get_max_string_length","argCount":1,"args":[
+            2,
+          ],"documentation":"","externalName":"winwin_keyboard_get_max_string_length","help":"winwin_keyboard_get_max_string_length(ww)->int","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_set_max_string_length","argCount":2,"args":[
+            2,
+            2,
+          ],"documentation":"","externalName":"winwin_keyboard_set_max_string_length","help":"winwin_keyboard_set_max_string_length(ww, new_capacity:int)->int","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_is_over","argCount":1,"args":[
             2,
           ],"documentation":"","externalName":"winwin_mouse_is_over","help":"winwin_mouse_is_over(ww)->bool","hidden":false,"kind":2,"returnType":2,},

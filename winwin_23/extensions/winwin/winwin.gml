@@ -129,7 +129,7 @@ if (argument0 == winwin_main) {
 }
 var _buf = winwin_prepare_buffer(4);
 buffer_seek(_buf, buffer_seek_start, 0);
-string_foreach(argument1, function(_char, _pos) /*=>*/ {
+with ({ _buf: _buf }) string_foreach(argument1, function(_char, _pos) /*=>*/ {
 	buffer_write(_buf, buffer_u32, ord(_char));
 });
 return winwin_keyboard_set_string_raw(argument0, _buf);

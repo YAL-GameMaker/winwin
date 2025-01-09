@@ -67,6 +67,18 @@ dllg int winwin_keyboard_set_string_raw(ww_ptr ww, gml_buffer buf) {
 	memcpy_arr(wks.data, (uint32_t*)buf.data(), n);
 	return n;
 }
+/** @dllg:gmlheader if (argument0 == winwin_main) return 1024; */
+dllg int winwin_keyboard_get_max_string_length(ww_ptr ww) {
+	return ww->keyboard_string.capacity;
+}
+/** @dllg:gmlheader if (argument0 == winwin_main) return false; */
+dllg int winwin_keyboard_set_max_string_length(ww_ptr ww, int new_capacity) {
+	auto& wks = ww->keyboard_string;
+	wks.capacity = new_capacity;
+	wks.data = realloc_arr(wks.data, new_capacity);
+	if (wks.size > wks.capacity) wks.size = wks.capacity;
+	return true;
+}
 
 // // // mouse
 
