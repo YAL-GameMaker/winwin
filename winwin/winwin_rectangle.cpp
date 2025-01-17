@@ -73,32 +73,32 @@ dllg bool winwin_set_rectangle(ww_ptr ww, int x, int y, int width, int height) {
 }
 
 // min/max:
-dllg std::optional<int> window_get_min_width(ww_ptr ww) {
+dllg std::optional<int> winwin_get_min_width(ww_ptr ww) {
     return ww->minSize.width;
 }
-dllg std::optional<int> window_get_min_height(ww_ptr ww) {
+dllg std::optional<int> winwin_get_min_height(ww_ptr ww) {
     return ww->minSize.height;
 }
-dllg std::optional<int> window_get_max_width(ww_ptr ww) {
+dllg std::optional<int> winwin_get_max_width(ww_ptr ww) {
     return ww->maxSize.width;
 }
-dllg std::optional<int> window_get_max_height(ww_ptr ww) {
+dllg std::optional<int> winwin_get_max_height(ww_ptr ww) {
     return ww->maxSize.height;
 }
 
-dllg bool window_set_min_width(ww_ptr ww, std::optional<int> min_width = {}) {
+dllg bool winwin_set_min_width(ww_ptr ww, std::optional<int> min_width = {}) {
     ww->minSize.width = min_width;
     return true;
 }
-dllg bool window_set_min_height(ww_ptr ww, std::optional<int> min_height = {}) {
+dllg bool winwin_set_min_height(ww_ptr ww, std::optional<int> min_height = {}) {
     ww->minSize.height = min_height;
     return true;
 }
-dllg bool window_set_max_width(ww_ptr ww, std::optional<int> max_width = {}) {
+dllg bool winwin_set_max_width(ww_ptr ww, std::optional<int> max_width = {}) {
     ww->maxSize.width = max_width;
     return true;
 }
-dllg bool window_set_max_height(ww_ptr ww, std::optional<int> max_height = {}) {
+dllg bool winwin_set_max_height(ww_ptr ww, std::optional<int> max_height = {}) {
     ww->maxSize.height = max_height;
     return true;
 }

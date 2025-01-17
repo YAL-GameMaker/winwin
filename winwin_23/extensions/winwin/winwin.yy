@@ -284,38 +284,38 @@
             1,
             2,
           ],"documentation":"","externalName":"winwin_set_rectangle_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"window_get_min_width_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_min_width_raw","argCount":2,"args":[
             1,
             2,
-          ],"documentation":"","externalName":"window_get_min_width_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"window_get_min_height_raw","argCount":2,"args":[
+          ],"documentation":"","externalName":"winwin_get_min_width_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_min_height_raw","argCount":2,"args":[
             1,
             2,
-          ],"documentation":"","externalName":"window_get_min_height_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"window_get_max_width_raw","argCount":2,"args":[
+          ],"documentation":"","externalName":"winwin_get_min_height_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_max_width_raw","argCount":2,"args":[
             1,
             2,
-          ],"documentation":"","externalName":"window_get_max_width_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"window_get_max_height_raw","argCount":2,"args":[
+          ],"documentation":"","externalName":"winwin_get_max_width_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_max_height_raw","argCount":2,"args":[
             1,
             2,
-          ],"documentation":"","externalName":"window_get_max_height_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"window_set_min_width_raw","argCount":2,"args":[
+          ],"documentation":"","externalName":"winwin_get_max_height_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_min_width_raw","argCount":2,"args":[
             1,
             2,
-          ],"documentation":"","externalName":"window_set_min_width_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"window_set_min_height_raw","argCount":2,"args":[
+          ],"documentation":"","externalName":"winwin_set_min_width_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_min_height_raw","argCount":2,"args":[
             1,
             2,
-          ],"documentation":"","externalName":"window_set_min_height_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"window_set_max_width_raw","argCount":2,"args":[
+          ],"documentation":"","externalName":"winwin_set_min_height_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_max_width_raw","argCount":2,"args":[
             1,
             2,
-          ],"documentation":"","externalName":"window_set_max_width_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"window_set_max_height_raw","argCount":2,"args":[
+          ],"documentation":"","externalName":"winwin_set_max_width_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_max_height_raw","argCount":2,"args":[
             1,
             2,
-          ],"documentation":"","externalName":"window_set_max_height_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+          ],"documentation":"","externalName":"winwin_set_max_height_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_is_minimized_raw","argCount":2,"args":[
             1,
             2,
@@ -667,22 +667,22 @@
             2,
             2,
           ],"documentation":"","externalName":"winwin_set_rectangle","help":"winwin_set_rectangle(ww, x:int, y:int, width:int, height:int)->bool","hidden":false,"kind":2,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"window_get_min_width","argCount":1,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_min_width","argCount":1,"args":[
             2,
-          ],"documentation":"","externalName":"window_get_min_width","help":"window_get_min_width(ww)->int?","hidden":false,"kind":2,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"window_get_min_height","argCount":1,"args":[
+          ],"documentation":"","externalName":"winwin_get_min_width","help":"winwin_get_min_width(ww)->int?","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_min_height","argCount":1,"args":[
             2,
-          ],"documentation":"","externalName":"window_get_min_height","help":"window_get_min_height(ww)->int?","hidden":false,"kind":2,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"window_get_max_width","argCount":1,"args":[
+          ],"documentation":"","externalName":"winwin_get_min_height","help":"winwin_get_min_height(ww)->int?","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_max_width","argCount":1,"args":[
             2,
-          ],"documentation":"","externalName":"window_get_max_width","help":"window_get_max_width(ww)->int?","hidden":false,"kind":2,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"window_get_max_height","argCount":1,"args":[
+          ],"documentation":"","externalName":"winwin_get_max_width","help":"winwin_get_max_width(ww)->int?","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_max_height","argCount":1,"args":[
             2,
-          ],"documentation":"","externalName":"window_get_max_height","help":"window_get_max_height(ww)->int?","hidden":false,"kind":2,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"window_set_min_width","argCount":-1,"args":[],"documentation":"","externalName":"window_set_min_width","help":"window_set_min_width(ww, ?min_width:int?)->bool","hidden":false,"kind":2,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"window_set_min_height","argCount":-1,"args":[],"documentation":"","externalName":"window_set_min_height","help":"window_set_min_height(ww, ?min_height:int?)->bool","hidden":false,"kind":2,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"window_set_max_width","argCount":-1,"args":[],"documentation":"","externalName":"window_set_max_width","help":"window_set_max_width(ww, ?max_width:int?)->bool","hidden":false,"kind":2,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"window_set_max_height","argCount":-1,"args":[],"documentation":"","externalName":"window_set_max_height","help":"window_set_max_height(ww, ?max_height:int?)->bool","hidden":false,"kind":2,"returnType":2,},
+          ],"documentation":"","externalName":"winwin_get_max_height","help":"winwin_get_max_height(ww)->int?","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_min_width","argCount":-1,"args":[],"documentation":"","externalName":"winwin_set_min_width","help":"winwin_set_min_width(ww, ?min_width:int?)->bool","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_min_height","argCount":-1,"args":[],"documentation":"","externalName":"winwin_set_min_height","help":"winwin_set_min_height(ww, ?min_height:int?)->bool","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_max_width","argCount":-1,"args":[],"documentation":"","externalName":"winwin_set_max_width","help":"winwin_set_max_width(ww, ?max_width:int?)->bool","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_max_height","argCount":-1,"args":[],"documentation":"","externalName":"winwin_set_max_height","help":"winwin_set_max_height(ww, ?max_height:int?)->bool","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_is_minimized","argCount":1,"args":[
             2,
           ],"documentation":"","externalName":"winwin_is_minimized","help":"winwin_is_minimized(ww)->bool","hidden":false,"kind":2,"returnType":2,},
