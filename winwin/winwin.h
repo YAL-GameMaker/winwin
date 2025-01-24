@@ -121,6 +121,7 @@ struct winwin {
     HCURSOR cursor = NULL;
     int mouse_x = 0, mouse_y = 0;
     ww_mousebits_tri mouse{}, mouse_next{};
+    int8_t mouse_buttons_held = 0;
     bool mouse_tracking = false;
     bool mouse_over = false;
     //

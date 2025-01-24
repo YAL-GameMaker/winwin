@@ -113,6 +113,7 @@ LRESULT CALLBACK winwin_wndproc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpara
                 ww->mouse_next.down.set(flag, true);
                 ww->mouse_next.pressed.set(flag, true);
             }
+            if (++ww->mouse_buttons_held == 1) SetCapture(ww->hwnd);
         }; break;
         case WM_LBUTTONUP: case WM_RBUTTONUP: case WM_MBUTTONUP:
         case WM_NCLBUTTONUP: case WM_NCRBUTTONUP: case WM_NCMBUTTONUP: {
@@ -126,6 +127,7 @@ LRESULT CALLBACK winwin_wndproc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpara
                 ww->mouse_next.down.set(flag, false);
                 ww->mouse_next.released.set(flag, true);
             }
+            if (--ww->mouse_buttons_held <= 0) ReleaseCapture();
         }; break;
         case WM_MOUSEWHEEL: {
             ww->mouse_next.wheel -= (int)GET_WHEEL_DELTA_WPARAM(wparam);
