@@ -1,0 +1,1 @@
+if (grid_sprite != -1) draw_sprite(grid_sprite, 0, 0, 0);

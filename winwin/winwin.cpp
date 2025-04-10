@@ -241,6 +241,8 @@ winwin::~winwin() {
         mt.thread = NULL;
     }
     //
+    this->follow_mouse.stop();
+    //
     this->rtv->Release();
     this->swapchain->Release();
     //

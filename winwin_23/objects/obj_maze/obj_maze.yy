@@ -30,7 +30,7 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "3  - Maze debug",
-    "path": "folders/3  - Maze debug.yy",
+    "name": "3 - Maze debug",
+    "path": "folders/3 - Maze debug.yy",
   },
 }

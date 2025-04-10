@@ -147,6 +147,24 @@ struct winwin {
             if (section) LeaveCriticalSection(section);
         }
     } mt;
+    struct {
+        HANDLE thread = NULL;
+        void* param = NULL;
+        // 0: none, 1: simple, 2: snapped
+        int8_t kind = 0;
+        inline bool stop() {
+            if (this->thread) {
+                CloseHandle(this->thread);
+                this->thread = nullptr;
+                if (this->param) {
+                    delete this->param;
+                    this->param = nullptr;
+                }
+                this->kind = 0;
+                return true;
+            } else return false;
+        }
+    } follow_mouse;
     //
     ~winwin();
 };

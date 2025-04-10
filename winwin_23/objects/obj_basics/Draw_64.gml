@@ -70,6 +70,9 @@ if (winwin_exists(extra)) {
 	
 	draw_text(5, 5, "Hello! " + string(current_time div 1000)
 		+ "\nFPS: " + string(fps) + "/" + string(room_speed));
+	if (mouse_check_button(mb_left)) {
+		draw_circle(window_mouse_get_x(), window_mouse_get_y(), 10, true);
+	}
 } else {
 	draw_text(5, 5, "No window!");
 }
