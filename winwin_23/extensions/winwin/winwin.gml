@@ -143,9 +143,7 @@ if (argument0 == winwin_main) {
 }
 var _buf = winwin_prepare_buffer_alt(4);
 buffer_seek(_buf, buffer_seek_start, 0);
-with ({ _buf: _buf }) string_foreach(argument1, function(_char, _pos) /*=>*/ {
-	buffer_write(_buf, buffer_u32, ord(_char));
-});
+winwin_buffer_write_string_u32(_buf, argument1);
 return winwin_keyboard_set_string_raw(argument0, _buf);
 
 #define winwin_minimize
