@@ -70,6 +70,8 @@ LRESULT CALLBACK winwin_wndproc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpara
             }
         }; break;
 
+        case WM_ERASEBKGND: return 1;
+
         case WM_SYSCOMMAND: {
             if (wparam == SC_CLOSE && ww->close_button == 2) {
                 ShowWindow(hwnd, SW_HIDE);
