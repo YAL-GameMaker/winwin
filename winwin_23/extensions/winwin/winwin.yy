@@ -127,21 +127,6 @@
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_focus_raw","argCount":1,"args":[
             1,
           ],"documentation":"","externalName":"winwin_set_focus_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_follow_mouse_start_raw","argCount":4,"args":[
-            1,
-            2,
-            2,
-            2,
-          ],"documentation":"","externalName":"winwin_follow_mouse_start_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_follow_mouse_start_snapped_raw","argCount":4,"args":[
-            1,
-            2,
-            1,
-            2,
-          ],"documentation":"","externalName":"winwin_follow_mouse_start_snapped_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_follow_mouse_end_raw","argCount":1,"args":[
-            1,
-          ],"documentation":"","externalName":"winwin_follow_mouse_end_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_check_raw","argCount":2,"args":[
             1,
             2,
@@ -545,11 +530,6 @@
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_focus","argCount":1,"args":[
             2,
           ],"documentation":"","externalName":"winwin_set_focus","help":"winwin_set_focus(ww)->bool","hidden":false,"kind":2,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_follow_mouse_start","argCount":-1,"args":[],"documentation":"","externalName":"winwin_follow_mouse_start","help":"winwin_follow_mouse_start(ww, xoffset:int, yoffset:int, sleep_time:int = 4)->int","hidden":false,"kind":2,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_follow_mouse_start_snapped","argCount":-1,"args":[],"documentation":"","externalName":"winwin_follow_mouse_start_snapped","help":"winwin_follow_mouse_start_snapped(ww, xstart:int, ystart:int, xsnap:number, ysnap:number, xoffset:int, yoffset:int, sleep_time:int = 4)->int","hidden":false,"kind":2,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_follow_mouse_end","argCount":1,"args":[
-            2,
-          ],"documentation":"","externalName":"winwin_follow_mouse_end","help":"winwin_follow_mouse_end(ww)->bool","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_check","argCount":2,"args":[
             2,
             2,
