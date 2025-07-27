@@ -39,6 +39,20 @@ if (_buf == undefined) {
 buffer_seek(_buf, buffer_seek_start, 0);
 return _buf;
 
+#define winwin_prepare_buffer_alt
+/// (size:int)->buffer~
+var _size = argument0;
+gml_pragma("global", "global.__winwin_buffer_alt = undefined");
+var _buf = global.__winwin_buffer_alt;
+if (_buf == undefined) {
+    _buf = buffer_create(_size, buffer_grow, 1);
+    global.__winwin_buffer_alt = _buf;
+} else if (buffer_get_size(_buf) < _size) {
+    buffer_resize(_buf, _size);
+}
+buffer_seek(_buf, buffer_seek_start, 0);
+return _buf;
+
 #define winwin_exists
 /// (ww)->
 var _ww = argument0;
@@ -127,7 +141,7 @@ if (argument0 == winwin_main) {
 	keyboard_string = argument1;
 	return true;
 }
-var _buf = winwin_prepare_buffer(4);
+var _buf = winwin_prepare_buffer_alt(4);
 buffer_seek(_buf, buffer_seek_start, 0);
 with ({ _buf: _buf }) string_foreach(argument1, function(_char, _pos) /*=>*/ {
 	buffer_write(_buf, buffer_u32, ord(_char));

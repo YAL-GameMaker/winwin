@@ -65,6 +65,7 @@ dllg int winwin_keyboard_set_string_raw(ww_ptr ww, gml_buffer buf) {
 	auto n = buf.tell() >> 2;
 	if (n > wks.capacity) n = wks.capacity;
 	memcpy_arr(wks.data, (uint32_t*)buf.data(), n);
+	wks.size = n;
 	return n;
 }
 /** @dllg:gmlheader if (argument0 == winwin_main) return 1024; */
