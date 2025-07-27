@@ -35,17 +35,18 @@
             1,
             2,
           ],"documentation":"","externalName":"winwin_init_2_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_create_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_create_raw","argCount":4,"args":[
             1,
+            2,
+            2,
             2,
           ],"documentation":"","externalName":"winwin_create_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_destroy_raw","argCount":2,"args":[
             1,
             2,
           ],"documentation":"","externalName":"winwin_destroy_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_topmost_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_topmost_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_get_topmost_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_topmost_raw","argCount":2,"args":[
             1,
@@ -53,84 +54,94 @@
           ],"documentation":"","externalName":"winwin_set_topmost_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_order_after_raw","argCount":2,"args":[
             1,
-            2,
+            1,
           ],"documentation":"","externalName":"winwin_order_after_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_order_front_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_order_front_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_order_front_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_order_back_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_order_back_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_order_back_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_taskbar_button_visible_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_taskbar_button_visible_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_get_taskbar_button_visible_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_taskbar_button_visible_raw","argCount":2,"args":[
             1,
             2,
           ],"documentation":"","externalName":"winwin_set_taskbar_button_visible_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_clickthrough_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_clickthrough_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_get_clickthrough_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_clickthrough_raw","argCount":2,"args":[
             1,
             2,
           ],"documentation":"","externalName":"winwin_set_clickthrough_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_noactivate_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_noactivate_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_get_noactivate_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_noactivate_raw","argCount":2,"args":[
             1,
             2,
           ],"documentation":"","externalName":"winwin_set_noactivate_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_visible_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_visible_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_get_visible_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_visible_raw","argCount":2,"args":[
             1,
             2,
           ],"documentation":"","externalName":"winwin_set_visible_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_cursor_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_cursor_raw","argCount":3,"args":[
             1,
             2,
+            1,
           ],"documentation":"","externalName":"winwin_get_cursor_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_cursor_raw","argCount":2,"args":[
             1,
             2,
           ],"documentation":"","externalName":"winwin_set_cursor_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_cursor_handle_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_cursor_handle_raw","argCount":3,"args":[
             1,
             2,
+            1,
           ],"documentation":"","externalName":"winwin_get_cursor_handle_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_cursor_handle_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_cursor_handle_raw","argCount":3,"args":[
             1,
             2,
-          ],"documentation":"","externalName":"winwin_set_cursor_handle_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_resize_buffer_raw","argCount":2,"args":[
             1,
+          ],"documentation":"","externalName":"winwin_set_cursor_handle_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_resize_buffer_raw","argCount":3,"args":[
+            1,
+            2,
             2,
           ],"documentation":"","externalName":"winwin_resize_buffer_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_draw_begin_raw_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_draw_begin_raw_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_draw_begin_raw_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_has_focus_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_has_focus_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_has_focus_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_focus_raw","argCount":2,"args":[
             1,
             2,
           ],"documentation":"","externalName":"winwin_get_focus_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_focus_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_focus_raw","argCount":1,"args":[
+            1,
+          ],"documentation":"","externalName":"winwin_set_focus_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_follow_mouse_start_raw","argCount":4,"args":[
             1,
             2,
-          ],"documentation":"","externalName":"winwin_set_focus_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+            2,
+            2,
+          ],"documentation":"","externalName":"winwin_follow_mouse_start_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_follow_mouse_start_snapped_raw","argCount":4,"args":[
+            1,
+            2,
+            1,
+            2,
+          ],"documentation":"","externalName":"winwin_follow_mouse_start_snapped_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_follow_mouse_end_raw","argCount":1,"args":[
+            1,
+          ],"documentation":"","externalName":"winwin_follow_mouse_end_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_check_raw","argCount":2,"args":[
             1,
             2,
@@ -143,33 +154,29 @@
             1,
             2,
           ],"documentation":"","externalName":"winwin_keyboard_check_released_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_get_string_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_get_string_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_keyboard_get_string_raw","help":"","hidden":true,"kind":11,"returnType":1,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_set_string_raw_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_set_string_raw_raw","argCount":3,"args":[
             1,
             2,
+            1,
           ],"documentation":"","externalName":"winwin_keyboard_set_string_raw_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_get_max_string_length_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_get_max_string_length_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_keyboard_get_max_string_length_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_set_max_string_length_raw","argCount":2,"args":[
             1,
             2,
           ],"documentation":"","externalName":"winwin_keyboard_set_max_string_length_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_is_over_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_is_over_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_mouse_is_over_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_get_x_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_get_x_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_mouse_get_x_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_get_y_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_get_y_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_mouse_get_y_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_check_button_raw","argCount":2,"args":[
             1,
@@ -183,21 +190,17 @@
             1,
             2,
           ],"documentation":"","externalName":"winwin_mouse_check_button_released_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_wheel_up_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_wheel_up_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_mouse_wheel_up_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_wheel_down_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_wheel_down_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_mouse_wheel_down_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_wheel_get_delta_x_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_wheel_get_delta_x_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_mouse_wheel_get_delta_x_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_wheel_get_delta_y_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_mouse_wheel_get_delta_y_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_mouse_wheel_get_delta_y_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_clear_raw","argCount":2,"args":[
             1,
@@ -207,159 +210,163 @@
             1,
             2,
           ],"documentation":"","externalName":"winwin_mouse_clear_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_io_clear_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_io_clear_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_io_clear_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_sleep_raw","argCount":2,"args":[
-            1,
+            2,
             2,
           ],"documentation":"","externalName":"winwin_sleep_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_game_end_raw","argCount":2,"args":[
-            1,
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_game_end_raw","argCount":1,"args":[
             2,
           ],"documentation":"","externalName":"winwin_game_end_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_handle_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_handle_raw","argCount":3,"args":[
             1,
             2,
+            1,
           ],"documentation":"","externalName":"winwin_get_handle_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_caption_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_caption_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_get_caption_raw","help":"","hidden":true,"kind":11,"returnType":1,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_caption_raw","argCount":3,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_caption_raw","argCount":2,"args":[
             1,
-            2,
             1,
           ],"documentation":"","externalName":"winwin_set_caption_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_close_button_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_close_button_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_get_close_button_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_close_button_raw","argCount":2,"args":[
             1,
             2,
           ],"documentation":"","externalName":"winwin_set_close_button_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_vsync_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_vsync_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_get_vsync_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_vsync_raw","argCount":2,"args":[
             1,
             2,
           ],"documentation":"","externalName":"winwin_set_vsync_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_owner_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_owner_raw","argCount":3,"args":[
             1,
             2,
+            1,
           ],"documentation":"","externalName":"winwin_get_owner_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_owner_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_owner_raw","argCount":3,"args":[
             1,
             2,
+            1,
           ],"documentation":"","externalName":"winwin_set_owner_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_x_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_x_raw","argCount":3,"args":[
             1,
             2,
+            1,
           ],"documentation":"","externalName":"winwin_get_x_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_y_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_y_raw","argCount":3,"args":[
             1,
             2,
+            1,
           ],"documentation":"","externalName":"winwin_get_y_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_width_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_width_raw","argCount":3,"args":[
             1,
             2,
+            1,
           ],"documentation":"","externalName":"winwin_get_width_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_height_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_height_raw","argCount":3,"args":[
             1,
             2,
-          ],"documentation":"","externalName":"winwin_get_height_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_position_raw","argCount":2,"args":[
             1,
+          ],"documentation":"","externalName":"winwin_get_height_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_position_raw","argCount":3,"args":[
+            1,
+            2,
             2,
           ],"documentation":"","externalName":"winwin_set_position_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_size_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_size_raw","argCount":3,"args":[
             1,
             2,
+            2,
           ],"documentation":"","externalName":"winwin_set_size_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_rectangle_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_rectangle_raw","argCount":4,"args":[
+            1,
+            2,
             1,
             2,
           ],"documentation":"","externalName":"winwin_set_rectangle_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_min_width_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_min_width_raw","argCount":3,"args":[
             1,
             2,
+            1,
           ],"documentation":"","externalName":"winwin_get_min_width_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_min_height_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_min_height_raw","argCount":3,"args":[
             1,
             2,
+            1,
           ],"documentation":"","externalName":"winwin_get_min_height_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_max_width_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_max_width_raw","argCount":3,"args":[
             1,
             2,
+            1,
           ],"documentation":"","externalName":"winwin_get_max_width_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_max_height_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_max_height_raw","argCount":3,"args":[
             1,
             2,
+            1,
           ],"documentation":"","externalName":"winwin_get_max_height_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_min_width_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_min_width_raw","argCount":3,"args":[
             1,
             2,
+            1,
           ],"documentation":"","externalName":"winwin_set_min_width_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_min_height_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_min_height_raw","argCount":3,"args":[
             1,
             2,
+            1,
           ],"documentation":"","externalName":"winwin_set_min_height_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_max_width_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_max_width_raw","argCount":3,"args":[
             1,
             2,
+            1,
           ],"documentation":"","externalName":"winwin_set_max_width_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_max_height_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_max_height_raw","argCount":3,"args":[
             1,
             2,
+            1,
           ],"documentation":"","externalName":"winwin_set_max_height_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_is_minimized_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_is_minimized_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_is_minimized_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_is_maximized_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_is_maximized_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_is_maximized_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_syscommand_raw","argCount":2,"args":[
             1,
             2,
           ],"documentation":"","externalName":"winwin_syscommand_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_alpha_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_alpha_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_get_alpha_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_alpha_raw","argCount":2,"args":[
             1,
             2,
           ],"documentation":"","externalName":"winwin_set_alpha_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_chromakey_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_chromakey_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_get_chromakey_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_chromakey_raw","argCount":2,"args":[
             1,
             2,
           ],"documentation":"","externalName":"winwin_set_chromakey_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_enable_per_pixel_alpha_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_enable_per_pixel_alpha_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_enable_per_pixel_alpha_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_shadow_raw","argCount":2,"args":[
             1,
             2,
           ],"documentation":"","externalName":"winwin_set_shadow_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_shadow_raw","argCount":2,"args":[
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_get_shadow_raw","argCount":1,"args":[
             1,
-            2,
           ],"documentation":"","externalName":"winwin_get_shadow_raw","help":"","hidden":true,"kind":11,"returnType":2,},
-        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_update_raw","argCount":2,"args":[
-            1,
-            2,
-          ],"documentation":"","externalName":"winwin_update_raw","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_update_raw","argCount":0,"args":[],"documentation":"","externalName":"winwin_update_raw","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_is_available","argCount":0,"args":[],"documentation":"","externalName":"winwin_is_available","help":"winwin_is_available()","hidden":false,"kind":1,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_init_raw","argCount":4,"args":[
             1,
@@ -421,6 +428,9 @@
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_prepare_buffer","argCount":1,"args":[
             2,
           ],"documentation":"","externalName":"winwin_prepare_buffer","help":"","hidden":true,"kind":11,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_prepare_buffer_alt","argCount":1,"args":[
+            2,
+          ],"documentation":"","externalName":"winwin_prepare_buffer_alt","help":"","hidden":true,"kind":11,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_exists","argCount":1,"args":[
             2,
           ],"documentation":"","externalName":"winwin_exists","help":"winwin_exists(ww)->","hidden":false,"kind":2,"returnType":2,},
@@ -535,6 +545,11 @@
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_set_focus","argCount":1,"args":[
             2,
           ],"documentation":"","externalName":"winwin_set_focus","help":"winwin_set_focus(ww)->bool","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_follow_mouse_start","argCount":-1,"args":[],"documentation":"","externalName":"winwin_follow_mouse_start","help":"winwin_follow_mouse_start(ww, xoffset:int, yoffset:int, sleep_time:int = 4)->int","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_follow_mouse_start_snapped","argCount":-1,"args":[],"documentation":"","externalName":"winwin_follow_mouse_start_snapped","help":"winwin_follow_mouse_start_snapped(ww, xstart:int, ystart:int, xsnap:number, ysnap:number, xoffset:int, yoffset:int, sleep_time:int = 4)->int","hidden":false,"kind":2,"returnType":2,},
+        {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_follow_mouse_end","argCount":1,"args":[
+            2,
+          ],"documentation":"","externalName":"winwin_follow_mouse_end","help":"winwin_follow_mouse_end(ww)->bool","hidden":false,"kind":2,"returnType":2,},
         {"resourceType":"GMExtensionFunction","resourceVersion":"1.0","name":"winwin_keyboard_check","argCount":2,"args":[
             2,
             2,
