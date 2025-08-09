@@ -54,13 +54,13 @@ LRESULT CALLBACK winwin_wndproc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lpara
             }
         }; break;
         case WM_GETMINMAXINFO: {
-            RECT rc{};
-            GetClientRect(hwnd, &rc);
-            if (rect_width(rc) > 0) {
-                RECT rw{};
-                GetWindowRect(hwnd, &rw);
-                auto dx = rect_width(rw) - rc.left;
-                auto dy = rect_height(rw) - rc.top;
+            RECT clientRect{};
+            GetClientRect(hwnd, &clientRect);
+            if (rect_width(clientRect) > 0) {
+                RECT windowRect{};
+                GetWindowRect(hwnd, &windowRect);
+                auto dx = rect_width(windowRect) - clientRect.right;
+                auto dy = rect_height(windowRect) - clientRect.bottom;
 
                 auto inf = (MINMAXINFO*)lparam;
                 if (ww->minSize.width)  inf->ptMinTrackSize.x = dx + *ww->minSize.width;

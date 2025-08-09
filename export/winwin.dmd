@@ -319,10 +319,10 @@ null;
 	#[winwin_set_rectangle(window, x, y, width, height)->]() {}
 	These let you change min/max size of a window.\
 	Pass `undefined` instead of a size to not restrict:
-	#[window_set_min_width(window, ?min_width?)->]() {}
-	#[window_set_min_height(window, ?min_height?)->]() {}
-	#[window_set_max_width(window, ?max_width?)->]() {}
-	#[window_set_max_height(window, ?max_height?)->]() {}
+	#[winwin_set_min_width(window, ?min_width?)->]() {}
+	#[winwin_set_min_height(window, ?min_height?)->]() {}
+	#[winwin_set_max_width(window, ?max_width?)->]() {}
+	#[winwin_set_max_height(window, ?max_height?)->]() {}
 	These return min/max size of a window (or `undefined` if not set):
 	#[window_get_min_width(window)->]() {}
 	#[window_get_min_height(window)->]() {}
